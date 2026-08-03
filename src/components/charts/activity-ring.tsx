@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion, useReducedMotion } from "motion/react"
+import { motion, useInView, useReducedMotion } from "motion/react"
+import { useRef } from "react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -80,6 +81,11 @@ export function ActivityRing({
   ...props
 }: ActivityRingProps) {
   const reducedMotion = useReducedMotion()
+  /* Observe the root div, not the SVG circles: IntersectionObserver on
+     SVG child elements does not fire reliably, which left rings stuck
+     at their initial (empty) sweep state. */
+  const rootRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(rootRef, { once: true, amount: 0.4 })
   const ringData = (rings ?? (value != null ? [{ value }] : [])).slice(0, 3)
   const stroke = thickness ?? (ringData.length === 3 ? 7 : ringData.length === 2 ? 8 : 10)
 
@@ -89,6 +95,7 @@ export function ActivityRing({
 
   return (
     <div
+      ref={rootRef}
       role="img"
       aria-label={ariaLabel ?? defaultLabel}
       className={cn(activityRingVariants({ size }), className)}
@@ -136,8 +143,7 @@ export function ActivityRing({
                     strokeLinecap="round"
                     strokeDasharray={circumference}
                     initial={{ strokeDashoffset: circumference }}
-                    whileInView={{ strokeDashoffset: offset }}
-                    viewport={{ once: true, amount: 0.6 }}
+                    animate={{ strokeDashoffset: inView ? offset : circumference }}
                     transition={{
                       duration: SWEEP_DURATION,
                       delay: i * SWEEP_STAGGER,

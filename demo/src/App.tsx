@@ -20,7 +20,13 @@ const FONT_SCALES: { label: string; value: number }[] = [
   { label: "L", value: 1.15 },
 ]
 
+/** URL params (?theme=ember&mode=dark&radius=16&density=0.9&font=1.15)
+ * override persisted state: handy for screenshots and visual regression. */
+const params = new URLSearchParams(window.location.search)
+
 function readInitialTheme(): string {
+  const fromUrl = params.get("theme")
+  if (fromUrl && themes.some((t) => t.id === fromUrl)) return fromUrl
   try {
     return localStorage.getItem(THEME_STORAGE_KEY) ?? "ocean"
   } catch {
@@ -29,6 +35,8 @@ function readInitialTheme(): string {
 }
 
 function readInitialMode(): ModeSetting {
+  const fromUrl = params.get("mode")
+  if (fromUrl === "light" || fromUrl === "dark" || fromUrl === "system") return fromUrl
   try {
     return (localStorage.getItem(MODE_STORAGE_KEY) as ModeSetting) ?? "system"
   } catch {
@@ -36,12 +44,17 @@ function readInitialMode(): ModeSetting {
   }
 }
 
+function readNumberParam(name: string, fallback: number): number {
+  const v = Number(params.get(name))
+  return Number.isFinite(v) && v > 0 ? v : fallback
+}
+
 export function App() {
   const [theme, setTheme] = useState(readInitialTheme)
   const [mode, setMode] = useState<ModeSetting>(readInitialMode)
-  const [radius, setRadiusState] = useState(10)
-  const [fontScale, setFontScaleState] = useState(1)
-  const [density, setDensityState] = useState(1)
+  const [radius, setRadiusState] = useState(() => readNumberParam("radius", 10))
+  const [fontScale, setFontScaleState] = useState(() => readNumberParam("font", 1))
+  const [density, setDensityState] = useState(() => readNumberParam("density", 1))
   const [active, setActive] = useState("")
 
   useEffect(() => applyTheme(theme), [theme])
