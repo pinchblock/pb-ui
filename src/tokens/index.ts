@@ -9,11 +9,14 @@ export type { Color, Mode, ModeTokens, MotionTokens, Shadow, SharedTokens, Theme
 export { displayScale, shared, textScale } from "./shared.ts"
 
 import type { ThemeDefinition } from "./types.ts"
+import { ember } from "./themes/ember.ts"
+import { glacier } from "./themes/glacier.ts"
+import { nocturne } from "./themes/nocturne.ts"
 import { ocean } from "./themes/ocean.ts"
 
-export { ocean }
+export { ember, glacier, nocturne, ocean }
 
 /** All themes, default first. Add new themes here and in src/styles via `npm run gen`. */
-export const themes: ThemeDefinition[] = [ocean]
+export const themes: ThemeDefinition[] = [ocean, nocturne, ember, glacier]
 
 export const defaultTheme: ThemeDefinition = ocean
