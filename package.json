@@ -1,0 +1,61 @@
+{
+  "name": "@pinchblock/ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Pinchblock design system and component library. Owned source (shadcn-style), Base UI + Tailwind v4, TS-authored tokens generated to CSS, no build step.",
+  "scripts": {
+    "gen": "node scripts/generate-css.ts",
+    "gen:check": "node scripts/generate-css.ts --check",
+    "typecheck": "tsc --noEmit",
+    "dev": "npm --prefix demo run dev",
+    "demo:install": "npm --prefix demo install",
+    "test": "npm run gen:check && npm run typecheck"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./tokens": {
+      "types": "./src/tokens/index.ts",
+      "import": "./src/tokens/index.ts"
+    },
+    "./theme-boot": {
+      "types": "./src/lib/theme-boot.ts",
+      "import": "./src/lib/theme-boot.ts"
+    },
+    "./styles/index.css": "./src/styles/index.css",
+    "./styles/tokens.css": "./src/styles/tokens.css",
+    "./styles/base.css": "./src/styles/base.css",
+    "./styles/utilities.css": "./src/styles/utilities.css"
+  },
+  "files": [
+    "src",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "@number-flow/react": "^0.6.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "media-chrome": "^4.19.2",
+    "motion": "^12.43.0",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "peerDependencies": {
+    "lucide-react": ">=0.575.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^6.0.3"
+  }
+}

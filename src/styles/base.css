@@ -1,0 +1,106 @@
+/*
+ * Pinchblock base layer: global rules every consumer inherits.
+ * Import after tokens.css (styles/index.css does this for you).
+ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    min-width: 320px;
+    font-family: var(--font-sans);
+    scrollbar-gutter: stable;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--foreground);
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* One global rule instead of per-component cursor-pointer sprinkling.
+     Components must not add cursor-pointer; drag handles set cursor-grab
+     explicitly. */
+  :is(button, [role="button"], [role="menuitem"], [role="option"], [role="tab"],
+      [role="checkbox"], [role="radio"], [role="switch"], [role="combobox"],
+      a[href], label[for], summary):not(:disabled, [aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: var(--border-strong);
+  }
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/* Comfortable tap targets on touch layouts; opt out with .no-min-tap. */
+@media (max-width: 640px) {
+  button:not(.no-min-tap),
+  [role="button"]:not(.no-min-tap) {
+    min-height: calc(var(--spacing) * 10);
+  }
+}
+
+/* Motion kill-switch. Components with bespoke animation should also
+   check prefers-reduced-motion, but this catches everything else. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

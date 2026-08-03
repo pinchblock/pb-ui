@@ -1,0 +1,11 @@
+/*
+ * Single-import entry for consumers:
+ *
+ *   @import "tailwindcss";
+ *   @import "@pinchblock/ui/styles/index.css";
+ *   @source "../node_modules/@pinchblock/ui/src";
+ *   @custom-variant dark (&:where(.dark, .dark *));
+ */
+@import "./tokens.css";
+@import "./base.css";
+@import "./utilities.css";

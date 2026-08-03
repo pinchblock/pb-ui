@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "@pinchblock/ui/styles/index.css";
+@import "tw-animate-css";
+
+/* Tailwind must scan the library source: it ships raw TSX. */
+@source "../../src";
+
+@custom-variant dark (&:where(.dark, .dark *));
