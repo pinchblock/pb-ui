@@ -1,3 +1,5 @@
+"use client"
+
 import { Dialog as BaseDialog } from "@base-ui/react/dialog"
 import { cva, type VariantProps } from "class-variance-authority"
 import { X } from "lucide-react"

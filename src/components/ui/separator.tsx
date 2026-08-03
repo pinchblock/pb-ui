@@ -1,3 +1,5 @@
+"use client"
+
 import { Separator as BaseSeparator } from "@base-ui/react/separator"
 
 import { cn } from "../../lib/cn.ts"

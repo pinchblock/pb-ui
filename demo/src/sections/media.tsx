@@ -22,10 +22,10 @@ import {
 } from "../../../src/lib/motion.ts"
 
 /* Sample media: public test assets, nothing vendored. */
-const SAMPLE_VIDEO =
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-const SAMPLE_LOOP =
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+const SAMPLE_VIDEO = "https://media.w3.org/2010/05/sintel/trailer.mp4"
+const SAMPLE_LOOP = "https://media.w3.org/2010/05/bunny/trailer.mp4"
+/* Deliberately dead URL: exercises the player's onError -> error state. */
+const DEAD_VIDEO = "https://media.w3.org/2010/05/does-not-exist/missing.mp4"
 const IMG = (seed: string, w = 800, h = 450) =>
   `https://picsum.photos/seed/${seed}/${w}/${h}`
 
@@ -386,7 +386,7 @@ export const sections: SinkSection[] = [
         </Showcase>
         <Showcase
           title="Loop mode"
-          hint="Autoplay, muted, looped, no controls: for exercise demo clips inside a workout builder."
+          hint="Autoplay, muted, looped: for exercise demo clips inside a workout builder. A minimal pause/play toggle shows on hover/focus (always on touch), and under prefers-reduced-motion the clip starts paused instead of autoplaying."
         >
           <div className="max-w-sm">
             <VideoPlayer
@@ -397,9 +397,14 @@ export const sections: SinkSection[] = [
             />
           </div>
         </Showcase>
-        <Showcase title="Missing source" hint="No src degrades to the MediaFrame error state.">
+        <Showcase
+          title="Error state (deliberately dead URL)"
+          hint="This src 404s on purpose: the media element's error event flips the player into the MediaFrame error state, and Retry re-attempts the load. A missing src degrades the same way."
+        >
           <div className="max-w-sm">
             <VideoPlayer
+              src={DEAD_VIDEO}
+              label="Clip that fails to load"
               retry={
                 <Button variant="secondary" size="sm">
                   <RefreshCw aria-hidden /> Retry

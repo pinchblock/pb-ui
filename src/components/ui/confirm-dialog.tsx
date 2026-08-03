@@ -1,3 +1,5 @@
+"use client"
+
 import { AlertDialog as BaseAlertDialog } from "@base-ui/react/alert-dialog"
 import * as React from "react"
 
@@ -117,6 +119,10 @@ export function useConfirm() {
     resolveRef.current = null
     setOpen(false)
   }, [])
+
+  /* Owner unmounting mid-confirmation must not leave a caller awaiting
+     forever: resolve false and clear the pending state. */
+  React.useEffect(() => () => settle(false), [settle])
 
   const confirm = React.useCallback(
     (nextOptions: ConfirmOptions) =>

@@ -43,7 +43,9 @@ export const ocean: ThemeDefinition = {
     warningForeground: "#061826",
     warningSoft: "rgba(232, 182, 92, 0.15)",
     destructive: "#e66d6d",
-    destructiveForeground: "#fff4f4",
+    /* Deep red-black, 5.9:1 on the fill. Follows the theme's dark
+       foreground-on-light-fill status pattern (was #fff4f4 at 2.9:1). */
+    destructiveForeground: "#2b0a0a",
     destructiveSoft: "rgba(230, 109, 109, 0.14)",
     info: "#6aa9e0",
     infoForeground: "#061826",
@@ -102,7 +104,7 @@ export const ocean: ThemeDefinition = {
 
     foreground: "#1a3028",
     mutedForeground: "#4a6658",
-    faintForeground: "#8a9e96",
+    faintForeground: "#7b9188" /* 3.0:1 on background, 3.4:1 on card */,
 
     primary: "#2e7d5e",
     primaryHover: "#236b4f",
@@ -118,7 +120,7 @@ export const ocean: ThemeDefinition = {
     success: "#2e7d5e",
     successForeground: "#ffffff",
     successSoft: "#e2f0eb",
-    warning: "#b56f08",
+    warning: "#a66607" /* deepened from #b56f08 for 4.5:1 with white */,
     warningForeground: "#ffffff",
     warningSoft: "#fef3e2",
     destructive: "#dc2626",

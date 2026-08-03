@@ -1,3 +1,5 @@
+"use client"
+
 import { Search, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import type * as React from "react"

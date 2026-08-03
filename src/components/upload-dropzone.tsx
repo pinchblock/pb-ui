@@ -1,3 +1,5 @@
+"use client"
+
 import { cva } from "class-variance-authority"
 import { FileIcon, UploadCloud, X } from "lucide-react"
 import type * as React from "react"

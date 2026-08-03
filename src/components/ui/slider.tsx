@@ -1,3 +1,5 @@
+"use client"
+
 import { Slider as BaseSlider } from "@base-ui/react/slider"
 import { cva } from "class-variance-authority"
 

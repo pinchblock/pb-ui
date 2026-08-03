@@ -40,7 +40,10 @@ export const nocturne: ThemeDefinition = {
     primary: "#9184d9",
     /* accent-600: matches the mobile pressed-state darkening. */
     primaryHover: "#796cbf",
-    primaryForeground: "#ffffff",
+    /* Deep indigo (the night background), matching the other status
+       foregrounds, 5.5:1 on the lilac. Corrects a known mobile bug:
+       mobile hardcodes #ffffff here, which is only 3.2:1. */
+    primaryForeground: "#161826",
     primarySoft: "#2b2741" /* accent-900, mobile accentTint */,
     primaryBorder: "#5d5294" /* accent-700, mobile accentTintBorder */,
     secondary: "#3f424d" /* neutral-800 */,
@@ -117,8 +120,11 @@ export const nocturne: ThemeDefinition = {
     mutedForeground: "#595d6c" /* neutral-700, mobile textMuted */,
     faintForeground: "#75798c" /* neutral-600, mobile textFaint */,
 
-    primary: "#796cbf" /* accent-600, mobile light accent */,
-    primaryHover: "#5d5294" /* accent-700 */,
+    /* Darkened from mobile accent-600 #796cbf (3.6:1 as text on card)
+       so primary-as-text passes 4.5:1 on card, primarySoft and
+       background. Hue and character kept. */
+    primary: "#695ab7",
+    primaryHover: "#5d5294" /* accent-700, still darker than primary */,
     primaryForeground: "#ffffff",
     primarySoft: "#e7e5fe" /* accent-200, mobile accentTint */,
     primaryBorder: "#b5abfc" /* accent-400, mobile accentTintBorder */,
@@ -149,7 +155,7 @@ export const nocturne: ThemeDefinition = {
     borderStrong: "#9397ab" /* neutral-500 */,
     input: "#b2b6ca",
     inputBackground: "#ffffff",
-    ring: "#796cbf",
+    ring: "#695ab7" /* kept equal to primary */,
     overlay: "rgba(41, 43, 49, 0.35)" /* mobile scrim */,
 
     glassBg: "#f3f5fe",

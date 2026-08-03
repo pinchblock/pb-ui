@@ -1,3 +1,5 @@
+"use client"
+
 import { Accordion as BaseAccordion } from "@base-ui/react/accordion"
 import { ChevronDown } from "lucide-react"
 import type * as React from "react"

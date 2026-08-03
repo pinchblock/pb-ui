@@ -1,3 +1,5 @@
+"use client"
+
 import { Toast as BaseToast } from "@base-ui/react/toast"
 import { cva, type VariantProps } from "class-variance-authority"
 import {
@@ -20,7 +22,7 @@ import { cn } from "../../lib/cn.ts"
  * (down/right), hover to expand the stack. Announcements are handled by
  * Base UI's built-in live region.
  */
-export type ToastTone = "success" | "error" | "info" | "warning" | "ai"
+export type ToastTone = "success" | "destructive" | "info" | "warning" | "ai"
 
 export interface ToastOptions {
   description?: React.ReactNode
@@ -42,7 +44,9 @@ function makeTone(tone: ToastTone) {
 
 export const toast = {
   success: makeTone("success"),
-  error: makeTone("error"),
+  destructive: makeTone("destructive"),
+  /** Ergonomic alias for `toast.destructive` (the canonical tone). */
+  error: makeTone("destructive"),
   info: makeTone("info"),
   warning: makeTone("warning"),
   /** AI treatment: only for AI-assisted moments (guardrails). */
@@ -53,7 +57,7 @@ export const toast = {
 
 const TONE_ICONS: Record<ToastTone, LucideIcon> = {
   success: CircleCheck,
-  error: CircleAlert,
+  destructive: CircleAlert,
   info: Info,
   warning: TriangleAlert,
   ai: Sparkles,
@@ -63,7 +67,7 @@ export const toastIconVariants = cva("mt-0.5 size-4 shrink-0", {
   variants: {
     tone: {
       success: "text-success",
-      error: "text-destructive",
+      destructive: "text-destructive",
       info: "text-info",
       warning: "text-warning",
       ai: "text-ai-foreground",

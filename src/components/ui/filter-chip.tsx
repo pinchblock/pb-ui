@@ -1,3 +1,5 @@
+"use client"
+
 import { Toggle } from "@base-ui/react/toggle"
 import { ToggleGroup } from "@base-ui/react/toggle-group"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -46,9 +48,9 @@ export function FilterChip({ className, size, count, children, ...props }: Filte
     <Toggle className={cn(filterChipVariants({ size }), className)} {...props}>
       {children}
       {count !== undefined && (
-        <span aria-hidden className="text-xs tabular-nums opacity-70">
-          {count}
-        </span>
+        /* Not aria-hidden: the count is part of the chip's accessible
+           name ("Coaches 24"), not decoration. */
+        <span className="text-xs tabular-nums opacity-70">{count}</span>
       )}
     </Toggle>
   )

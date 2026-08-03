@@ -1,3 +1,5 @@
+"use client"
+
 import { Button as BaseButton } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Loader2 } from "lucide-react"

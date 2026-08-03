@@ -44,17 +44,20 @@ function readInitialMode(): ModeSetting {
   }
 }
 
-function readNumberParam(name: string, fallback: number): number {
-  const v = Number(params.get(name))
-  return Number.isFinite(v) && v > 0 ? v : fallback
+/** `min` is per-knob: radius legitimately goes to 0, font/density never do. */
+function readNumberParam(name: string, fallback: number, min: number): number {
+  const raw = params.get(name)
+  if (raw === null || raw.trim() === "") return fallback
+  const v = Number(raw)
+  return Number.isFinite(v) && v >= min ? v : fallback
 }
 
 export function App() {
   const [theme, setTheme] = useState(readInitialTheme)
   const [mode, setMode] = useState<ModeSetting>(readInitialMode)
-  const [radius, setRadiusState] = useState(() => readNumberParam("radius", 10))
-  const [fontScale, setFontScaleState] = useState(() => readNumberParam("font", 1))
-  const [density, setDensityState] = useState(() => readNumberParam("density", 1))
+  const [radius, setRadiusState] = useState(() => readNumberParam("radius", 10, 0))
+  const [fontScale, setFontScaleState] = useState(() => readNumberParam("font", 1, 0.5))
+  const [density, setDensityState] = useState(() => readNumberParam("density", 1, 0.5))
   const [active, setActive] = useState("")
 
   useEffect(() => applyTheme(theme), [theme])

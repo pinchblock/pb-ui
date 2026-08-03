@@ -1,6 +1,7 @@
 # Pinchblock design system: plan
 
-Status: foundation built, component build in progress. Updated 2026-08-03.
+Status: v0.1 built, reviewed and hardened; ready for designer theme
+exploration in the kitchen sink. Updated 2026-08-03.
 
 ## Why this exists
 
@@ -77,11 +78,16 @@ app when ready.
 - [x] P1 Foundation: repo, typed tokens + generator, Ocean theme port,
       base/utilities CSS, theme runtime + boot script, Button exemplar,
       demo sink shell with live knobs.
-- [ ] P2 Components: the starter set (see docs/COMPONENT-MAP.md for the
+- [x] P2 Components: the starter set (see docs/COMPONENT-MAP.md for the
       full inventory-to-coverage mapping), each with a sink section.
       Themes: nocturne (faithful port), ember + glacier (exploratory).
-- [ ] P3 Hardening: adversarial review, a11y pass (focus, ARIA, contrast),
-      reduced-motion audit, docs complete, tag v0.1.0.
+- [x] P3 Hardening: 6-dimension adversarial review (29 confirmed
+      findings, all fixed): "use client" directives for Next.js RSC,
+      WCAG contrast fixes across all four themes (verified ratios),
+      component a11y (chart labels, heatmap summaries, avatar names),
+      video player pause/error handling, API vocabulary alignment.
+      Remaining before adoption: tag v0.1.0 (designer's call after
+      theme exploration).
 - [ ] P4 Adoption (in pb-app, separate effort): install by git tag, map
       old utilities to tokens (amber -> warning etc., see COMPONENT-MAP),
       replace hand-rolled primitives screen by screen, delete globals.css

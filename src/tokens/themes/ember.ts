@@ -43,7 +43,10 @@ export const ember: ThemeDefinition = {
     warningForeground: "#1a1512",
     warningSoft: "rgba(236, 180, 84, 0.15)",
     destructive: "#e5484d" /* crimson, clearly redder than the coral primary */,
-    destructiveForeground: "#fff5f5",
+    /* Deep red-black, 4.9:1 on the fill (was #fff5f5 at 3.7:1). Matches
+       the dark foregrounds of the other statuses; the crimson fill is
+       untouched so destructive stays clearly red. */
+    destructiveForeground: "#1f0708",
     destructiveSoft: "rgba(229, 72, 77, 0.15)",
     info: "#6ba6e3",
     infoForeground: "#1a1512",
@@ -104,8 +107,11 @@ export const ember: ThemeDefinition = {
     mutedForeground: "#6d5c4e",
     faintForeground: "#a08d7c",
 
-    primary: "#d94e1e",
-    primaryHover: "#c34317",
+    /* Deepened from #d94e1e (4.15:1 with white) so white text on the
+       fill and primary-as-text on card and primarySoft pass 4.5:1.
+       Same burnt-orange hue, still unmistakably ember. */
+    primary: "#b74219",
+    primaryHover: "#a33b16" /* darker step of the deepened primary */,
     primaryForeground: "#ffffff",
     primarySoft: "#fde5da",
     primaryBorder: "#f6c1a8",
@@ -115,10 +121,10 @@ export const ember: ThemeDefinition = {
     accent: "#fbdccb",
     accentForeground: "#33251c",
 
-    success: "#2e8b57",
+    success: "#2c8553" /* deepened from #2e8b57 for 4.5:1 with white */,
     successForeground: "#ffffff",
     successSoft: "#dff0e5",
-    warning: "#b26a05",
+    warning: "#ab6605" /* deepened from #b26a05 for 4.5:1 with white */,
     warningForeground: "#ffffff",
     warningSoft: "#f9ecd4",
     destructive: "#c92c2c",
@@ -136,7 +142,7 @@ export const ember: ThemeDefinition = {
     borderStrong: "#d5c5b5",
     input: "#ddccbc",
     inputBackground: "#ffffff",
-    ring: "#d94e1e",
+    ring: "#b74219" /* kept equal to primary */,
     overlay: "rgba(51, 37, 28, 0.4)",
 
     glassBg: "#ffffff",

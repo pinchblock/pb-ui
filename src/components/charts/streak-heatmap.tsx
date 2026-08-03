@@ -1,3 +1,6 @@
+"use client"
+
+import { useMemo } from "react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -20,7 +23,7 @@ export interface StreakHeatmapProps extends React.HTMLAttributes<HTMLDivElement>
   data: ReadonlyArray<StreakDay>
   /** How many week columns to show, ending at `endDate`. @default 20 */
   weeks?: number
-  /** Last day of the grid. @default today */
+  /** Last day of the grid. @default latest date in `data` (today when empty) */
   endDate?: string | Date
   /** Intensity steps above zero. @default 4 */
   levels?: number
@@ -74,7 +77,20 @@ export function StreakHeatmap({
   }
   const max = Math.max(1, ...values.values())
 
-  const end = endDate ? new Date(endDate) : new Date()
+  /* Default end is the latest date in the data, deterministic from props,
+     so server and client render the same grid. Empty data falls back to
+     today (nothing to mismatch against). */
+  const end = useMemo(() => {
+    if (endDate) return new Date(endDate)
+    let latest: string | null = null
+    for (const day of data) {
+      const key = dayKey(day.date)
+      if (latest === null || key > latest) latest = key
+    }
+    if (latest === null) return new Date()
+    const [y, m, d] = latest.split("-").map(Number)
+    return new Date(y ?? 0, (m ?? 1) - 1, d ?? 1)
+  }, [data, endDate])
   const endTime = new Date(end.getFullYear(), end.getMonth(), end.getDate()).getTime()
   const firstMonday = mondayOf(end)
   firstMonday.setDate(firstMonday.getDate() - (weeks - 1) * 7)
@@ -104,10 +120,34 @@ export function StreakHeatmap({
     return `color-mix(in oklab, ${color} ${percent}%, transparent)`
   }
 
+  /* The per-day cells are visual only (aria-hidden); this summary is what
+     screen readers get, so it must carry the story the grid tells. */
+  let activeDays = 0
+  for (const week of columns) {
+    for (const day of week.days) {
+      if (day && day.value > 0) activeDays += 1
+    }
+  }
+  /* Current streak: consecutive active days ending at the end date, with
+     one day of grace when the end day itself has no session yet. */
+  const cursor = new Date(end.getFullYear(), end.getMonth(), end.getDate())
+  if ((values.get(dayKey(cursor)) ?? 0) <= 0) cursor.setDate(cursor.getDate() - 1)
+  let streak = 0
+  while ((values.get(dayKey(cursor)) ?? 0) > 0) {
+    streak += 1
+    cursor.setDate(cursor.getDate() - 1)
+  }
+  const formatDay = (d: Date) =>
+    `${MONTH_LABELS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
+  const summaryLabel =
+    `Training activity from ${formatDay(firstMonday)} to ${formatDay(end)}: ` +
+    `${activeDays} active ${activeDays === 1 ? "day" : "days"}, ` +
+    `current streak ${streak} ${streak === 1 ? "day" : "days"}`
+
   return (
     <div
       role="img"
-      aria-label={ariaLabel ?? `Training activity, last ${weeks} weeks`}
+      aria-label={ariaLabel ?? summaryLabel}
       className={cn("inline-flex gap-0.5 text-xs text-faint-foreground", className)}
       {...props}
     >

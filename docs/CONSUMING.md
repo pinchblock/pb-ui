@@ -13,6 +13,11 @@ tailwindcss ^4.
 
 ## Web wiring (Next.js)
 
+next.config.ts: the package ships raw TypeScript, so Next must compile
+it:
+
+    transpilePackages: ["@pinchblock/ui"]
+
 app CSS:
 
     @import "tailwindcss";
@@ -20,15 +25,26 @@ app CSS:
     @source "../node_modules/@pinchblock/ui/src";
     @custom-variant dark (&:where(.dark, .dark *));
 
-Document head, before paint:
+Document head, before paint. Import from the theme-boot subpath, NOT
+the barrel: the subpath is server-safe, while the barrel pulls in
+client component modules:
 
-    import { themeBootScript } from "@pinchblock/ui"
+    import { themeBootScript } from "@pinchblock/ui/theme-boot"
     <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
 
 Fonts: load InterVariable in the app (next/font or
 @fontsource-variable/inter). The tokens only name the family.
 
 Then: import { Button } from "@pinchblock/ui".
+
+### App Router / RSC boundaries
+
+Every interactive module carries "use client", so components imported
+from "@pinchblock/ui" work from server components (Next lifts them
+into the client bundle automatically once transpilePackages is set).
+Two subpaths are deliberately directive-free and safe to use inside
+server components: "@pinchblock/ui/tokens" (theme data) and
+"@pinchblock/ui/theme-boot" (the boot script string).
 
 ## React Native (Expo)
 

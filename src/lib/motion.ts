@@ -1,3 +1,5 @@
+"use client"
+
 import { createElement } from "react"
 import type { ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"

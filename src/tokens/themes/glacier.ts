@@ -23,7 +23,8 @@ export const glacier: ThemeDefinition = {
 
     foreground: "#e6eaf2",
     mutedForeground: "rgba(230, 234, 242, 0.62)",
-    faintForeground: "rgba(230, 234, 242, 0.36)",
+    faintForeground:
+      "rgba(230, 234, 242, 0.4)" /* 3.3:1 on background, 3.4:1 on card */,
 
     primary: "#5c9bff",
     primaryHover: "#7fb1ff",
@@ -43,7 +44,9 @@ export const glacier: ThemeDefinition = {
     warningForeground: "#06070a",
     warningSoft: "rgba(245, 182, 78, 0.14)",
     destructive: "#f2555a",
-    destructiveForeground: "#fff4f4",
+    /* Deep red-black, 5.5:1 on the fill. Follows the theme's dark
+       foreground-on-light-fill status pattern (was #fff4f4 at 3.1:1). */
+    destructiveForeground: "#2b0708",
     destructiveSoft: "rgba(242, 85, 90, 0.14)",
     info: "#4cc9f0",
     infoForeground: "#06070a",
@@ -100,7 +103,7 @@ export const glacier: ThemeDefinition = {
 
     foreground: "#10141c",
     mutedForeground: "#5a6372",
-    faintForeground: "#98a1b0",
+    faintForeground: "#8590a2" /* 3.0:1 on background, 3.2:1 on card */,
 
     primary: "#155ee0",
     primaryHover: "#1150c4",
@@ -113,10 +116,10 @@ export const glacier: ThemeDefinition = {
     accent: "#dbe7fa",
     accentForeground: "#10141c",
 
-    success: "#178a50",
+    success: "#16864d" /* deepened from #178a50 for 4.5:1 with white */,
     successForeground: "#ffffff",
     successSoft: "#e0f2e9",
-    warning: "#b16a04",
+    warning: "#aa6604" /* deepened from #b16a04 for 4.5:1 with white */,
     warningForeground: "#ffffff",
     warningSoft: "#f7eed7",
     destructive: "#d92d33",

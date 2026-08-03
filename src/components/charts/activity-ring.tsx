@@ -1,3 +1,5 @@
+"use client"
+
 import { cva, type VariantProps } from "class-variance-authority"
 import { motion, useInView, useReducedMotion } from "motion/react"
 import { useRef } from "react"

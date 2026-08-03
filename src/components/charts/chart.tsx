@@ -1,3 +1,5 @@
+"use client"
+
 import { cva } from "class-variance-authority"
 import { createContext, useContext, useMemo } from "react"
 import type * as React from "react"

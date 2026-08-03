@@ -1,3 +1,5 @@
+"use client"
+
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 import type * as React from "react"
 

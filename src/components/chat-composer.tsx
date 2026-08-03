@@ -1,3 +1,5 @@
+"use client"
+
 import { ArrowUp, Paperclip } from "lucide-react"
 import { useCallback, useEffect, useRef, useState } from "react"
 import type * as React from "react"

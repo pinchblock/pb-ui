@@ -1,3 +1,5 @@
+"use client"
+
 import { cva, type VariantProps } from "class-variance-authority"
 import { useReducedMotion } from "motion/react"
 import { useId } from "react"
@@ -40,9 +42,11 @@ export const trendChartVariants = cva("aspect-auto w-full", {
   },
 })
 
-export interface TrendChartProps extends VariantProps<typeof trendChartVariants> {
+export interface TrendChartProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof trendChartVariants> {
   data: ReadonlyArray<TrendPoint>
-  /** Series label shown in the tooltip. @default "Value" */
+  /** Series label shown in the tooltip and the default accessible name. @default "Value" */
   label?: string
   /** Line color, normally a chart token. @default "var(--chart-1)" */
   color?: string
@@ -53,7 +57,6 @@ export interface TrendChartProps extends VariantProps<typeof trendChartVariants>
   /** Gradient area fill under the line. @default true */
   area?: boolean
   valueFormatter?: (value: number | string) => React.ReactNode
-  className?: string
 }
 
 function feelDot(props: DotItemDotProps): React.ReactNode {
@@ -83,6 +86,8 @@ export function TrendChart({
   area = true,
   valueFormatter,
   className,
+  "aria-label": ariaLabel,
+  ...props
 }: TrendChartProps) {
   const gradientId = `pb-trend-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`
   const reducedMotion = useReducedMotion()
@@ -90,51 +95,64 @@ export function TrendChart({
   const withDots = showDots ?? data.some((point) => point.feel != null)
   const config: ChartConfig = { value: { label, color } }
 
+  const first = data[0]
+  const last = data[data.length - 1]
+  const defaultLabel =
+    first && last
+      ? `${label} trend from ${first.label} to ${last.label}, latest ${last.value}`
+      : `${label} trend, no data`
+
   return (
-    <ChartContainer
-      config={config}
+    /* role="img" with the accessible name lives on the wrapper; the
+       recharts SVG below is aria-hidden via the ChartContainer div. */
+    <div
+      role="img"
+      aria-label={ariaLabel ?? defaultLabel}
       className={cn(trendChartVariants({ size }), className)}
+      {...props}
     >
-      <AreaChart
-        data={data as TrendPoint[]}
-        margin={
-          compact
-            ? { top: 6, right: 6, bottom: 6, left: 6 }
-            : { top: 12, right: 12, bottom: 0, left: 12 }
-        }
-      >
-        <defs>
-          <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="var(--color-value)" stopOpacity={0.25} />
-            <stop offset="100%" stopColor="var(--color-value)" stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        {!compact && (
-          <XAxis dataKey="label" tickLine={false} axisLine={false} tickMargin={8} />
-        )}
-        <ChartTooltip
-          cursor={{ strokeDasharray: "3 3" }}
-          content={<ChartTooltipContent valueFormatter={valueFormatter} />}
-        />
-        {target != null && (
-          <ReferenceLine
-            y={target}
-            stroke="var(--chart-target)"
-            strokeDasharray="4 4"
-            ifOverflow="extendDomain"
+      <ChartContainer aria-hidden config={config} className="aspect-auto h-full w-full">
+        <AreaChart
+          data={data as TrendPoint[]}
+          margin={
+            compact
+              ? { top: 6, right: 6, bottom: 6, left: 6 }
+              : { top: 12, right: 12, bottom: 0, left: 12 }
+          }
+        >
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--color-value)" stopOpacity={0.25} />
+              <stop offset="100%" stopColor="var(--color-value)" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          {!compact && (
+            <XAxis dataKey="label" tickLine={false} axisLine={false} tickMargin={8} />
+          )}
+          <ChartTooltip
+            cursor={{ strokeDasharray: "3 3" }}
+            content={<ChartTooltipContent valueFormatter={valueFormatter} />}
           />
-        )}
-        <Area
-          dataKey="value"
-          type="monotone"
-          stroke="var(--color-value)"
-          strokeWidth={2}
-          fill={area ? `url(#${gradientId})` : "none"}
-          dot={withDots ? feelDot : false}
-          activeDot={{ r: 4, strokeWidth: 0 }}
-          isAnimationActive={!reducedMotion}
-        />
-      </AreaChart>
-    </ChartContainer>
+          {target != null && (
+            <ReferenceLine
+              y={target}
+              stroke="var(--chart-target)"
+              strokeDasharray="4 4"
+              ifOverflow="extendDomain"
+            />
+          )}
+          <Area
+            dataKey="value"
+            type="monotone"
+            stroke="var(--color-value)"
+            strokeWidth={2}
+            fill={area ? `url(#${gradientId})` : "none"}
+            dot={withDots ? feelDot : false}
+            activeDot={{ r: 4, strokeWidth: 0 }}
+            isAnimationActive={!reducedMotion}
+          />
+        </AreaChart>
+      </ChartContainer>
+    </div>
   )
 }

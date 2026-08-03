@@ -1,3 +1,5 @@
+"use client"
+
 import { Menu as BaseMenu } from "@base-ui/react/menu"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Check, Circle } from "lucide-react"

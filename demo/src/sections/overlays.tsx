@@ -426,13 +426,13 @@ function ToastDemo() {
         <Button
           variant="secondary"
           onClick={() =>
-            toast.error("Sync failed", {
+            toast.destructive("Sync failed", {
               description: "Session saved locally; retrying when back online.",
               priority: "high",
             })
           }
         >
-          Error
+          Destructive
         </Button>
         <Button
           variant="secondary"
@@ -462,9 +462,10 @@ function ToastDemo() {
         </Button>
       </VariantRow>
       <p className="text-xs text-muted-foreground">
-        toast.success/error/info/warning/ai(message, {"{ description }"}) works from
-        anywhere; the Toaster is mounted once. Auto-dismiss after 5s, swipe down
-        or right to dismiss, hover to expand the stack (max 3 visible).
+        toast.success/destructive/info/warning/ai(message, {"{ description }"}) works
+        from anywhere (toast.error is an alias of toast.destructive); the Toaster is
+        mounted once. Auto-dismiss after 5s, swipe down or right to dismiss, hover to
+        expand the stack (max 3 visible).
       </p>
       {/* One Toaster serves every section on this page. */}
       <Toaster />

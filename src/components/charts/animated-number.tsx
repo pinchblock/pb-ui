@@ -1,3 +1,5 @@
+"use client"
+
 import NumberFlow, { NumberFlowGroup } from "@number-flow/react"
 import type { NumberFlowProps } from "@number-flow/react"
 

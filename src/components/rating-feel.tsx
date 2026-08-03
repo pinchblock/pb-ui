@@ -1,3 +1,5 @@
+"use client"
+
 import { Radio } from "@base-ui/react/radio"
 import { RadioGroup } from "@base-ui/react/radio-group"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -138,10 +140,12 @@ export function FeelDot({ feel, size, className, ...props }: FeelDotProps) {
   )
 }
 
+/* Label reads in text-foreground so contrast holds on the soft tint in
+   every theme; the FeelDot carries the feel color as reinforcement. */
 export const feelBadgeVariants = cva(
   cn(
     "inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-0.5",
-    "bg-(--feel-color)/15 text-xs font-medium text-(--feel-color)",
+    "bg-(--feel-color)/15 text-xs font-medium text-foreground",
   ),
   {
     variants: {
@@ -159,7 +163,8 @@ export interface FeelBadgeProps
 export function FeelBadge({ feel, className, children, ...props }: FeelBadgeProps) {
   return (
     <span className={cn(feelBadgeVariants({ feel }), className)} {...props}>
-      <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-(--feel-color)" />
+      {/* Decorative here: the badge text already names the feel. */}
+      <FeelDot feel={feel} size="sm" role={undefined} aria-label={undefined} aria-hidden />
       {children ?? FEEL_LABELS[feel]}
     </span>
   )

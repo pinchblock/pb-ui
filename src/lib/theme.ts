@@ -1,3 +1,5 @@
+"use client"
+
 /**
  * Runtime theme control. All of it is class/attribute/variable work on
  * <html>; there is no React context and nothing re-renders on change.

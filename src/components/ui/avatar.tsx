@@ -1,3 +1,5 @@
+"use client"
+
 import { Avatar as BaseAvatar } from "@base-ui/react/avatar"
 import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
@@ -102,6 +104,8 @@ export function Avatar({
   const key = colorKey ?? name ?? alt ?? ""
   const fallbackColor =
     FALLBACK_COLORS[hashKey(key) % FALLBACK_COLORS.length] ?? "bg-muted text-muted-foreground"
+  /* AT hears the person's name, not the raw initials ("JD"). */
+  const fallbackName = name ?? alt
   return (
     <BaseAvatar.Root
       className={cn(avatarVariants({ size }), ring && RING_CLASSES[ring], className)}
@@ -115,12 +119,16 @@ export function Avatar({
         />
       ) : null}
       <BaseAvatar.Fallback
+        role={fallbackName ? "img" : undefined}
+        aria-label={fallbackName}
         className={cn(
           "flex size-full items-center justify-center rounded-full",
           fallbackColor,
         )}
       >
-        {initialsOf(name ?? alt ?? "")}
+        <span aria-hidden={fallbackName ? true : undefined}>
+          {initialsOf(fallbackName ?? "")}
+        </span>
       </BaseAvatar.Fallback>
       {badge ? (
         <span className="absolute -right-0.5 -bottom-0.5 z-10 inline-flex items-center justify-center rounded-full bg-card p-0.5 text-primary">

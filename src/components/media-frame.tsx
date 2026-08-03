@@ -1,3 +1,5 @@
+"use client"
+
 import { cva, type VariantProps } from "class-variance-authority"
 import { ImageIcon, ImageOff, Loader2 } from "lucide-react"
 import type * as React from "react"

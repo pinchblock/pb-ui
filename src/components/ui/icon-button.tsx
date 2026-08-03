@@ -1,3 +1,5 @@
+"use client"
+
 import { Button as BaseButton } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
@@ -22,7 +24,7 @@ export const iconButtonVariants = cva(
       variant: {
         ghost: "text-muted-foreground hover:bg-muted hover:text-foreground",
         soft: "bg-primary-soft text-primary hover:bg-accent",
-        outline:
+        secondary:
           "border border-border bg-transparent text-muted-foreground hover:border-border-strong hover:bg-muted hover:text-foreground",
       },
       size: {

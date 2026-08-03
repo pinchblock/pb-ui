@@ -1,3 +1,5 @@
+"use client"
+
 import { cva, type VariantProps } from "class-variance-authority"
 import { ArrowLeft } from "lucide-react"
 import type * as React from "react"
@@ -7,19 +9,20 @@ import { cn } from "../lib/cn.ts"
 /**
  * PageHeader. Page title + description + actions row with an optional
  * back link above; replaces AppPageHeader in pb-app. `size="lg"` is for
- * top-level pages (Dashboard, Clients); default for detail pages.
+ * top-level pages (Dashboard, Clients); `size="md"` (the default) for
+ * detail pages.
  */
 export const pageHeaderTitleVariants = cva(
   "font-display font-semibold tracking-tight text-foreground",
   {
     variants: {
       size: {
-        default: "text-xl",
+        md: "text-xl",
         lg: "text-3xl",
       },
     },
     defaultVariants: {
-      size: "default",
+      size: "md",
     },
   },
 )

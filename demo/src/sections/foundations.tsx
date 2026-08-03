@@ -78,7 +78,7 @@ function ColorGrid() {
                   className="mb-2 h-10 rounded-sm border border-border/50"
                   style={{ background: `var(--${key})` }}
                 />
-                <p className="truncate font-mono text-[11px] text-muted-foreground">--{key}</p>
+                <p className="truncate font-mono text-xs text-muted-foreground">--{key}</p>
               </div>
             ))}
           </div>
@@ -128,7 +128,7 @@ function MotionTokens() {
               className="mb-2 h-2 w-8 rounded-full bg-primary transition-transform group-hover:translate-x-16"
               style={{ transitionDuration: value, transitionTimingFunction: "var(--ease-out)" }}
             />
-            <p className="font-mono text-[11px] text-muted-foreground">
+            <p className="font-mono text-xs text-muted-foreground">
               --duration-{name} {value}
             </p>
           </div>

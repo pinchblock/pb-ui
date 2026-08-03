@@ -305,7 +305,7 @@ export const sections: SinkSection[] = [
     label: "IconButton",
     render: () => (
       <>
-        <Showcase title="Variants" hint="ghost (default), soft, outline. aria-label is required by the type.">
+        <Showcase title="Variants" hint="ghost (default), soft, secondary. aria-label is required by the type.">
           <VariantRow>
             <IconButton aria-label="Add session" variant="ghost">
               <Plus />
@@ -313,7 +313,7 @@ export const sections: SinkSection[] = [
             <IconButton aria-label="Add session" variant="soft">
               <Plus />
             </IconButton>
-            <IconButton aria-label="Add session" variant="outline">
+            <IconButton aria-label="Add session" variant="secondary">
               <Plus />
             </IconButton>
             <IconButton aria-label="Add session" variant="soft" pill>
@@ -323,13 +323,13 @@ export const sections: SinkSection[] = [
         </Showcase>
         <Showcase title="Sizes" hint="md 36px, sm 32px, xs 24px.">
           <VariantRow>
-            <IconButton aria-label="Session settings" variant="outline" size="md">
+            <IconButton aria-label="Session settings" variant="secondary" size="md">
               <Settings />
             </IconButton>
-            <IconButton aria-label="Session settings" variant="outline" size="sm">
+            <IconButton aria-label="Session settings" variant="secondary" size="sm">
               <Settings />
             </IconButton>
-            <IconButton aria-label="Session settings" variant="outline" size="xs">
+            <IconButton aria-label="Session settings" variant="secondary" size="xs">
               <Settings />
             </IconButton>
           </VariantRow>
@@ -341,26 +341,26 @@ export const sections: SinkSection[] = [
           <VariantRow>
             <IconButton
               aria-label="12 notifications"
-              variant="outline"
+              variant="secondary"
               badge={<CounterBadge count={12} surfaceRing />}
             >
               <Bell />
             </IconButton>
             <IconButton
               aria-label="99 or more notifications"
-              variant="outline"
+              variant="secondary"
               badge={<CounterBadge count={120} max={99} tone="primary" surfaceRing />}
             >
               <Bell />
             </IconButton>
             <IconButton
               aria-label="New messages"
-              variant="outline"
+              variant="secondary"
               badge={<NotificationDot surfaceRing label="New messages" />}
             >
               <MessageSquare />
             </IconButton>
-            <IconButton aria-label="More actions" disabled variant="outline">
+            <IconButton aria-label="More actions" disabled variant="secondary">
               <MoreHorizontal />
             </IconButton>
           </VariantRow>
@@ -447,7 +447,7 @@ export const sections: SinkSection[] = [
         >
           <VariantRow>
             <Tooltip defaultOpen>
-              <TooltipTrigger render={<IconButton aria-label="Log a session" variant="outline" />}>
+              <TooltipTrigger render={<IconButton aria-label="Log a session" variant="secondary" />}>
                 <Dumbbell />
               </TooltipTrigger>
               <TooltipContent>
@@ -455,7 +455,7 @@ export const sections: SinkSection[] = [
               </TooltipContent>
             </Tooltip>
             <Tooltip>
-              <TooltipTrigger render={<IconButton aria-label="Search" variant="outline" />}>
+              <TooltipTrigger render={<IconButton aria-label="Search" variant="secondary" />}>
                 <Search />
               </TooltipTrigger>
               <TooltipContent>
@@ -464,7 +464,7 @@ export const sections: SinkSection[] = [
               </TooltipContent>
             </Tooltip>
             <Tooltip>
-              <TooltipTrigger render={<IconButton aria-label="Notifications" variant="outline" />}>
+              <TooltipTrigger render={<IconButton aria-label="Notifications" variant="secondary" />}>
                 <Bell />
               </TooltipTrigger>
               <TooltipContent side="bottom">You are all caught up</TooltipContent>

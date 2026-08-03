@@ -1,3 +1,5 @@
+"use client"
+
 import { Tabs as BaseTabs } from "@base-ui/react/tabs"
 import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
@@ -15,8 +17,14 @@ import { cn } from "../../lib/cn.ts"
  * hidden), so long tab sets stay usable on mobile. Tabs take icons:
  * svg children are sized automatically.
  */
+/* `relative` is load-bearing: Base UI scrolls the active tab into view
+   on mount by summing offsetLeft up the offsetParent chain. Without a
+   positioned list the chain skips past this scroll container to an outer
+   ancestor, inflating the offset and pre-scrolling the list so the first
+   tab mounts clipped. Positioning the list makes it the offsetParent, so
+   the scroll math resolves against the right box. */
 export const tabsListVariants = cva(
-  "flex max-w-full items-center overflow-x-auto scrollbar-none",
+  "relative flex max-w-full items-center overflow-x-auto scrollbar-none",
   {
     variants: {
       variant: {
