@@ -14,7 +14,8 @@
     "@phosphor-icons/react": "^2.1.10",
     "@pinchblock/ui": "file:..",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "react-router": "^8.3.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

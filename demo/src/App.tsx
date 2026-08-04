@@ -10,9 +10,10 @@ import {
   type ModeSetting,
 } from "@pinchblock/ui"
 import { CircleHalf, IconContext, Moon, Sun } from "@phosphor-icons/react"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
+import { Link, Navigate, NavLink, Outlet, Route, Routes, useParams } from "react-router"
 
-import { GROUPS } from "./sections/registry.ts"
+import { findGroup, findPage, GROUPS } from "./pages/registry.ts"
 
 const FONT_SCALES: { label: string; value: number }[] = [
   { label: "S", value: 0.9 },
@@ -24,8 +25,9 @@ const ICON_WEIGHTS = ["thin", "light", "regular", "bold", "duotone"] as const
 
 type SinkIconWeight = (typeof ICON_WEIGHTS)[number]
 
-/** URL params (?theme=ember&mode=dark&radius=16&density=0.9&font=1.15)
- * override persisted state: handy for screenshots and visual regression. */
+/** URL params (?theme=ember&mode=dark&radius=16&density=0.9&font=1.15
+ * &icons=bold) override persisted state on any page: the per-component
+ * URLs plus these params are the visual-regression surface. */
 const params = new URLSearchParams(window.location.search)
 
 function readInitialTheme(): string {
@@ -64,14 +66,13 @@ function readNumberParam(name: string, fallback: number, min: number): number {
   return Number.isFinite(v) && v >= min ? v : fallback
 }
 
-export function App() {
+function Layout() {
   const [theme, setTheme] = useState(readInitialTheme)
   const [mode, setMode] = useState<ModeSetting>(readInitialMode)
   const [radius, setRadiusState] = useState(() => readNumberParam("radius", 10, 0))
   const [fontScale, setFontScaleState] = useState(() => readNumberParam("font", 1, 0.5))
   const [density, setDensityState] = useState(() => readNumberParam("density", 1, 0.5))
   const [iconWeight, setIconWeight] = useState<SinkIconWeight>(readInitialIconWeight)
-  const [active, setActive] = useState("")
 
   useEffect(() => applyTheme(theme), [theme])
   useEffect(() => applyMode(mode), [mode])
@@ -82,28 +83,33 @@ export function App() {
   return (
     <IconContext.Provider value={{ weight: iconWeight }}>
       <div className="flex min-h-screen bg-background text-foreground">
-        {/* Sidebar nav, generated from the registry */}
+        {/* Sidebar nav, generated from the page registry */}
         <aside className="sticky top-0 hidden h-screen w-56 shrink-0 overflow-y-auto border-r border-border bg-background-sunken px-4 py-6 md:block">
-          <p className="mb-1 text-sm font-semibold">Pinchblock UI</p>
-          <p className="mb-6 text-xs text-muted-foreground">Kitchen sink</p>
+          <Link to="/" className="block">
+            <p className="mb-1 text-sm font-semibold">Pinchblock UI</p>
+            <p className="mb-6 text-xs text-muted-foreground">Kitchen sink</p>
+          </Link>
           <nav className="space-y-5">
-            {GROUPS.filter((g) => g.sections.length > 0).map((group) => (
-              <div key={group.label}>
-                <p className="eyebrow mb-1.5">{group.label}</p>
+            {GROUPS.filter((g) => g.pages.length > 0).map((group) => (
+              <div key={group.slug}>
+                <NavLink to={`/c/${group.slug}`} end className="eyebrow mb-1.5 block hover:text-foreground">
+                  {group.label}
+                </NavLink>
                 <ul>
-                  {group.sections.map((s) => (
-                    <li key={s.id}>
-                      <a
-                        href={`#${s.id}`}
-                        onClick={() => setActive(s.id)}
-                        className={`block rounded-md px-2 py-1 text-sm transition-colors duration-(--duration-fast) ${
-                          active === s.id
-                            ? "bg-primary-soft text-primary"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        }`}
+                  {group.pages.map((p) => (
+                    <li key={p.id}>
+                      <NavLink
+                        to={`/c/${group.slug}/${p.id}`}
+                        className={({ isActive }) =>
+                          `block rounded-md px-2 py-1 text-sm transition-colors duration-(--duration-fast) ${
+                            isActive
+                              ? "bg-primary-soft text-primary"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                          }`
+                        }
                       >
-                        {s.label}
-                      </a>
+                        {p.label}
+                      </NavLink>
                     </li>
                   ))}
                 </ul>
@@ -243,21 +249,90 @@ export function App() {
           </header>
 
           <main className="mx-auto max-w-5xl px-6 py-10">
-            {GROUPS.filter((g) => g.sections.length > 0).map((group) => (
-              <section key={group.label} className="mb-14">
-                <h2 className="mb-6 border-b border-border pb-2 text-lg font-semibold">
-                  {group.label}
-                </h2>
-                {group.sections.map((s) => (
-                  <div key={s.id} id={s.id} className="scroll-mt-24">
-                    {s.render()}
-                  </div>
-                ))}
-              </section>
-            ))}
+            <Suspense
+              fallback={
+                <div className="space-y-4">
+                  <div className="h-8 w-64 animate-pulse rounded-md bg-muted" />
+                  <div className="h-40 animate-pulse rounded-xl bg-muted" />
+                </div>
+              }
+            >
+              <Outlet />
+            </Suspense>
           </main>
         </div>
       </div>
     </IconContext.Provider>
+  )
+}
+
+function Home() {
+  return (
+    <div>
+      <h1 className="text-2xl font-semibold">Pinchblock UI kitchen sink</h1>
+      <p className="mt-1 max-w-prose text-sm text-muted-foreground">
+        Every component on its own page, live under every theme, mode and knob in the top
+        bar. Use the URL params (?theme=&amp;mode=&amp;radius=&amp;density=&amp;font=&amp;icons=)
+        to link an exact configuration.
+      </p>
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {GROUPS.filter((g) => g.pages.length > 0).map((g) => (
+          <Link
+            key={g.slug}
+            to={`/c/${g.slug}`}
+            className="rounded-xl border border-border bg-card p-4 transition-colors duration-(--duration-fast) hover:border-primary-border"
+          >
+            <p className="font-medium text-card-foreground">{g.label}</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {g.pages.length} component{g.pages.length === 1 ? "" : "s"}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function GroupOverview() {
+  const { group: slug } = useParams()
+  const group = findGroup(slug)
+  if (!group) return <Navigate to="/" replace />
+  return (
+    <div>
+      <h1 className="text-2xl font-semibold">{group.label}</h1>
+      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        {group.pages.map((p) => (
+          <Link
+            key={p.id}
+            to={`/c/${group.slug}/${p.id}`}
+            className="rounded-xl border border-border bg-card p-4 transition-colors duration-(--duration-fast) hover:border-primary-border"
+          >
+            <p className="font-medium text-card-foreground">{p.label}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{p.description}</p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function PageRoute() {
+  const { group, page } = useParams()
+  const match = findPage(group, page)
+  if (!match) return <Navigate to="/" replace />
+  const { Component } = match
+  return <Component />
+}
+
+export function App() {
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="c/:group" element={<GroupOverview />} />
+        <Route path="c/:group/:page" element={<PageRoute />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   )
 }
