@@ -7,7 +7,9 @@ export const group: SinkGroup = {
   pages: [
     { id: "card", label: "Card", description: "Compound surface: header, content, footer; default, interactive, glass, sunken.", load: () => import("./card.tsx") },
     { id: "list-row", label: "ListRow", description: "Inbox/roster/settings row: leading, title + meta, trailing; interactive or static.", load: () => import("./list-row.tsx") },
+    { id: "sortable-list", label: "SortableList", description: "Drag-to-reorder vertical list on dnd-kit; drag handle plus up/down buttons as the keyboard parity path.", load: () => import("./sortable-list.tsx") },
     { id: "table", label: "Table", description: "Data table primitives: uppercase header, numeric/mono cells, scroll container.", load: () => import("./table.tsx") },
+    { id: "data-table", label: "DataTable", description: "TanStack table on our Table primitives: sorting, search, selection, pagination, loading and empty states; client-side only.", load: () => import("./data-table.tsx") },
     { id: "tabs", label: "Tabs", description: "Underline and pill tabs on Base UI; icons, overflow scroll, keyboard arrows.", load: () => import("./tabs.tsx") },
     { id: "alert", label: "Alert", description: "Inline banner in five tones with action slot and dismiss; ai tone for AI moments only.", load: () => import("./alert.tsx") },
     { id: "stat-tile", label: "StatTile", description: "KPI tile: label, display value, trend with explicit good/bad, footnote.", load: () => import("./stat-tile.tsx") },

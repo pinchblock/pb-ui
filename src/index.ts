@@ -54,11 +54,17 @@ export { TagPill, tagPillVariants, type TagPillProps } from "./components/ui/tag
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, type TooltipContentProps } from "./components/ui/tooltip.tsx"
 
 /* Forms */
+export { Calendar, type CalendarProps } from "./components/ui/calendar.tsx"
 export { Checkbox, checkboxVariants, type CheckboxProps } from "./components/ui/checkbox.tsx"
+export { AsyncCombobox, type AsyncComboboxProps } from "./components/async-combobox.tsx"
+export { Combobox, ComboboxCollection, ComboboxEmpty, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxItem, ComboboxList, ComboboxPopup, ComboboxStatus, comboboxInputVariants, type ComboboxEmptyProps, type ComboboxGroupLabelProps, type ComboboxInputProps, type ComboboxItemProps, type ComboboxListProps, type ComboboxPopupProps, type ComboboxStatusProps } from "./components/ui/combobox.tsx"
+export { DatePicker, DateRangePicker, datePickerTriggerVariants, type DatePickerProps, type DateRange, type DateRangePickerProps, type Matcher } from "./components/ui/date-picker.tsx"
 export { Field, type FieldProps } from "./components/ui/field.tsx"
 export { ChipGroup, FilterChip, filterChipVariants, type ChipGroupProps, type FilterChipProps } from "./components/ui/filter-chip.tsx"
 export { Input, inputVariants, type InputProps } from "./components/ui/input.tsx"
 export { Label, labelVariants, type LabelProps } from "./components/ui/label.tsx"
+export { MonthPicker, type MonthPickerProps } from "./components/ui/month-picker.tsx"
+export { NumberField, numberFieldButtonVariants, numberFieldGroupVariants, type NumberFieldProps } from "./components/ui/number-field.tsx"
 export { RadioCard, radioCardVariants, type RadioCardProps } from "./components/ui/radio-card.tsx"
 export { Radio, RadioGroup, radioVariants, type RadioGroupProps, type RadioProps } from "./components/ui/radio-group.tsx"
 export { SearchInput, type SearchInputProps } from "./components/ui/search-input.tsx"
@@ -154,6 +160,9 @@ export {
 
 /* Content */
 export { Accordion, AccordionItem, AccordionPanel, AccordionTrigger, type AccordionItemProps, type AccordionPanelProps, type AccordionProps, type AccordionTriggerProps } from "./components/ui/accordion.tsx"
+export { DataTable, type ColumnDef, type DataTableColumnMeta, type DataTableProps } from "./components/data-table.tsx"
+export { columnMetaOf, DataTableHeaderCell, DataTableSkeletonRows, dataTableSelectionColumn } from "./components/data-table-parts.tsx"
+export { DragHandle, dragHandleVariants, ReorderButtons, SortableItem, sortableItemVariants, SortableList, type DragHandleProps, type ReorderButtonsProps, type SortableItemProps, type SortableListProps } from "./components/sortable-list.tsx"
 export { Alert, alertVariants, type AlertProps } from "./components/ui/alert.tsx"
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, cardVariants, type CardProps } from "./components/ui/card.tsx"
 export { Pagination, paginationVariants, type PaginationProps } from "./components/ui/pagination.tsx"
