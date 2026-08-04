@@ -12,7 +12,10 @@ TSX themselves.
     npm run dev          # kitchen sink at http://localhost:5190
 
 The sink's top bar is the design cockpit: theme, light/dark, corner
-radius, text size and density, all live, no reload.
+radius, text size, density and icon weight, all live, no reload.
+Every component has its own page at /c/<group>/<component>; URL
+params (?theme=&mode=&radius=&density=&font=&icons=) pin an exact
+configuration for links and screenshots.
 
 ## Layout
 
@@ -30,5 +33,5 @@ radius, text size and density, all live, no reload.
     npm run dev        kitchen sink
 
 Read docs/GUARDRAILS.md before contributing. Every component needs a
-barrel export and a kitchen sink section, and must hold up in every
+barrel export and its own kitchen sink page, and must hold up in every
 theme, light and dark.

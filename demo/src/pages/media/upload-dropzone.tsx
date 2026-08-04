@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-import {
-  UploadDropzone,
-  UploadFileChip,
-} from "../../../../src/components/upload-dropzone.tsx"
+import { UploadDropzone, UploadFileChip } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 import { img } from "./assets.ts"
 

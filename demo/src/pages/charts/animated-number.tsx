@@ -1,11 +1,7 @@
 import { Trophy } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import {
-  AnimatedNumber,
-  AnimatedNumberGroup,
-} from "../../../../src/components/charts/animated-number.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { AnimatedNumber, AnimatedNumberGroup, Button } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 function StatCounters() {

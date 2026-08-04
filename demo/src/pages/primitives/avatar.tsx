@@ -1,8 +1,6 @@
 import { ShieldCheck } from "@phosphor-icons/react"
 
-import { Avatar } from "../../../../src/components/ui/avatar.tsx"
-import { AvatarGroup } from "../../../../src/components/ui/avatar-group.tsx"
-import { Badge } from "../../../../src/components/ui/badge.tsx"
+import { Avatar, AvatarGroup, Badge } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const ROSTER = [

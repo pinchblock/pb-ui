@@ -1,7 +1,6 @@
 import { Flame } from "@phosphor-icons/react"
 
-import { ActivityRing } from "../../../../src/components/charts/activity-ring.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { ActivityRing, Button } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function ActivityRingPage() {

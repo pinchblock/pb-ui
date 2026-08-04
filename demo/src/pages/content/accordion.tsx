@@ -3,8 +3,9 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionTrigger,
-} from "../../../../src/components/ui/accordion.tsx"
-import { Card, CardContent } from "../../../../src/components/ui/card.tsx"
+  Card,
+  CardContent,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function AccordionPage() {

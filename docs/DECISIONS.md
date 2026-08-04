@@ -3,6 +3,27 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-04 (evening, v0.2.0 run)
+
+- Correction: the sink router is react-router 8.3.0 (npm latest), not
+  v7 as first logged; API surface used (BrowserRouter, Routes, NavLink,
+  lazy routes) is the same.
+- Review before v0.2.0 found 27 real issues (1 refuted); all fixed in
+  a three-agent wave. Highest-value: ReorderButtons stranded keyboard
+  focus at list boundaries (fixed via Base UI focusableWhenDisabled),
+  AsyncCombobox had a stale-response hole during the debounce window,
+  MonthPicker's keyboard grid could become unreachable, DataTable
+  selection had three state bugs.
+- Sink pages now import from "@pinchblock/ui" (the package specifier)
+  instead of deep relative paths: the barrel is complete, and the sink
+  should exercise the real consumer entry point so missing barrel
+  exports fail loudly.
+- Added the Wave A exit-criterion page: /c/content/example-edit-week
+  composes all five Wave A components into one edit-training-week
+  flow.
+- Sink shell got a mobile nav (Sheet-based) and a no-horizontal-scroll
+  control bar at 390px; App.tsx split under the 300-line cap.
+
 ## 2026-08-04 (later)
 
 - Sink v2 routing: react-router v7, BrowserRouter, URL scheme

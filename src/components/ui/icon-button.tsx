@@ -16,7 +16,11 @@ export const iconButtonVariants = cva(
     "relative inline-flex shrink-0 items-center justify-center rounded-md select-none",
     "transition-[background-color,border-color,color,box-shadow,transform] duration-(--duration-fast) ease-(--ease-out)",
     "active:scale-[0.98]",
+    /* Both disabled paths: native :disabled, and Base UI's data-disabled
+       (the only signal under focusableWhenDisabled, which renders
+       aria-disabled instead of the disabled attribute). */
     "disabled:pointer-events-none disabled:opacity-50",
+    "data-disabled:pointer-events-none data-disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ),
   {

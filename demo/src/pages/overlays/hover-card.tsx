@@ -1,10 +1,11 @@
-import { Button } from "../../../../src/components/ui/button.tsx"
 import {
+  Button,
   HoverCard,
   HoverCardPopup,
   HoverCardTrigger,
-} from "../../../../src/components/ui/hover-card.tsx"
-import { Toaster, toast } from "../../../../src/components/ui/toast.tsx"
+  toast,
+  Toaster,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 /** Shared demo profile card: one coach preview reused by both demos

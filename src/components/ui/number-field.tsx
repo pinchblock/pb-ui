@@ -22,7 +22,10 @@ export const numberFieldGroupVariants = cva(
   cn(
     "flex w-full min-w-0 items-stretch overflow-hidden rounded-md border border-input bg-input-background",
     "transition-[border-color,background-color,box-shadow] duration-(--duration-fast) ease-(--ease-out)",
-    "focus-within:border-ring hover:not-focus-within:border-border-strong",
+    /* The inner input suppresses its own outline, so the group carries
+       the visible focus indicator: a real ring, not just a border tint. */
+    "focus-within:border-ring focus-within:ring-2 focus-within:ring-ring",
+    "hover:not-focus-within:border-border-strong",
     "data-disabled:pointer-events-none data-disabled:opacity-50",
     "data-invalid:border-destructive has-aria-invalid:border-destructive",
   ),
@@ -31,6 +34,7 @@ export const numberFieldGroupVariants = cva(
       size: {
         sm: "h-8",
         md: "h-9",
+        lg: "h-10",
       },
     },
     defaultVariants: {
@@ -39,20 +43,33 @@ export const numberFieldGroupVariants = cva(
   },
 )
 
-/** Stepper buttons stay w-9 in both sizes: touch target floor rides --spacing. */
+/** Steppers hold a w-9 touch floor in sm/md and widen with lg. */
 export const numberFieldButtonVariants = cva(
   cn(
-    "flex w-9 shrink-0 items-center justify-center text-muted-foreground select-none",
+    "flex shrink-0 items-center justify-center text-muted-foreground select-none",
     "transition-[background-color,color] duration-(--duration-fast) ease-(--ease-out)",
     "hover:bg-muted hover:text-foreground",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   ),
+  {
+    variants: {
+      size: {
+        sm: "w-9",
+        md: "w-9",
+        lg: "w-10",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
 )
 
 const inputSizeClasses = {
   sm: "px-2 text-xs",
   md: "px-2.5 text-sm",
+  lg: "px-3 text-sm",
 } as const
 
 export interface NumberFieldProps
@@ -94,7 +111,7 @@ export function NumberField({
         {/* Base UI labels the steppers (Decrease/Increase) and keeps them
             out of the tab order; keyboard users step with the arrow keys. */}
         <BaseNumberField.Decrement
-          className={cn(numberFieldButtonVariants(), "border-e border-input")}
+          className={cn(numberFieldButtonVariants({ size }), "border-e border-input")}
         >
           <Minus aria-hidden />
         </BaseNumberField.Decrement>
@@ -110,7 +127,7 @@ export function NumberField({
           )}
         />
         <BaseNumberField.Increment
-          className={cn(numberFieldButtonVariants(), "border-s border-input")}
+          className={cn(numberFieldButtonVariants({ size }), "border-s border-input")}
         >
           <Plus aria-hidden />
         </BaseNumberField.Increment>

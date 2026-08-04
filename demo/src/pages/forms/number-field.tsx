@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { NumberField } from "../../../../src/components/ui/number-field.tsx"
+import { Button, Field, NumberField } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function NumberFieldPage() {
@@ -18,10 +16,11 @@ export default function NumberFieldPage() {
         use="Use wherever a number is edited in small steps: sets, reps, weights, RPE. For free-form numbers without stepping (a phone number, a year), plain Input is enough. For bounded scales picked by feel, use Slider."
       />
 
-      <Showcase title="Sizes" hint="sm h-8, md h-9 (default). Stepper buttons keep a w-9 touch target in both sizes.">
+      <Showcase title="Sizes" hint="sm h-8, md h-9 (default), lg h-10, matching Input and Select. Steppers keep a w-9 touch target in sm/md and widen to w-10 in lg.">
         <div className="max-w-xs space-y-3">
           <NumberField size="sm" defaultValue={3} min={0} aria-label="Sets (small)" />
           <NumberField defaultValue={3} min={0} aria-label="Sets (medium)" />
+          <NumberField size="lg" defaultValue={3} min={0} aria-label="Sets (large)" />
         </div>
       </Showcase>
 

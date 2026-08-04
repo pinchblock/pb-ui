@@ -1,4 +1,4 @@
-import { Kbd } from "../../../../src/components/ui/kbd.tsx"
+import { Kbd } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const SHORTCUTS = [

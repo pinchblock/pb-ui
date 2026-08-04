@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { Textarea } from "../../../../src/components/ui/textarea.tsx"
+import { Button, Field, Textarea } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function TextareaPage() {

@@ -1,5 +1,4 @@
-import { Label } from "../../../../src/components/ui/label.tsx"
-import { Switch } from "../../../../src/components/ui/switch.tsx"
+import { Label, Switch } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const NOTIFICATION_ROWS = [

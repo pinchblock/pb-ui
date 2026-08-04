@@ -1,4 +1,4 @@
-import { TrendChart, type TrendPoint } from "../../../../src/components/charts/trend-chart.tsx"
+import { TrendChart, type TrendPoint } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 import { SESSION_TREND } from "./data.ts"
 

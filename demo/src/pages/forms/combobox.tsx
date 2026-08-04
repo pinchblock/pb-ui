@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import { AsyncCombobox } from "../../../../src/components/async-combobox.tsx"
 import {
+  AsyncCombobox,
   Combobox,
   ComboboxCollection,
   ComboboxEmpty,
@@ -11,8 +11,8 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxPopup,
-} from "../../../../src/components/ui/combobox.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
+  Field,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 interface Exercise {

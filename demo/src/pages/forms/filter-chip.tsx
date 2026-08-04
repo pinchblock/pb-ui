@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { ChipGroup, FilterChip } from "../../../../src/components/ui/filter-chip.tsx"
+import { ChipGroup, FilterChip } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const PLAN_COUNTS: Record<string, number> = {

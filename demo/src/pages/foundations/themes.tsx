@@ -1,4 +1,4 @@
-import { themes } from "../../../../src/tokens/index.ts"
+import { themes } from "@pinchblock/ui"
 import { CodeBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 /** One theme card: light on top, dark below, same specimen row. */

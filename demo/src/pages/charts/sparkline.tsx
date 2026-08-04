@@ -1,7 +1,6 @@
 import { Flame } from "@phosphor-icons/react"
 
-import { Sparkline } from "../../../../src/components/charts/sparkline.tsx"
-import { cn } from "../../../../src/lib/cn.ts"
+import { cn, Sparkline } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const CLIENTS = [

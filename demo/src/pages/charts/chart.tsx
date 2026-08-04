@@ -16,7 +16,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../../../src/components/charts/chart.tsx"
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 /* Recharts runs JS-driven entrance animations; gate them explicitly. */

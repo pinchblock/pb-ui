@@ -16,8 +16,10 @@ Rules, in order:
    (src/components/ui/button.tsx): Base UI primitive underneath, CVA
    variants, cn() merging, semantic tokens only, motion via tokens.
 4. Every component must be exported from src/index.ts AND have a
-   kitchen sink section (demo/src/sections/). No sink section = not
-   done.
+   kitchen sink page (demo/src/pages/<group>/, one page per component,
+   plus one line in that group's index.ts manifest; kit pages for
+   tightly coupled families). No sink page = not done. Sink pages
+   import from "@pinchblock/ui", the real consumer entry point.
 5. Components must work in light and dark in EVERY theme without dark:
    overrides. Needing dark: means a token is missing; add the token.
 6. Icons: @phosphor-icons/react only (peer dependency). Never set a

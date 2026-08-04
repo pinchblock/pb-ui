@@ -1,7 +1,7 @@
 import { CalendarPlus, Play, Trash } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { Button } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 /**

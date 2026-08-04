@@ -1,4 +1,4 @@
-import { Separator } from "../../../../src/components/ui/separator.tsx"
+import { Separator } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function SeparatorPage() {

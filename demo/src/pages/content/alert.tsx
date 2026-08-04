@@ -1,5 +1,4 @@
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Alert } from "../../../../src/components/ui/alert.tsx"
+import { Alert, Button } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function AlertPage() {

@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { ConfirmDialog, useConfirm } from "../../../../src/components/ui/confirm-dialog.tsx"
-import { Toaster, toast } from "../../../../src/components/ui/toast.tsx"
+import { Button, ConfirmDialog, toast, Toaster, useConfirm } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function ConfirmDialogPage() {

@@ -1,14 +1,14 @@
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../../src/components/ui/card.tsx"
-import { Stepper } from "../../../../src/components/stepper.tsx"
+  Stepper,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function StepperPage() {

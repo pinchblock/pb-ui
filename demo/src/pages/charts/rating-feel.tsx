@@ -1,14 +1,7 @@
 import { Trophy } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import {
-  FEEL_LABELS,
-  FeelBadge,
-  FeelDot,
-  FeelPicker,
-  type FeelValue,
-} from "../../../../src/components/rating-feel.tsx"
-import { Badge } from "../../../../src/components/ui/badge.tsx"
+import { Badge, FEEL_LABELS, FeelBadge, FeelDot, FeelPicker, type FeelValue } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const SESSIONS = [

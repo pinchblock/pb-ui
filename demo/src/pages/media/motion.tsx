@@ -1,14 +1,8 @@
-import { motion } from "motion/react"
 import { ArrowsClockwise, Barbell, Flame, Trophy } from "@phosphor-icons/react"
+import { motion } from "motion/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import {
-  Reveal,
-  fadeInUp,
-  springPop,
-  staggerChildren,
-} from "../../../../src/lib/motion.ts"
+import { Button, fadeInUp, Reveal, springPop, staggerChildren } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 function StaggerDemo() {

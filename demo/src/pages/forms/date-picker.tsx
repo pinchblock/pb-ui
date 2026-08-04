@@ -1,13 +1,13 @@
 import { useState } from "react"
 
-import { Calendar } from "../../../../src/components/ui/calendar.tsx"
 import {
+  Calendar,
   DatePicker,
-  DateRangePicker,
   type DateRange,
-} from "../../../../src/components/ui/date-picker.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { MonthPicker } from "../../../../src/components/ui/month-picker.tsx"
+  DateRangePicker,
+  Field,
+  MonthPicker,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const addDays = (date: Date, days: number) => {

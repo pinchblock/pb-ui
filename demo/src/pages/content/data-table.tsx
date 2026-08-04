@@ -1,11 +1,14 @@
 import { Users } from "@phosphor-icons/react"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 
-import { DataTable, type ColumnDef } from "../../../../src/components/data-table.tsx"
-import { EmptyState } from "../../../../src/components/empty-state.tsx"
-import { Avatar } from "../../../../src/components/ui/avatar.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Progress } from "../../../../src/components/ui/progress.tsx"
+import {
+  Avatar,
+  Button,
+  type ColumnDef,
+  DataTable,
+  EmptyState,
+  Progress,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 interface Athlete {
@@ -79,6 +82,34 @@ export default function DataTablePage() {
   const [selected, setSelected] = useState<Athlete[]>([])
   const [opened, setOpened] = useState<Athlete | null>(null)
 
+  /* Row click is a shortcut, never the only path: the trailing View
+     button is the explicit way to open a profile (WCAG). */
+  const rosterColumns = useMemo<ColumnDef<Athlete>[]>(
+    () => [
+      ...columns,
+      {
+        id: "actions",
+        enableSorting: false,
+        enableGlobalFilter: false,
+        header: () => <span className="sr-only">Actions</span>,
+        cell: ({ row }) => (
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={(event) => {
+              /* The row click would open the same profile; keep one event. */
+              event.stopPropagation()
+              setOpened(row.original)
+            }}
+          >
+            View
+          </Button>
+        ),
+      },
+    ],
+    [],
+  )
+
   return (
     <div>
       <PageIntro
@@ -109,17 +140,18 @@ export default function DataTablePage() {
 
       <ExampleBlock
         title="Athlete roster"
-        description="Coach view over 25 athletes: sort any column, search by name or PR, select rows for a bulk nudge, click a row to open the profile."
+        description="Coach view over 25 athletes: sort any column, search by name or PR, select rows for a bulk nudge, open a profile via row click or the explicit View button. getRowLabel names rows for assistive tech."
       >
         <DataTable
           label="Athlete roster"
-          columns={columns}
+          columns={rosterColumns}
           data={ATHLETES}
           pageSize={8}
           selectable
           onSelectionChange={setSelected}
           onRowClick={setOpened}
           getRowId={(athlete) => athlete.id}
+          getRowLabel={(athlete) => athlete.name}
         />
         <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-border pt-4">
           <Button size="sm" disabled={selected.length === 0}>
@@ -139,6 +171,8 @@ const columns: ColumnDef<Athlete>[] = [
   { accessorKey: "name", header: "Athlete" },
   { accessorKey: "sessions", header: "Sessions", meta: { numeric: true } },
   { accessorKey: "lastPr", header: "Last PR" },
+  // Row click needs an explicit path too (WCAG); pair it with a
+  // link/button column that performs the same action.
 ]
 
 <DataTable
@@ -149,6 +183,7 @@ const columns: ColumnDef<Athlete>[] = [
   onSelectionChange={setSelected}
   onRowClick={(athlete) => openProfile(athlete)}
   getRowId={(athlete) => athlete.id}
+  getRowLabel={(athlete) => athlete.name}
 />
 `}
       />

@@ -1,9 +1,6 @@
 import { ArrowRight, Flame, Play, Trophy } from "@phosphor-icons/react"
 
-import { PhoneFrame } from "../../../../src/components/phone-frame.tsx"
-import { Grow, Row } from "../../../../src/components/row.tsx"
-import { Stack } from "../../../../src/components/stack.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { Button, Grow, PhoneFrame, Row, Stack } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 /** Static screen content: PhoneFrame accepts arbitrary children. */

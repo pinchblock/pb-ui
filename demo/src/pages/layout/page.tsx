@@ -1,9 +1,6 @@
 import { Play } from "@phosphor-icons/react"
 
-import { Page } from "../../../../src/components/page.tsx"
-import { Grow, Row } from "../../../../src/components/row.tsx"
-import { Stack } from "../../../../src/components/stack.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { Button, Grow, Page, Row, Stack } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const SIZES = ["sm", "md", "lg", "xl", "full"] as const

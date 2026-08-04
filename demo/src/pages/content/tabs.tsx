@@ -5,8 +5,11 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../../src/components/ui/card.tsx"
-import { Tabs, TabsList, TabsPanel, TabsTab } from "../../../../src/components/ui/tabs.tsx"
+  Tabs,
+  TabsList,
+  TabsPanel,
+  TabsTab,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function TabsPage() {

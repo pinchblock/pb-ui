@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Card } from "../../../../src/components/ui/card.tsx"
-import { SectionHeader } from "../../../../src/components/section-header.tsx"
-import { ToggleRow } from "../../../../src/components/toggle-row.tsx"
+import { Card, SectionHeader, ToggleRow } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function ToggleRowPage() {

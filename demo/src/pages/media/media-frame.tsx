@@ -1,7 +1,6 @@
 import { ArrowsClockwise } from "@phosphor-icons/react"
 
-import { MediaFrame } from "../../../../src/components/media-frame.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { Button, MediaFrame } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 import { img } from "./assets.ts"
 

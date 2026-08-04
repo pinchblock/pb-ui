@@ -43,7 +43,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | Two competing Field impls: web/src/components/ui.tsx (no error slot) vs web/src/features/apply.tsx (with error); char counters hand-placed | Field (+Label) | must | Label + hint + error + counter in one anatomy; delete both old Fields |
 | Filter pills re-implemented 4+ times on web (explore, coach-clients, coach-plans, waitlist) and 3 chip systems on mobile | FilterChip/ChipGroup | must | Single and multi select, count suffix for roster filters |
 | Segmented toggles: ThemeSwitcher, auth role toggle, bug severity, explore segments, coach workspace sections | SegmentedControl | must | Replaces the .theme-switcher global CSS too |
-| Icon-prefixed search inputs (explore, coach clients, admin, mobile explore/roster) | SearchInput | should | Debounce + clear; the PeopleSearch dropdown itself waits on Combobox (gap) |
+| Icon-prefixed search inputs (explore, coach clients, admin, mobile explore/roster) | SearchInput | should | Debounce + clear; the PeopleSearch dropdown maps to AsyncCombobox (v0.2.0) |
 | Three separate underline tab impls (coach-section-tabs.tsx, admin nav, client-detail TabLink) | Tabs (underline/pill) | must | aria-current baked in; icon + overflow-x scroll for admin's 11 tabs |
 | Inline alert banners in 4 recurring tones (destructive, success, amber, ai); mobile plans-feedback suite | Alert | must | amber -> warning tone rename; role=status/alert baked in; tap-to-retry action slot |
 | EmptyState in ui.tsx plus several inline copies; mobile empty/error cards with support ID | EmptyState | must | Carry the dashed style; add action and support-ID-friendly body slot |
@@ -69,13 +69,13 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | LogSessionPanel (right drawer desktop / bottom sheet mobile), FeedComposerSheet | Sheet (right/bottom) | must | Keeps the glass-panel look on overlays per the glass rule |
 | window.confirm (block user), window.prompt (admin reasons), ~4 copied confirm dialogs, Alert.alert in 15 mobile files | ConfirmDialog (+useConfirm) | must (web), should (mobile) | Reason-field variant replaces window.prompt; RN version follows in mobile phase |
 | No toast system; transient feedback faked with inline banners that persist until navigation | Toast (toast.* API) | must | Saved/exported/Stripe-status messages move here |
-| Admin tables, plan-performance table (min-w + overflow-x-auto, uppercase thead, tone-colored cells) | Table primitives (+TableContainer) | must | Style layer only; sorting/filtering is the DataTable gap |
+| Admin tables, plan-performance table (min-w + overflow-x-auto, uppercase thead, tone-colored cells) | Table primitives (+TableContainer) | must | Sorting/filtering: DataTable (v0.2.0) |
 | Two copy-pasted SVG sparkline impls (coach dashboard, clients); mobile FeedJourneyPreview | Sparkline | should | |
 | SessionTimelineChart with hardcoded feel hexes (#DC2626...#6C63D4); mobile SessionTimelinePreview | TrendChart (feel dots + target line) | should | Feel colors move to feel-1..5 tokens so Sage/light themes stop breaking |
 | Revenue CSS-height bar chart, 12-week client charts, admin breakdowns | Chart (recharts wrapper) | should | Tokenized categorical + semantic palette; tooltips work on touch |
 | HomeProgressRow streak + week dots, compliance meters | ActivityRing, StreakHeatmap | should | Covers the mobile progress-indicators need |
 | NotificationsBell hand-rolled dropdown (15 type mappings, no keyboard nav) | Popover + ListRow + CounterBadge for now | should | Dedicated notification center panel is a v0.2 gap; waits on the push/realtime design pass |
-| PeopleSearch (keyboard nav but no combobox ARIA) | SearchInput shell now | should | Real Combobox is a v0.2 gap on Base UI |
+| PeopleSearch (keyboard nav but no combobox ARIA) | AsyncCombobox (v0.2.0) | should | Server-search generic with stale-response guard |
 | Message thread composer (Enter-to-send, char counter) | ChatComposer (+TypingIndicator) | later | TypingIndicator is ahead of product (no typing events yet), costs little |
 | Instructional video on structured blocks, future exercise demos | VideoPlayer, MediaFrame | later | media-chrome wrapper, R2/HLS ready |
 | LiveNotificationBanner call banners (off-token emerald/red/slate) | gap | later | Toast action variant covers generic banners; the call stack itself belongs to the LiveKit call kit (v0.2) |
@@ -96,17 +96,17 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 
 Everything the audits surfaced that v0.1 intentionally does not cover.
 
-- Combobox/Command palette: PeopleSearch needs real combobox ARIA; Base UI ships Combobox, port in v0.2, command palette when a use case lands.
-- Calendar/DatePicker: schedule days and annual plans use month selects today; build when scheduling UX gets its design pass.
-- SortableList wrappers (dnd-kit): plan days (x2), structured blocks, intake questions all need grip/lock handles plus keyboard reorder; dnd-kit stays an app dependency until the wrapper API settles.
+- SHIPPED in v0.2.0: Combobox + AsyncCombobox (Base UI combobox; AsyncCombobox replaces PeopleSearch's hand-rolled ARIA). Command palette still waits for a use case.
+- SHIPPED in v0.2.0: Calendar, DatePicker, DateRangePicker, MonthPicker (react-day-picker v10, Monday weeks).
+- SHIPPED in v0.2.0: SortableList/SortableItem/DragHandle/ReorderButtons (dnd-kit classic packages, keyboard drag plus arrow-button parity path).
 - AnnualTimeline/periodization Gantt: already the most reusable organism in pb-app, needs a token audit and phase/event API cleanup before porting.
 - Guided workout FullScreenTimer surface + fixed-dark call-stage sub-theme: timer hardcodes #17634d/#8b3d20, calls hardcode slate/emerald/red on both platforms; both wait on an intentional always-dark token block.
 - LiveKit call UI kit (pre-call, outgoing, stage, incoming banners, control cluster): builds on the fixed-dark sub-theme; product still owes background/system-call UI, so the surface set is not final.
-- DataTable (TanStack sorting/filtering): admin and plan-performance want sortable/filterable tables next; v0.1 Table primitives are the style layer it will sit on.
+- SHIPPED in v0.2.0: DataTable on TanStack 8.21.3 (client-side sorting, search, selection, pagination, loading/empty states) over the v0.1 Table primitives. Server-driven mode still deferred.
 - MarkdownRenderer: system-text templates and coach notes have no markdown source yet; add when one exists.
 - DangerZone: settings account-deletion pattern (destructive card + typed confirmation); composes from Card + Field + ConfirmDialog, formalize in v0.2.
 - OTP/invite-code input: waitlist invite codes and the REF-009 invitation flow; Base UI ships otp-field so this is cheap once the invitation policy is decided.
-- NumberField: mobile already has a clamped draft/commit NumberField, web uses raw number inputs; Base UI number-field exists, adopt in v0.2 for set/rep/weight editors.
+- SHIPPED in v0.2.0: NumberField (Base UI number-field; kg/EUR Intl formats, optional scrub area).
 - Notification center panel: NotificationsBell's 15-type dropdown deserves a real panel; waits on the push/realtime notification design pass, compose from Popover + ListRow meanwhile.
 - PR/celebration full-screen moment: pbPending hints at PR confirmation flows; Rive at app level per PLAN, the system supplies the surface and motion tokens.
 - Onboarding carousel: mobile2 handoff explicitly defers onboarding designs; build alongside the M6 onboarding milestone.
@@ -119,16 +119,16 @@ Everything the audits surfaced that v0.1 intentionally does not cover.
 Against research-product.json domains, honestly:
 
 - Identity and account: covered. Field/Input/Select, RadioCard privacy, Switch rows, Avatar plus UploadDropzone, ConfirmDialog for deletion. Provider sign-in buttons (Google/Apple/Facebook branding rules) stay app-owned; invite codes wait on the OTP gap.
-- Training plans and delivery: core browsing/editing covered (Accordion day trees, Badge stage chips, Tabs, Field grids, Stepper). Waits on SortableList wrappers for reorder, Calendar/DatePicker for schedules, AnnualTimeline for periodization.
+- Training plans and delivery: core browsing/editing covered (Accordion day trees, Badge stage chips, Tabs, Field grids, Stepper). SortableList and Calendar/DatePicker shipped in v0.2.0; AnnualTimeline still graduates during adoption W4.
 - Workout execution and logging: logging flows covered (Sheet, Slider, RatingFeel, Stepper, Progress). The flagship immersive timer waits on FullScreenTimer + fixed-dark sub-theme; mobile sync states wait on SyncStatusIndicator.
-- Coach analytics: covered for core screens. StatTile, Sparkline, TrendChart, Chart, FilterChip, SearchInput, ListRow replace all five KPI impls and both sparklines. Sortable rosters and the plan-performance table upgrade wait on DataTable.
+- Coach analytics: covered for core screens. StatTile, Sparkline, TrendChart, Chart, FilterChip, SearchInput, ListRow replace all five KPI impls and both sparklines. Sortable rosters and plan-performance upgrades: DataTable shipped in v0.2.0.
 - Commerce, billing, payouts: covered at the flagged-as-minimal baseline. Card price tiles, Badge purchase states, Alert requirement banners, StatTile earnings, Chart revenue bars, ToggleRow feature lists. Stripe embeds and checkout polling logic stay app-side.
 - Feed: mostly covered. PostCard composes from Card, Badge, Avatar, Sparkline journey strips, DropdownMenu, Sheet composer, UploadDropzone, EmptyState. Waits on ReactionPicker and the PR celebration moment.
 - Social graph and profiles: covered. Avatar/AvatarGroup, HoverCard follower popovers, ListRow requests/blocked lists, ConfirmDialog for block.
 - Messaging and calls: messaging covered (ChatBubble, ChatComposer, ListRow inbox, CounterBadge unread). Calls not covered: the whole call surface waits on the fixed-dark sub-theme and LiveKit kit, which is honest, that UI is off-token on both platforms today.
 - Media: covered for current purposes (avatar, bug screenshot, feed image) via UploadDropzone, MediaFrame, Skeleton placeholders, VideoPlayer for block videos. Derivatives/transcoding are app infra, not component work.
 - AI: covered. Badge ai tone, ai-surface, motion presets for reveal; suggestion diff cards are app compositions of Card + Button. Background-generation status (REF-023) will use Toast + Progress when built.
-- Admin: covered for core (Table, Pagination, Badge, Tabs, SearchInput, ConfirmDialog with reason field replacing window.prompt). Wants DataTable later; admin stays web-only by product decision.
+- Admin: covered for core (Table, Pagination, Badge, Tabs, SearchInput, ConfirmDialog with reason field replacing window.prompt). DataTable shipped in v0.2.0; admin stays web-only by product decision.
 - Marketing: covered. Glass utilities, PhoneFrame, eyebrow, text-gradient-primary, pill Button, plus adoption finally loads Inter. Mobile onboarding carousel is a listed gap.
 
 ## Mobile parity note

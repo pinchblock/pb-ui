@@ -1,13 +1,13 @@
 import { Flame } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
 import {
+  Button,
   Popover,
   PopoverDescription,
   PopoverPopup,
   PopoverTitle,
   PopoverTrigger,
-} from "../../../../src/components/ui/popover.tsx"
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function PopoverPage() {

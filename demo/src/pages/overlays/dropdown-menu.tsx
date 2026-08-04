@@ -9,9 +9,8 @@ import {
 } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { useConfirm } from "../../../../src/components/ui/confirm-dialog.tsx"
 import {
+  Button,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuGroup,
@@ -22,8 +21,10 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../../../src/components/ui/dropdown-menu.tsx"
-import { Toaster, toast } from "../../../../src/components/ui/toast.tsx"
+  toast,
+  Toaster,
+  useConfirm,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function DropdownMenuPage() {

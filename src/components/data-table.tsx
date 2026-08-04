@@ -54,7 +54,15 @@ export interface DataTableProps<TData> {
   loadingRows?: number
   /** Slot shown when no rows match; defaults to a no-results EmptyState. */
   emptyState?: React.ReactNode
-  /** Makes rows clickable (Enter/Space via keyboard too). */
+  /**
+   * Makes rows clickable (Enter/Space via keyboard too).
+   *
+   * A clickable row is a shortcut, never the only path (WCAG): always
+   * pair it with an explicit link or button in a cell that performs
+   * the same action, the way the roster sink page pairs row click with
+   * a View button. Pass `getRowLabel` so assistive tech announces what
+   * the row opens.
+   */
   onRowClick?: (row: TData) => void
   /** Adds a leading checkbox column with tri-state select-all. */
   selectable?: boolean
@@ -62,6 +70,12 @@ export interface DataTableProps<TData> {
   onSelectionChange?: (rows: TData[]) => void
   /** Stable row identity for selection (default: row index). */
   getRowId?: (row: TData, index: number) => string
+  /**
+   * Human-readable name for a row ("Mari Tamm"): selection checkboxes
+   * read "Select <label>" and clickable rows announce it as their
+   * accessible name.
+   */
+  getRowLabel?: (row: TData) => string
   className?: string
 }
 
@@ -92,6 +106,7 @@ export function DataTable<TData>({
   selectable = false,
   onSelectionChange,
   getRowId,
+  getRowLabel,
   className,
 }: DataTableProps<TData>) {
   const [sorting, setSorting] = useState<SortingState>([])
@@ -100,8 +115,8 @@ export function DataTable<TData>({
   const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize })
 
   const allColumns = useMemo<ColumnDef<TData, any>[]>(
-    () => (selectable ? [dataTableSelectionColumn<TData>(), ...columns] : columns),
-    [columns, selectable],
+    () => (selectable ? [dataTableSelectionColumn<TData>(getRowLabel), ...columns] : columns),
+    [columns, selectable, getRowLabel],
   )
 
   const table = useReactTable({
@@ -125,13 +140,29 @@ export function DataTable<TData>({
      from the parent must not re-fire (or loop) the notification. */
   const selectionCallback = useRef(onSelectionChange)
   selectionCallback.current = onSelectionChange
+  /* Signature of the selected ids still present in `data`: the effect
+     also re-fires (with the pruned selection) when selected rows are
+     removed from the data, not only when a checkbox is toggled. */
+  const selectedIdsSignature = table
+    .getSelectedRowModel()
+    .rows.map((row) => row.id)
+    .join("\u001f")
   useEffect(() => {
     selectionCallback.current?.(table.getSelectedRowModel().rows.map((row) => row.original))
-  }, [rowSelection, table])
+  }, [selectedIdsSignature, table])
+
+  /* pageSize is a plain prop; the state initializer captures only the
+     first value, so propagate later changes into the table state. */
+  useEffect(() => {
+    table.setPageSize(pageSize)
+  }, [pageSize, table])
 
   const rows = table.getRowModel().rows
   const filteredCount = table.getFilteredRowModel().rows.length
-  const selectedCount = Object.keys(rowSelection).length
+  /* Count within the filtered set: the footer reads "x of y selected"
+     against the same y, so x can never exceed it while a search hides
+     selected rows. */
+  const selectedCount = table.getFilteredSelectedRowModel().rows.length
   const pageCount = table.getPageCount()
   const columnCount = allColumns.length
 
@@ -179,6 +210,9 @@ export function DataTable<TData>({
                   key={row.id}
                   data-selected={row.getIsSelected() || undefined}
                   tabIndex={onRowClick ? 0 : undefined}
+                  aria-label={
+                    onRowClick && getRowLabel ? getRowLabel(row.original) : undefined
+                  }
                   onClick={onRowClick ? () => onRowClick(row.original) : undefined}
                   onKeyDown={
                     onRowClick

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { SearchInput } from "../../../../src/components/ui/search-input.tsx"
+import { SearchInput } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const COACHES = [

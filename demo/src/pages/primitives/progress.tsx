@@ -1,7 +1,6 @@
 import { Flame } from "@phosphor-icons/react"
 
-import { Badge } from "../../../../src/components/ui/badge.tsx"
-import { Progress } from "../../../../src/components/ui/progress.tsx"
+import { Badge, Progress } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function ProgressPage() {

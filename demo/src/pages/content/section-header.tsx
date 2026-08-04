@@ -1,9 +1,6 @@
 import { CalendarDots, CaretRight, Moon, Trophy } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Card } from "../../../../src/components/ui/card.tsx"
-import { ListRow } from "../../../../src/components/list-row.tsx"
-import { SectionHeader } from "../../../../src/components/section-header.tsx"
+import { Button, Card, ListRow, SectionHeader } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function SectionHeaderPage() {

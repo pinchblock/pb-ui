@@ -1,11 +1,6 @@
 import { useState } from "react"
 
-import {
-  DragHandle,
-  ReorderButtons,
-  SortableItem,
-  SortableList,
-} from "../../../../src/components/sortable-list.tsx"
+import { DragHandle, ReorderButtons, SortableItem, SortableList } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 function move<T>(list: T[], from: number, to: number): T[] {

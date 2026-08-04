@@ -1,6 +1,6 @@
 import { Barbell, Flame, Heartbeat, PersonSimpleRun, Users } from "@phosphor-icons/react"
 
-import { StatTile } from "../../../../src/components/stat-tile.tsx"
+import { StatTile } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function StatTilePage() {

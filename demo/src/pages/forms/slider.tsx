@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Label } from "../../../../src/components/ui/label.tsx"
-import { Slider } from "../../../../src/components/ui/slider.tsx"
+import { Button, Label, Slider } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function SliderPage() {

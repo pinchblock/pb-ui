@@ -1,5 +1,5 @@
-import { Field } from "../../../../src/components/ui/field.tsx"
 import {
+  Field,
   Select,
   SelectGroup,
   SelectGroupLabel,
@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
   SimpleSelect,
-} from "../../../../src/components/ui/select.tsx"
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const DISCIPLINES = [

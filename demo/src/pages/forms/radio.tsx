@@ -1,9 +1,6 @@
 import { Mountains, User, Users } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Label } from "../../../../src/components/ui/label.tsx"
-import { RadioCard } from "../../../../src/components/ui/radio-card.tsx"
-import { Radio, RadioGroup } from "../../../../src/components/ui/radio-group.tsx"
+import { Button, Label, Radio, RadioCard, RadioGroup } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function RadioPage() {

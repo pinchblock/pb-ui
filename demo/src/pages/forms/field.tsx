@@ -1,14 +1,16 @@
 import { EnvelopeSimple, User } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Checkbox } from "../../../../src/components/ui/checkbox.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { Input } from "../../../../src/components/ui/input.tsx"
-import { Label } from "../../../../src/components/ui/label.tsx"
-import { SimpleSelect } from "../../../../src/components/ui/select.tsx"
-import { Switch } from "../../../../src/components/ui/switch.tsx"
-import { Textarea } from "../../../../src/components/ui/textarea.tsx"
+import {
+  Button,
+  Checkbox,
+  Field,
+  Input,
+  Label,
+  SimpleSelect,
+  Switch,
+  Textarea,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const DISCIPLINES = [

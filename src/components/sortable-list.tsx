@@ -251,10 +251,25 @@ export function ReorderButtons({
 }: ReorderButtonsProps) {
   return (
     <div className={cn("flex shrink-0 flex-col", className)} {...props}>
-      <IconButton size="xs" aria-label={upLabel} disabled={upDisabled} onClick={onMoveUp}>
+      {/* focusableWhenDisabled: at the list boundary the pressed button
+          goes aria-disabled instead of dropping out of the tab order,
+          so keyboard focus stays put (Base UI suppresses activation). */}
+      <IconButton
+        size="xs"
+        aria-label={upLabel}
+        disabled={upDisabled}
+        focusableWhenDisabled
+        onClick={onMoveUp}
+      >
         <ArrowUp />
       </IconButton>
-      <IconButton size="xs" aria-label={downLabel} disabled={downDisabled} onClick={onMoveDown}>
+      <IconButton
+        size="xs"
+        aria-label={downLabel}
+        disabled={downDisabled}
+        focusableWhenDisabled
+        onClick={onMoveDown}
+      >
         <ArrowDown />
       </IconButton>
     </div>

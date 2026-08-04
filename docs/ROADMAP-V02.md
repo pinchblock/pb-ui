@@ -14,7 +14,7 @@ Jaak 2026-08-04, superseding PLAN.md's earlier Lucide lean) and Wave 0
 below, then v0.1.0 tags, so waves land as v0.2.x tags consumers can
 pin.
 
-## Wave 0: kitchen sink v2 (v0.1.x, before Wave A)
+## Wave 0: kitchen sink v2 (DONE, shipped in v0.1.0 on 2026-08-04)
 
 The current sink is one continuous page. Before the component set
 grows, it becomes a multi-page app: every component gets its own page,
@@ -46,7 +46,7 @@ Exit: no sink content left in the old sections/ files; every barrel
 export reachable at its own URL; docs/GUARDRAILS.md code-shape rules
 hold (no page file over ~300 lines).
 
-## Wave A: plan editor and commerce unblockers (target v0.2.0)
+## Wave A: plan editor and commerce unblockers (DONE, shipped in v0.2.0)
 
 These block coach plan authoring and checkout surfaces in pb-app.
 

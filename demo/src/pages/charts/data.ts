@@ -1,5 +1,4 @@
-import type { StreakDay } from "../../../../src/components/charts/streak-heatmap.tsx"
-import type { TrendPoint } from "../../../../src/components/charts/trend-chart.tsx"
+import type { StreakDay, TrendPoint } from "@pinchblock/ui"
 
 /**
  * Demo data shared by more than one charts page (trend-chart,

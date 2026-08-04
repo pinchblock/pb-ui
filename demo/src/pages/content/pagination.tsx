@@ -6,9 +6,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../src/components/ui/card.tsx"
-import { ListRow } from "../../../../src/components/list-row.tsx"
-import { Pagination } from "../../../../src/components/ui/pagination.tsx"
+  ListRow,
+  Pagination,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const PAGE_ATHLETES: string[][] = [

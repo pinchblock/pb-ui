@@ -1,7 +1,6 @@
 import { CloudSlash, FloppyDisk } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Toaster, toast } from "../../../../src/components/ui/toast.tsx"
+import { Button, toast, Toaster } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function ToastPage() {

@@ -1,7 +1,6 @@
 import { Bell, Chat, DotsThree, Gear, MagnifyingGlass, Plus } from "@phosphor-icons/react"
 
-import { CounterBadge, NotificationDot } from "../../../../src/components/ui/counter-badge.tsx"
-import { IconButton } from "../../../../src/components/ui/icon-button.tsx"
+import { CounterBadge, IconButton, NotificationDot } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function IconButtonPage() {

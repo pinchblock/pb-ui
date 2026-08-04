@@ -4,8 +4,6 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../../src/components/ui/card.tsx"
-import {
   Table,
   TableBody,
   TableCaption,
@@ -14,7 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../../src/components/ui/table.tsx"
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const LEADERBOARD = [

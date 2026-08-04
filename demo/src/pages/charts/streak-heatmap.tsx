@@ -1,6 +1,6 @@
 import { Flame } from "@phosphor-icons/react"
 
-import { StreakHeatmap } from "../../../../src/components/charts/streak-heatmap.tsx"
+import { StreakHeatmap } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 import { STREAK_DAYS } from "./data.ts"
 

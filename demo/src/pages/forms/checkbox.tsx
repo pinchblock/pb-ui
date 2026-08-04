@@ -1,7 +1,6 @@
 import { useState } from "react"
 
-import { Checkbox } from "../../../../src/components/ui/checkbox.tsx"
-import { Label } from "../../../../src/components/ui/label.tsx"
+import { Checkbox, Label } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const DRILLS = ["Hangboard pulls", "Shoulder circles", "Easy traverses"]

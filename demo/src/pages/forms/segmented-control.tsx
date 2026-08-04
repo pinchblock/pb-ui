@@ -1,10 +1,7 @@
 import { Barbell, Bicycle, Mountains } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import {
-  SegmentedControl,
-  SegmentedControlItem,
-} from "../../../../src/components/ui/segmented-control.tsx"
+import { SegmentedControl, SegmentedControlItem } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const PERIOD_STATS = {

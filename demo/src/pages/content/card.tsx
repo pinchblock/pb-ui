@@ -1,14 +1,14 @@
 import { Barbell, CalendarDots } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../src/components/ui/card.tsx"
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function CardPage() {

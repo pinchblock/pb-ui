@@ -1,15 +1,15 @@
 import { CalendarDots } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { Label } from "../../../../src/components/ui/label.tsx"
 import {
+  Button,
+  Field,
+  Label,
   SegmentedControl,
   SegmentedControlItem,
-} from "../../../../src/components/ui/segmented-control.tsx"
-import { Slider } from "../../../../src/components/ui/slider.tsx"
-import { Textarea } from "../../../../src/components/ui/textarea.tsx"
+  Slider,
+  Textarea,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro } from "../../sink/showcase.tsx"
 
 const FEELS = [

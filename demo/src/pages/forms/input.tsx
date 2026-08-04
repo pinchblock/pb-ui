@@ -1,8 +1,6 @@
 import { Barbell, EnvelopeSimple, Repeat } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { Input } from "../../../../src/components/ui/input.tsx"
+import { Button, Field, Input } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function InputPage() {

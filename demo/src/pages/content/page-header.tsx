@@ -1,8 +1,6 @@
 import { DownloadSimple, Plus } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { TagPill } from "../../../../src/components/ui/tag-pill.tsx"
-import { PageHeader } from "../../../../src/components/page-header.tsx"
+import { Button, PageHeader, TagPill } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function PageHeaderPage() {

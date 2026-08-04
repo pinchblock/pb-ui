@@ -8,6 +8,7 @@ export const group: SinkGroup = {
     { id: "card", label: "Card", description: "Compound surface: header, content, footer; default, interactive, glass, sunken.", load: () => import("./card.tsx") },
     { id: "list-row", label: "ListRow", description: "Inbox/roster/settings row: leading, title + meta, trailing; interactive or static.", load: () => import("./list-row.tsx") },
     { id: "sortable-list", label: "SortableList", description: "Drag-to-reorder vertical list on dnd-kit; drag handle plus up/down buttons as the keyboard parity path.", load: () => import("./sortable-list.tsx") },
+    { id: "example-edit-week", label: "Edit training week", description: "Wave A integration demo: SortableList, DateRangePicker, NumberField, Combobox and DataTable composing one edit-week flow.", load: () => import("./example-edit-week.tsx") },
     { id: "table", label: "Table", description: "Data table primitives: uppercase header, numeric/mono cells, scroll container.", load: () => import("./table.tsx") },
     { id: "data-table", label: "DataTable", description: "TanStack table on our Table primitives: sorting, search, selection, pagination, loading and empty states; client-side only.", load: () => import("./data-table.tsx") },
     { id: "tabs", label: "Tabs", description: "Underline and pill tabs on Base UI; icons, overflow scroll, keyboard arrows.", load: () => import("./tabs.tsx") },

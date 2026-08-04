@@ -1,9 +1,7 @@
 import { Calendar, Flame, Sparkle, TrendUp } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Badge } from "../../../../src/components/ui/badge.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { TagPill } from "../../../../src/components/ui/tag-pill.tsx"
+import { Badge, Button, TagPill } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const TONES = ["neutral", "primary", "success", "warning", "destructive", "info", "ai"] as const

@@ -1,9 +1,12 @@
 import { useRef, useState } from "react"
 
-import { ChatBubble, DateDivider } from "../../../../src/components/chat-bubble.tsx"
-import { ChatComposer } from "../../../../src/components/chat-composer.tsx"
-import { TypingIndicator } from "../../../../src/components/typing-indicator.tsx"
-import { UploadFileChip } from "../../../../src/components/upload-dropzone.tsx"
+import {
+  ChatBubble,
+  ChatComposer,
+  DateDivider,
+  TypingIndicator,
+  UploadFileChip,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 import { img } from "./assets.ts"
 

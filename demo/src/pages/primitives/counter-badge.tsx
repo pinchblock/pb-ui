@@ -1,7 +1,6 @@
-import { Barbell, Chat, ChartLine, House } from "@phosphor-icons/react"
+import { Barbell, ChartLine, Chat, House } from "@phosphor-icons/react"
 
-import { Avatar } from "../../../../src/components/ui/avatar.tsx"
-import { CounterBadge, NotificationDot } from "../../../../src/components/ui/counter-badge.tsx"
+import { Avatar, CounterBadge, NotificationDot } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 const NAV = [

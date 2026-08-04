@@ -1,11 +1,10 @@
 import { Barbell } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { useConfirm } from "../../../../src/components/ui/confirm-dialog.tsx"
-import { Field } from "../../../../src/components/ui/field.tsx"
-import { Input } from "../../../../src/components/ui/input.tsx"
 import {
+  Button,
+  Field,
+  Input,
   Sheet,
   SheetBody,
   SheetClose,
@@ -15,9 +14,11 @@ import {
   SheetPopup,
   SheetTitle,
   SheetTrigger,
-} from "../../../../src/components/ui/sheet.tsx"
-import { Textarea } from "../../../../src/components/ui/textarea.tsx"
-import { Toaster, toast } from "../../../../src/components/ui/toast.tsx"
+  Textarea,
+  toast,
+  Toaster,
+  useConfirm,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 /** The composed log-session flow: right sheet, form fields, nested

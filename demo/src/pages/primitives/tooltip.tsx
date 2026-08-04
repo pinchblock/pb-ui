@@ -1,15 +1,15 @@
 import { Barbell, Bell, MagnifyingGlass, Plus, VideoCamera } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { IconButton } from "../../../../src/components/ui/icon-button.tsx"
-import { Kbd } from "../../../../src/components/ui/kbd.tsx"
-import { Separator } from "../../../../src/components/ui/separator.tsx"
 import {
+  Button,
+  IconButton,
+  Kbd,
+  Separator,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../../../../src/components/ui/tooltip.tsx"
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function TooltipPage() {

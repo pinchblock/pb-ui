@@ -90,8 +90,16 @@ export function DataTableHeaderCell<TData>({ header }: { header: Header<TData, u
   )
 }
 
-/** Leading checkbox column: tri-state select-all in the header. */
-export function dataTableSelectionColumn<TData>(): ColumnDef<TData> {
+/**
+ * Leading checkbox column: tri-state select-all in the header. Pass
+ * `getRowLabel` to name each checkbox after its row ("Select Mari
+ * Tamm"); without it the label falls back to the row's display
+ * position across pages (row.index is the position in the unsorted
+ * data, so it cannot be used once sorting or filtering kicks in).
+ */
+export function dataTableSelectionColumn<TData>(
+  getRowLabel?: (row: TData) => string,
+): ColumnDef<TData> {
   return {
     id: "select",
     enableSorting: false,
@@ -104,17 +112,29 @@ export function dataTableSelectionColumn<TData>(): ColumnDef<TData> {
         onCheckedChange={(checked) => table.toggleAllPageRowsSelected(checked)}
       />
     ),
-    cell: ({ row }) => (
-      /* Stop propagation so toggling never fires the row click. */
-      <span className="flex items-center" onClick={(event) => event.stopPropagation()}>
-        <Checkbox
-          aria-label={`Select row ${row.index + 1}`}
-          checked={row.getIsSelected()}
-          disabled={!row.getCanSelect()}
-          onCheckedChange={(checked) => row.toggleSelected(checked)}
-        />
-      </span>
-    ),
+    cell: ({ row, table }) => {
+      let label: string
+      if (getRowLabel) {
+        label = `Select ${getRowLabel(row.original)}`
+      } else {
+        const { pageIndex, pageSize } = table.getState().pagination
+        const indexOnPage = table
+          .getPaginationRowModel()
+          .rows.findIndex((pageRow) => pageRow.id === row.id)
+        label = `Select row ${pageIndex * pageSize + Math.max(indexOnPage, 0) + 1}`
+      }
+      return (
+        /* Stop propagation so toggling never fires the row click. */
+        <span className="flex items-center" onClick={(event) => event.stopPropagation()}>
+          <Checkbox
+            aria-label={label}
+            checked={row.getIsSelected()}
+            disabled={!row.getCanSelect()}
+            onCheckedChange={(checked) => row.toggleSelected(checked)}
+          />
+        </span>
+      )
+    },
   }
 }
 

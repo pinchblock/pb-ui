@@ -1,9 +1,6 @@
 import { Flame } from "@phosphor-icons/react"
 
-import { ActivityRing } from "../../../../src/components/charts/activity-ring.tsx"
-import { StreakHeatmap } from "../../../../src/components/charts/streak-heatmap.tsx"
-import { TrendChart } from "../../../../src/components/charts/trend-chart.tsx"
-import { FeelBadge, FeelDot } from "../../../../src/components/rating-feel.tsx"
+import { ActivityRing, FeelBadge, FeelDot, StreakHeatmap, TrendChart } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro } from "../../sink/showcase.tsx"
 import { SESSION_TREND, STREAK_DAYS } from "./data.ts"
 

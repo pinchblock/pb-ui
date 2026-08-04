@@ -1,4 +1,4 @@
-import { shared } from "../../../../src/tokens/index.ts"
+import { shared } from "@pinchblock/ui"
 import { CodeBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 /** TS token key to CSS custom property suffix (inOut -> in-out). */

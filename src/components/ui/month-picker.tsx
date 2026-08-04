@@ -62,6 +62,14 @@ export function MonthPicker(props: MonthPickerProps) {
   )
   const buttonsRef = React.useRef<(HTMLButtonElement | null)[]>([])
 
+  /* Follow selection changes after mount: when the selected month's
+     year changes (a controlled `value` update from outside, or a pick
+     made after caret navigation), display that year. */
+  const selectedYear = selected?.getFullYear()
+  React.useEffect(() => {
+    if (selectedYear != null) setYear(selectedYear)
+  }, [selectedYear])
+
   const monthLabels = React.useMemo(() => {
     const short = new Intl.DateTimeFormat(undefined, { month: "short" })
     const long = new Intl.DateTimeFormat(undefined, { month: "long" })
@@ -82,13 +90,19 @@ export function MonthPicker(props: MonthPickerProps) {
     onValueChange?.(month)
   }
 
-  /* Roving tabindex home: selected month in this year, else today, else January. */
-  const activeMonth =
+  /* Roving tabindex home: selected month in this year, else today,
+     else January; whichever wins must be enabled, otherwise Tab would
+     land on a disabled button (or none), so fall back to the first
+     enabled month of the year. */
+  const firstEnabledMonth =
+    Array.from({ length: 12 }, (_, m) => m).find((m) => !isDisabled(m)) ?? 0
+  const preferredMonth =
     selected != null && selected.getFullYear() === year
       ? selected.getMonth()
       : today.getFullYear() === year
         ? today.getMonth()
-        : 0
+        : firstEnabledMonth
+  const activeMonth = isDisabled(preferredMonth) ? firstEnabledMonth : preferredMonth
 
   const onGridKeyDown = (event: React.KeyboardEvent) => {
     const current = buttonsRef.current.findIndex((b) => b === document.activeElement)

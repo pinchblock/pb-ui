@@ -14,14 +14,19 @@ import {
   UserCircle,
 } from "@phosphor-icons/react"
 
-import { AppShell } from "../../../../src/components/app-shell.tsx"
-import { NavRail, type NavItem, type NavRailSection } from "../../../../src/components/nav-rail.tsx"
-import { Page } from "../../../../src/components/page.tsx"
-import { PhoneFrame } from "../../../../src/components/phone-frame.tsx"
-import { Grow, Row } from "../../../../src/components/row.tsx"
-import { Stack } from "../../../../src/components/stack.tsx"
-import { TopBar } from "../../../../src/components/top-bar.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import {
+  AppShell,
+  Button,
+  Grow,
+  type NavItem,
+  NavRail,
+  type NavRailSection,
+  Page,
+  PhoneFrame,
+  Row,
+  Stack,
+  TopBar,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 /* Fitness-flavored nav fixtures. Button-mode items (no href): the sink

@@ -1,8 +1,6 @@
 import { Barbell, Flame } from "@phosphor-icons/react"
 
-import { Grow, Row } from "../../../../src/components/row.tsx"
-import { Stack } from "../../../../src/components/stack.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { Button, Grow, Row, Stack } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 /**

@@ -6,7 +6,6 @@ import type * as React from "react"
 
 import {
   Combobox,
-  ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
@@ -43,7 +42,7 @@ export interface AsyncComboboxProps<Item> {
   disabled?: boolean
   /** Pause after typing before onSearch fires. @default 250 */
   debounceMs?: number
-  /** Copy for the no-results row. */
+  /** Copy for the no-results row when the query is empty. */
   emptyMessage?: React.ReactNode
   /** Copy for the loading row, next to the spinner. */
   loadingMessage?: React.ReactNode
@@ -74,6 +73,9 @@ export function AsyncCombobox<Item>({
   const [items, setItems] = useState<Item[]>([])
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
+  /* The query whose results are currently shown; drives the completion
+   * summary in the status row ("No results for X"). */
+  const [landedQuery, setLandedQuery] = useState("")
   /* Monotonic request id: a response only lands if it is still the
    * latest request, so slow early responses never clobber fast late
    * ones (the PeopleSearch out-of-order bug this component replaces). */
@@ -99,6 +101,7 @@ export function AsyncCombobox<Item>({
         setItems(results)
         setLoading(false)
         setSearched(true)
+        setLandedQuery(query)
       },
       () => {
         if (requestIdRef.current !== requestId) {
@@ -107,12 +110,17 @@ export function AsyncCombobox<Item>({
         setItems([])
         setLoading(false)
         setSearched(true)
+        setLandedQuery(query)
       },
     )
   }
 
   function scheduleSearch(query: string) {
     clearTimeout(timerRef.current)
+    /* Invalidate any in-flight request the moment a newer search is
+     * SCHEDULED: without this, the previous query's late response
+     * could land as final during the debounce window. */
+    requestIdRef.current += 1
     setLoading(true)
     timerRef.current = setTimeout(() => runSearch(query), debounceMs)
   }
@@ -154,15 +162,25 @@ export function AsyncCombobox<Item>({
         aria-label={ariaLabel}
       />
       <ComboboxPopup>
-        <ComboboxStatus>
+        {/* One live region for the whole async lifecycle: searching,
+            then a completion summary (count or no-results copy), so
+            screen readers hear that the search finished, not silence. */}
+        <ComboboxStatus
+          className={
+            !loading && searched && items.length === 0 ? "justify-center py-4" : undefined
+          }
+        >
           {loading ? (
             <>
               <CircleNotch aria-hidden className="size-4 animate-spin" />
               {loadingMessage}
             </>
+          ) : searched && items.length === 0 ? (
+            landedQuery ? `No results for "${landedQuery}"` : emptyMessage
+          ) : searched ? (
+            `${items.length} result${items.length === 1 ? "" : "s"}`
           ) : null}
         </ComboboxStatus>
-        <ComboboxEmpty>{!loading && searched ? emptyMessage : null}</ComboboxEmpty>
         <ComboboxList>
           {(item: Item) => (
             <ComboboxItem key={getKey(item)} value={item}>

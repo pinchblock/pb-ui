@@ -1,7 +1,6 @@
 import { ArrowsClockwise } from "@phosphor-icons/react"
 
-import { VideoPlayer } from "../../../../src/components/video-player.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
+import { Button, VideoPlayer } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 import { DEAD_VIDEO, SAMPLE_LOOP, SAMPLE_VIDEO, img } from "./assets.ts"
 

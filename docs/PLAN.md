@@ -88,12 +88,13 @@ app when ready.
       video player pause/error handling, API vocabulary alignment.
       Remaining before adoption: tag v0.1.0 (designer's call after
       theme exploration).
-- [ ] P3.5 Sink v2: one page per component, router + lazy loading,
+- [x] P3.5 Sink v2: 66+ per-component pages, router + lazy loading,
       per-group manifests for parallel agents (docs/ROADMAP-V02.md
-      Wave 0). Precedes the v0.2 component waves.
-- [ ] P4 v0.2+ components: three sequenced waves in
-      docs/ROADMAP-V02.md (plan editor and commerce, workout and
-      calls stage theme, engagement and oomph).
+      Wave 0). Landed 2026-08-04 with the Phosphor icon swap.
+- [ ] P4 v0.2+ components: Wave A (DatePicker/Calendar/MonthPicker,
+      NumberField, Combobox/AsyncCombobox, SortableList kit,
+      DataTable) SHIPPED and reviewed; Waves B and C remain
+      (docs/ROADMAP-V02.md).
 - [ ] P5 Adoption (in pb-app, separate effort): web milestones W0-W6
       in docs/ADOPTION-WEB.md; mobile milestones M0-M4 in
       docs/ADOPTION-MOBILE.md, tokens first, components second,

@@ -1,9 +1,6 @@
 import { Barbell, MagnifyingGlass, Plus, Trophy } from "@phosphor-icons/react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Card } from "../../../../src/components/ui/card.tsx"
-import { SearchInput } from "../../../../src/components/ui/search-input.tsx"
-import { EmptyState } from "../../../../src/components/empty-state.tsx"
+import { Button, Card, EmptyState, SearchInput } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 export default function EmptyStatePage() {

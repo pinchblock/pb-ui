@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-import { Badge } from "../../../../src/components/ui/badge.tsx"
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Skeleton, SkeletonText } from "../../../../src/components/ui/skeleton.tsx"
+import { Badge, Button, Skeleton, SkeletonText } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
 const SESSIONS = [

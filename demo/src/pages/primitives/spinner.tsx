@@ -1,8 +1,7 @@
 import { ArrowsClockwise } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Spinner } from "../../../../src/components/ui/spinner.tsx"
+import { Button, Spinner } from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro, Showcase, VariantRow } from "../../sink/showcase.tsx"
 
 export default function SpinnerPage() {

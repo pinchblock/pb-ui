@@ -10,10 +10,16 @@ import {
 } from "@phosphor-icons/react"
 import { useState } from "react"
 
-import { Button } from "../../../../src/components/ui/button.tsx"
-import { Card, CardContent, CardFooter } from "../../../../src/components/ui/card.tsx"
-import { Pagination } from "../../../../src/components/ui/pagination.tsx"
 import {
+  Button,
+  Card,
+  CardContent,
+  CardFooter,
+  EmptyState,
+  PageHeader,
+  Pagination,
+  SectionHeader,
+  StatTile,
   Table,
   TableBody,
   TableCell,
@@ -21,12 +27,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../../src/components/ui/table.tsx"
-import { EmptyState } from "../../../../src/components/empty-state.tsx"
-import { PageHeader } from "../../../../src/components/page-header.tsx"
-import { SectionHeader } from "../../../../src/components/section-header.tsx"
-import { StatTile } from "../../../../src/components/stat-tile.tsx"
-import { ToggleRow } from "../../../../src/components/toggle-row.tsx"
+  ToggleRow,
+} from "@pinchblock/ui"
 import { CodeBlock, ExampleBlock, PageIntro } from "../../sink/showcase.tsx"
 
 const TODAY = [
