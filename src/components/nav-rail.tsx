@@ -2,7 +2,7 @@
 
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
-import type { LucideIcon } from "lucide-react"
+import type { Icon } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../lib/cn.ts"
@@ -14,7 +14,7 @@ import { cn } from "../lib/cn.ts"
  * e.g. render={<Link to="/plan" />}.
  */
 export interface NavItem {
-  icon: LucideIcon
+  icon: Icon
   label: string
   href?: string
   onClick?: React.MouseEventHandler

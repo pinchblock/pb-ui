@@ -2,7 +2,7 @@
 
 import { Checkbox as BaseCheckbox } from "@base-ui/react/checkbox"
 import { cva } from "class-variance-authority"
-import { Check, Minus } from "lucide-react"
+import { Check, Minus } from "@phosphor-icons/react"
 
 import { cn } from "../../lib/cn.ts"
 
@@ -31,8 +31,10 @@ export function Checkbox({ className, ...props }: CheckboxProps) {
   return (
     <BaseCheckbox.Root className={cn(checkboxVariants(), className)} {...props}>
       <BaseCheckbox.Indicator className="flex items-center justify-center text-current">
-        <Check aria-hidden strokeWidth={3} className="size-3 group-data-indeterminate:hidden" />
-        <Minus aria-hidden strokeWidth={3} className="hidden size-3 group-data-indeterminate:block" />
+        {/* Control-anatomy glyphs pin their weight (AGENTS.md rule 6
+            carve-out): the mark must stay bold at any global setting. */}
+        <Check aria-hidden weight="bold" className="size-3 group-data-indeterminate:hidden" />
+        <Minus aria-hidden weight="bold" className="hidden size-3 group-data-indeterminate:block" />
       </BaseCheckbox.Indicator>
     </BaseCheckbox.Root>
   )

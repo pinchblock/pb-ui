@@ -1,7 +1,7 @@
 "use client"
 
 import { cva, type VariantProps } from "class-variance-authority"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { CaretLeft, CaretRight } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -84,7 +84,7 @@ export function Pagination({
         disabled={page <= 1}
         onClick={() => go(page - 1)}
       >
-        <ChevronLeft aria-hidden />
+        <CaretLeft aria-hidden />
       </Button>
 
       {variant === "compact" ? (
@@ -124,7 +124,7 @@ export function Pagination({
         disabled={page >= pageCount}
         onClick={() => go(page + 1)}
       >
-        <ChevronRight aria-hidden />
+        <CaretRight aria-hidden />
       </Button>
     </nav>
   )

@@ -1,6 +1,6 @@
 "use client"
 
-import { Search, X } from "lucide-react"
+import { MagnifyingGlass, X } from "@phosphor-icons/react"
 import { useEffect, useRef, useState } from "react"
 import type * as React from "react"
 
@@ -82,7 +82,7 @@ export function SearchInput({
         "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
         className,
       )}
-      leading={<Search aria-hidden />}
+      leading={<MagnifyingGlass aria-hidden />}
       trailing={
         current.length > 0 ? (
           <button

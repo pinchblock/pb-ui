@@ -2,7 +2,7 @@
 
 import { Menu as BaseMenu } from "@base-ui/react/menu"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Check, Circle } from "lucide-react"
+import { Check, Circle } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -157,7 +157,9 @@ export function DropdownMenuRadioItem({
       {...props}
     >
       <BaseMenu.RadioItemIndicator className="absolute left-2 flex size-4 items-center justify-center">
-        <Circle aria-hidden className="size-2 fill-current text-primary" />
+        {/* weight="fill": the radio dot is control anatomy, it must stay
+            a solid dot at any global icon weight (AGENTS.md rule 6). */}
+        <Circle aria-hidden weight="fill" className="size-2 text-primary" />
       </BaseMenu.RadioItemIndicator>
       {children}
     </BaseMenu.RadioItem>

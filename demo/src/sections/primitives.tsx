@@ -1,18 +1,18 @@
 import { useState } from "react"
 import {
+  Barbell,
   Bell,
   Calendar,
-  Dumbbell,
+  Chat,
+  DotsThree,
   Flame,
-  MessageSquare,
-  MoreHorizontal,
+  Gear,
+  MagnifyingGlass,
   Plus,
-  Search,
-  Settings,
   ShieldCheck,
-  Sparkles,
-  TrendingUp,
-} from "lucide-react"
+  Sparkle,
+  TrendUp,
+} from "@phosphor-icons/react"
 
 import { Avatar } from "../../../src/components/ui/avatar.tsx"
 import { AvatarGroup } from "../../../src/components/ui/avatar-group.tsx"
@@ -99,7 +99,7 @@ function CoachCard() {
           size="sm"
           badge={<CounterBadge count={3} surfaceRing />}
         >
-          <MessageSquare />
+          <Chat />
         </IconButton>
       </div>
       <div className="mt-4">
@@ -113,10 +113,10 @@ function CoachCard() {
         <Badge tone="primary" icon={<Flame />}>
           12-week streak
         </Badge>
-        <Badge tone="success" icon={<TrendingUp />}>
+        <Badge tone="success" icon={<TrendUp />}>
           Deadlift PR 180 kg
         </Badge>
-        <Badge tone="ai" icon={<Sparkles />}>
+        <Badge tone="ai" icon={<Sparkle />}>
           AI insight
         </Badge>
       </div>
@@ -186,10 +186,10 @@ export const sections: SinkSection[] = [
             <Badge tone="primary" size="md" icon={<Flame />}>
               12-week streak
             </Badge>
-            <Badge tone="success" size="md" icon={<TrendingUp />}>
+            <Badge tone="success" size="md" icon={<TrendUp />}>
               New PR
             </Badge>
-            <Badge tone="ai" size="md" icon={<Sparkles />}>
+            <Badge tone="ai" size="md" icon={<Sparkle />}>
               AI suggested
             </Badge>
             <Badge tone="warning" icon={<Calendar />}>
@@ -324,13 +324,13 @@ export const sections: SinkSection[] = [
         <Showcase title="Sizes" hint="md 36px, sm 32px, xs 24px.">
           <VariantRow>
             <IconButton aria-label="Session settings" variant="secondary" size="md">
-              <Settings />
+              <Gear />
             </IconButton>
             <IconButton aria-label="Session settings" variant="secondary" size="sm">
-              <Settings />
+              <Gear />
             </IconButton>
             <IconButton aria-label="Session settings" variant="secondary" size="xs">
-              <Settings />
+              <Gear />
             </IconButton>
           </VariantRow>
         </Showcase>
@@ -358,10 +358,10 @@ export const sections: SinkSection[] = [
               variant="secondary"
               badge={<NotificationDot surfaceRing label="New messages" />}
             >
-              <MessageSquare />
+              <Chat />
             </IconButton>
             <IconButton aria-label="More actions" disabled variant="secondary">
-              <MoreHorizontal />
+              <DotsThree />
             </IconButton>
           </VariantRow>
         </Showcase>
@@ -448,7 +448,7 @@ export const sections: SinkSection[] = [
           <VariantRow>
             <Tooltip defaultOpen>
               <TooltipTrigger render={<IconButton aria-label="Log a session" variant="secondary" />}>
-                <Dumbbell />
+                <Barbell />
               </TooltipTrigger>
               <TooltipContent>
                 Log a session <Kbd className="ml-1">L</Kbd>
@@ -456,7 +456,7 @@ export const sections: SinkSection[] = [
             </Tooltip>
             <Tooltip>
               <TooltipTrigger render={<IconButton aria-label="Search" variant="secondary" />}>
-                <Search />
+                <MagnifyingGlass />
               </TooltipTrigger>
               <TooltipContent>
                 Search <Kbd className="ml-1">⌘</Kbd>

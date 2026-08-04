@@ -64,7 +64,7 @@ export const badgeVariants = cva(
 export interface BadgeProps
   extends React.ComponentProps<"span">,
     VariantProps<typeof badgeVariants> {
-  /** Leading icon slot (a lucide icon; sized by the badge). */
+  /** Leading icon slot (a phosphor icon; sized by the badge). */
   icon?: React.ReactNode
 }
 

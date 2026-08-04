@@ -1,7 +1,7 @@
 "use client"
 
 import { cva, type VariantProps } from "class-variance-authority"
-import { Loader2 } from "lucide-react"
+import { CircleNotch } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -43,7 +43,7 @@ export function Spinner({ className, size, label = "Loading", ...props }: Spinne
       className={cn(spinnerVariants({ size }), className)}
       {...props}
     >
-      <Loader2 aria-hidden className="animate-spin" />
+      <CircleNotch aria-hidden className="animate-spin" />
       <span className="sr-only">{label}</span>
     </span>
   )

@@ -1,7 +1,7 @@
 "use client"
 
 import { cva } from "class-variance-authority"
-import { FileIcon, UploadCloud, X } from "lucide-react"
+import { CloudArrowUp, File as FileIcon, X } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { useFileDrop } from "../hooks/use-file-drop.ts"
@@ -85,7 +85,7 @@ export function UploadDropzone({
             isDragOver && "bg-primary text-primary-foreground",
           )}
         >
-          <UploadCloud aria-hidden className="size-5" />
+          <CloudArrowUp aria-hidden className="size-5" />
         </span>
         <span className="text-sm font-medium text-foreground">{label}</span>
         {hint && <span className="text-xs text-muted-foreground">{hint}</span>}

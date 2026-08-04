@@ -1,7 +1,7 @@
 "use client"
 
 import { cva, type VariantProps } from "class-variance-authority"
-import { ImageIcon, ImageOff, Loader2 } from "lucide-react"
+import { CircleNotch, Image, ImageBroken } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../lib/cn.ts"
@@ -87,14 +87,14 @@ export function MediaFrame({
       {state === "pending" && (
         <>
           <div aria-hidden className="absolute inset-0 animate-pulse bg-muted" />
-          <ImageIcon aria-hidden className="relative size-6 text-faint-foreground" />
+          <Image aria-hidden className="relative size-6 text-faint-foreground" />
           <span className="sr-only">Loading media</span>
         </>
       )}
 
       {state === "processing" && (
         <div role="status" className="flex flex-col items-center gap-2">
-          <Loader2 aria-hidden className="size-6 animate-spin text-muted-foreground" />
+          <CircleNotch aria-hidden className="size-6 animate-spin text-muted-foreground" />
           <span className="text-xs font-medium text-muted-foreground">
             {processingLabel}
           </span>
@@ -103,7 +103,7 @@ export function MediaFrame({
 
       {state === "error" && (
         <div role="status" className="flex flex-col items-center gap-2">
-          <ImageOff aria-hidden className="size-6 text-faint-foreground" />
+          <ImageBroken aria-hidden className="size-6 text-faint-foreground" />
           <span className="text-xs font-medium text-muted-foreground">{errorLabel}</span>
           {retry}
         </div>

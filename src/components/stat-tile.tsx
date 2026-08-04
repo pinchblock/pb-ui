@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowDownRight, ArrowUpRight } from "lucide-react"
+import { ArrowDownRight, ArrowUpRight } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../lib/cn.ts"
@@ -28,7 +28,7 @@ export interface StatTileProps
   /** Eyebrow-styled label above the value. */
   label: React.ReactNode
   value: React.ReactNode
-  /** Icon element (a lucide icon), rendered top-right in a soft circle. */
+  /** Icon element (a phosphor icon), rendered top-right in a soft circle. */
   icon?: React.ReactNode
   trend?: StatTileTrend
   /** Quiet context line under the value, e.g. "vs last week". */

@@ -2,7 +2,7 @@
 
 import { Select as BaseSelect } from "@base-ui/react/select"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Check, ChevronDown } from "lucide-react"
+import { CaretDown, Check } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -57,7 +57,7 @@ export function SelectTrigger({ className, size, children, ...props }: SelectTri
         {children}
       </span>
       <BaseSelect.Icon className="flex shrink-0 text-muted-foreground">
-        <ChevronDown className="size-4" />
+        <CaretDown className="size-4" />
       </BaseSelect.Icon>
     </BaseSelect.Trigger>
   )

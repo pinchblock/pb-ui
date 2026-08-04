@@ -1,20 +1,20 @@
 import {
+  Barbell,
   Bell,
-  CalendarDays,
-  ChevronRight,
-  Download,
-  Dumbbell,
+  CalendarDots,
+  CaretRight,
+  Chat,
+  ClockCounterClockwise,
+  DownloadSimple,
   Flame,
-  HeartPulse,
-  History,
+  Heartbeat,
+  Lightning,
   ListChecks,
-  MessageSquare,
   Moon,
   Plus,
   Trophy,
   Users,
-  Zap,
-} from "lucide-react"
+} from "@phosphor-icons/react"
 import { useState } from "react"
 
 import { Alert } from "../../../src/components/ui/alert.tsx"
@@ -160,7 +160,7 @@ function DashboardSlice() {
         actions={
           <>
             <Button variant="secondary" size="sm">
-              <Download aria-hidden />
+              <DownloadSimple aria-hidden />
               Export
             </Button>
             <Button size="sm">
@@ -175,7 +175,7 @@ function DashboardSlice() {
         <StatTile
           label="Sessions this week"
           value="18"
-          icon={<CalendarDays aria-hidden />}
+          icon={<CalendarDots aria-hidden />}
           trend={{ value: "+12%", direction: "up" }}
           footnote="vs last week"
         />
@@ -189,7 +189,7 @@ function DashboardSlice() {
         <StatTile
           label="Resting HR"
           value="52 bpm"
-          icon={<HeartPulse aria-hidden />}
+          icon={<Heartbeat aria-hidden />}
           trend={{ value: "-2 bpm", direction: "down", positive: true }}
           footnote="rolling 7-day average"
         />
@@ -209,7 +209,7 @@ function DashboardSlice() {
           action={
             <Button variant="ghost" size="sm">
               View all
-              <ChevronRight aria-hidden />
+              <CaretRight aria-hidden />
             </Button>
           }
         />
@@ -225,10 +225,10 @@ function DashboardSlice() {
       </div>
 
       <div className="space-y-2">
-        <SectionHeader icon={<MessageSquare aria-hidden />} title="Unread messages" />
+        <SectionHeader icon={<Chat aria-hidden />} title="Unread messages" />
         <Card>
           <EmptyState
-            icon={<MessageSquare aria-hidden />}
+            icon={<Chat aria-hidden />}
             title="Inbox zero"
             description="No unread athlete messages. Check back after this evening's sessions."
             action={
@@ -386,7 +386,7 @@ export const sections: SinkSection[] = [
                 Overview
               </TabsTab>
               <TabsTab value="history">
-                <History aria-hidden />
+                <ClockCounterClockwise aria-hidden />
                 History
               </TabsTab>
               <TabsTab value="prs">
@@ -541,7 +541,7 @@ export const sections: SinkSection[] = [
           </Card>
           <EmptyState
             variant="dashed"
-            icon={<Dumbbell aria-hidden />}
+            icon={<Barbell aria-hidden />}
             title="No sessions planned"
             description="Build the first session of this training block to get the week started."
             action={
@@ -569,7 +569,7 @@ export const sections: SinkSection[] = [
             leading={<Initials>MT</Initials>}
             title="Mari Tamm"
             meta="Deadlift day - checked in 2 h ago"
-            trailing={<ChevronRight aria-hidden />}
+            trailing={<CaretRight aria-hidden />}
           />
           <ListRow
             interactive
@@ -584,12 +584,12 @@ export const sections: SinkSection[] = [
             leading={<Initials>LV</Initials>}
             title="Liis Vaher (deactivated)"
             meta="Membership paused until September"
-            trailing={<ChevronRight aria-hidden />}
+            trailing={<CaretRight aria-hidden />}
           />
           <ListRow
             leading={
               <span className="flex size-9 items-center justify-center rounded-full bg-warning-soft text-warning">
-                <Zap aria-hidden className="size-4" />
+                <Lightning aria-hidden className="size-4" />
               </span>
             }
             title="Static row with an action"
@@ -648,7 +648,7 @@ export const sections: SinkSection[] = [
           <StatTile
             label="Weekly volume"
             value="96,400 kg"
-            icon={<Dumbbell aria-hidden />}
+            icon={<Barbell aria-hidden />}
             trend={{ value: "+8%", direction: "up" }}
             footnote="vs last week"
           />
@@ -661,7 +661,7 @@ export const sections: SinkSection[] = [
           <StatTile
             label="Resting HR"
             value="52 bpm"
-            icon={<HeartPulse aria-hidden />}
+            icon={<Heartbeat aria-hidden />}
             trend={{ value: "-2 bpm", direction: "down", positive: true }}
             footnote="rolling 7-day average"
           />
@@ -711,12 +711,12 @@ export const sections: SinkSection[] = [
         <Showcase title="SectionHeader" hint="Eyebrow title with optional icon and action slot.">
           <div className="space-y-6">
             <SectionHeader
-              icon={<CalendarDays aria-hidden />}
+              icon={<CalendarDots aria-hidden />}
               title="Today's sessions"
               action={
                 <Button variant="ghost" size="sm">
                   View all
-                  <ChevronRight aria-hidden />
+                  <CaretRight aria-hidden />
                 </Button>
               }
             />

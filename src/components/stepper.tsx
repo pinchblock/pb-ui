@@ -1,7 +1,7 @@
 "use client"
 
 import { cva, type VariantProps } from "class-variance-authority"
-import { Check } from "lucide-react"
+import { Check } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../lib/cn.ts"

@@ -12,7 +12,7 @@ import { cn } from "../lib/cn.ts"
 export interface SectionHeaderProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title: React.ReactNode
-  /** Icon element (a lucide icon), rendered before the title. */
+  /** Icon element (a phosphor icon), rendered before the title. */
   icon?: React.ReactNode
   /** Right-side slot: "View all" link, small Button, filter. */
   action?: React.ReactNode

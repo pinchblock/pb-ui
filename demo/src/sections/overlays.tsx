@@ -1,14 +1,14 @@
 import {
-  BellOff,
+  Barbell,
+  BellSlash,
   CalendarPlus,
-  Dumbbell,
-  EllipsisVertical,
+  DotsThreeVertical,
   Flame,
-  Link2,
-  Pencil,
-  Share2,
-  Trash2,
-} from "lucide-react"
+  LinkSimple,
+  PencilSimple,
+  ShareNetwork,
+  Trash,
+} from "@phosphor-icons/react"
 import { useState } from "react"
 import type * as React from "react"
 
@@ -186,7 +186,7 @@ function LogSessionSheet() {
     <>
       <Sheet side="right" open={open} onOpenChange={setOpen}>
         <SheetTrigger render={<Button />}>
-          <Dumbbell aria-hidden /> Log session
+          <Barbell aria-hidden /> Log session
         </SheetTrigger>
         <SheetPopup>
           <SheetHeader>
@@ -345,24 +345,24 @@ function DropdownMenuDemo() {
       <VariantRow>
         <DropdownMenu>
           <DropdownMenuTrigger render={<Button variant="secondary" />}>
-            Post actions <EllipsisVertical aria-hidden />
+            Post actions <DotsThreeVertical aria-hidden />
           </DropdownMenuTrigger>
           <DropdownMenuPopup>
             <DropdownMenuItem onClick={() => toast.info("Editing post")}>
-              <Pencil aria-hidden /> Edit post
+              <PencilSimple aria-hidden /> Edit post
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => toast.success("Link copied")}>
-              <Link2 aria-hidden /> Copy link
+              <LinkSimple aria-hidden /> Copy link
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Share2 aria-hidden /> Share to feed
+              <ShareNetwork aria-hidden /> Share to feed
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuCheckboxItem
               checked={muted}
               onCheckedChange={setMuted}
             >
-              <BellOff aria-hidden /> Mute notifications
+              <BellSlash aria-hidden /> Mute notifications
             </DropdownMenuCheckboxItem>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
@@ -374,7 +374,7 @@ function DropdownMenuDemo() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem variant="destructive" onClick={handleDelete}>
-              <Trash2 aria-hidden /> Delete post
+              <Trash aria-hidden /> Delete post
             </DropdownMenuItem>
           </DropdownMenuPopup>
         </DropdownMenu>
@@ -383,18 +383,18 @@ function DropdownMenuDemo() {
           <DropdownMenuTrigger
             render={<Button variant="ghost" size="icon" aria-label="Session menu" />}
           >
-            <EllipsisVertical aria-hidden />
+            <DotsThreeVertical aria-hidden />
           </DropdownMenuTrigger>
           <DropdownMenuPopup align="end">
             <DropdownMenuItem>
               <CalendarPlus aria-hidden /> Reschedule
             </DropdownMenuItem>
             <DropdownMenuItem disabled>
-              <Share2 aria-hidden /> Share (coach only)
+              <ShareNetwork aria-hidden /> Share (coach only)
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem variant="destructive">
-              <Trash2 aria-hidden /> Remove session
+              <Trash aria-hidden /> Remove session
             </DropdownMenuItem>
           </DropdownMenuPopup>
         </DropdownMenu>

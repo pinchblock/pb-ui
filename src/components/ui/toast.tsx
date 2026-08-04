@@ -3,14 +3,14 @@
 import { Toast as BaseToast } from "@base-ui/react/toast"
 import { cva, type VariantProps } from "class-variance-authority"
 import {
-  CircleAlert,
-  CircleCheck,
+  CheckCircle,
   Info,
-  Sparkles,
-  TriangleAlert,
+  Sparkle,
+  Warning,
+  WarningCircle,
   X,
-  type LucideIcon,
-} from "lucide-react"
+  type Icon,
+} from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -55,12 +55,12 @@ export const toast = {
   dismiss: (id?: string) => toastManager.close(id),
 }
 
-const TONE_ICONS: Record<ToastTone, LucideIcon> = {
-  success: CircleCheck,
-  destructive: CircleAlert,
+const TONE_ICONS: Record<ToastTone, Icon> = {
+  success: CheckCircle,
+  destructive: WarningCircle,
   info: Info,
-  warning: TriangleAlert,
-  ai: Sparkles,
+  warning: Warning,
+  ai: Sparkle,
 }
 
 export const toastIconVariants = cva("mt-0.5 size-4 shrink-0", {

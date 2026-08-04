@@ -2,13 +2,13 @@
 
 import { cva, type VariantProps } from "class-variance-authority"
 import {
-  CircleAlert,
-  CircleCheck,
+  CheckCircle,
   Info,
-  Sparkles,
-  TriangleAlert,
+  Sparkle,
+  Warning,
+  WarningCircle,
   X,
-} from "lucide-react"
+} from "@phosphor-icons/react"
 import * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -52,10 +52,10 @@ const TONE_TITLE_CLASS: Record<AlertTone, string> = {
 
 const TONE_ICON: Record<AlertTone, React.ComponentType<{ className?: string }>> = {
   info: Info,
-  success: CircleCheck,
-  warning: TriangleAlert,
-  destructive: CircleAlert,
-  ai: Sparkles,
+  success: CheckCircle,
+  warning: Warning,
+  destructive: WarningCircle,
+  ai: Sparkle,
 }
 
 export interface AlertProps

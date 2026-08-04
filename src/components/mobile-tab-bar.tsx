@@ -2,7 +2,7 @@
 
 import { useRender } from "@base-ui/react/use-render"
 import { cva } from "class-variance-authority"
-import type { LucideIcon } from "lucide-react"
+import type { Icon } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../lib/cn.ts"
@@ -10,7 +10,7 @@ import type { NavItem } from "./nav-rail.tsx"
 
 /** Raised center action for the tab bar (e.g. "Log session"). */
 export interface MobileTabBarFab {
-  icon: LucideIcon
+  icon: Icon
   /** Required: the FAB is icon-only, so this is its accessible name. */
   label: string
   href?: string

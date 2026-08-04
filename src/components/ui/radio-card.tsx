@@ -2,7 +2,7 @@
 
 import { Radio as BaseRadio } from "@base-ui/react/radio"
 import { cva } from "class-variance-authority"
-import { CircleCheck } from "lucide-react"
+import { CheckCircle } from "@phosphor-icons/react"
 
 import { cn } from "../../lib/cn.ts"
 
@@ -32,7 +32,7 @@ export function RadioCard({ className, children, ...props }: RadioCardProps) {
     <BaseRadio.Root className={cn(radioCardVariants(), className)} {...props}>
       {children}
       <BaseRadio.Indicator className="absolute top-3 right-3 flex text-primary">
-        <CircleCheck className="size-4" />
+        <CheckCircle className="size-4" />
       </BaseRadio.Indicator>
     </BaseRadio.Root>
   )

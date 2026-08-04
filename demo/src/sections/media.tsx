@@ -1,5 +1,5 @@
 import { motion } from "motion/react"
-import { Dumbbell, Flame, RefreshCw, Trophy } from "lucide-react"
+import { ArrowsClockwise, Barbell, Flame, Trophy } from "@phosphor-icons/react"
 import { useEffect, useRef, useState } from "react"
 
 import type { SinkSection } from "./types.ts"
@@ -54,7 +54,7 @@ function PrCelebration() {
         </div>
       </motion.div>
       <Button variant="secondary" size="sm" onClick={() => setReplay((n) => n + 1)}>
-        <RefreshCw aria-hidden /> Replay springPop
+        <ArrowsClockwise aria-hidden /> Replay springPop
       </Button>
     </div>
   )
@@ -64,7 +64,7 @@ function StaggerDemo() {
   const [replay, setReplay] = useState(0)
   const rows = [
     { icon: Flame, label: "Streak", value: "21 days" },
-    { icon: Dumbbell, label: "Sessions this week", value: "4 of 5" },
+    { icon: Barbell, label: "Sessions this week", value: "4 of 5" },
     { icon: Trophy, label: "PRs this month", value: "3" },
   ]
   return (
@@ -89,7 +89,7 @@ function StaggerDemo() {
         ))}
       </motion.ul>
       <Button variant="secondary" size="sm" onClick={() => setReplay((n) => n + 1)}>
-        <RefreshCw aria-hidden /> Replay stagger
+        <ArrowsClockwise aria-hidden /> Replay stagger
       </Button>
     </div>
   )
@@ -113,7 +113,7 @@ function RevealDemo() {
         </p>
       </Reveal>
       <Button variant="secondary" size="sm" onClick={() => setReplay((n) => n + 1)}>
-        <RefreshCw aria-hidden /> Replay Reveal
+        <ArrowsClockwise aria-hidden /> Replay Reveal
       </Button>
     </div>
   )
@@ -340,7 +340,7 @@ export const sections: SinkSection[] = [
                 errorLabel="Clip failed to load"
                 retry={
                   <Button variant="secondary" size="sm">
-                    <RefreshCw aria-hidden /> Retry
+                    <ArrowsClockwise aria-hidden /> Retry
                   </Button>
                 }
               />
@@ -407,7 +407,7 @@ export const sections: SinkSection[] = [
               label="Clip that fails to load"
               retry={
                 <Button variant="secondary" size="sm">
-                  <RefreshCw aria-hidden /> Retry
+                  <ArrowsClockwise aria-hidden /> Retry
                 </Button>
               }
             />

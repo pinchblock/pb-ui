@@ -1,20 +1,20 @@
 import {
   ArrowRight,
+  Barbell,
   Bell,
-  CalendarDays,
-  CircleUserRound,
+  CalendarDots,
   Compass,
-  Dumbbell,
   Flame,
-  Home,
+  House,
+  MagnifyingGlass,
   Newspaper,
   Play,
   Plus,
-  Search,
-  Sparkles,
+  Sparkle,
   Timer,
   Trophy,
-} from "lucide-react"
+  UserCircle,
+} from "@phosphor-icons/react"
 
 import { AppShell } from "../../../src/components/app-shell.tsx"
 import {
@@ -36,11 +36,11 @@ import { Showcase, VariantRow } from "./section-shell.tsx"
 /* ------------------------------------------------------------------ */
 
 const NAV: NavItem[] = [
-  { icon: Home, label: "Home", href: "#layout-app-shell", active: true },
+  { icon: House, label: "Home", href: "#layout-app-shell", active: true },
   { icon: Compass, label: "Explore", href: "#layout-app-shell" },
-  { icon: CalendarDays, label: "Plan", href: "#layout-app-shell", badge: 2 },
+  { icon: CalendarDots, label: "Plan", href: "#layout-app-shell", badge: 2 },
   { icon: Newspaper, label: "Feed", href: "#layout-app-shell", badge: 5 },
-  { icon: CircleUserRound, label: "Profile", href: "#layout-app-shell" },
+  { icon: UserCircle, label: "Profile", href: "#layout-app-shell" },
 ]
 
 /* Phone tab bar: 4 items + center FAB = the classic 5-slot bar. */
@@ -60,7 +60,7 @@ function RailLogo({ expanded }: { expanded?: boolean }) {
   return (
     <span className="flex min-w-0 items-center gap-2">
       <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground">
-        <Dumbbell aria-hidden className="size-4" />
+        <Barbell aria-hidden className="size-4" />
       </span>
       {expanded ? <span className="truncate text-sm font-semibold">Pinchblock</span> : null}
     </span>
@@ -131,7 +131,7 @@ function StackRowDemo() {
         <Stack gap={2}>
           <Row gap={3} className="rounded-lg border border-border bg-background-raised p-3">
             <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary-soft text-primary">
-              <Dumbbell aria-hidden className="size-5" />
+              <Barbell aria-hidden className="size-5" />
             </span>
             <Stack gap={1}>
               <span className="text-sm font-medium">Pull day · Week 6</span>
@@ -298,7 +298,7 @@ function DesktopShellDemo() {
           topBar={
             <TopBar>
               <div className="flex h-8 w-56 items-center gap-2 rounded-md border border-input bg-input-background px-2.5 text-xs text-faint-foreground">
-                <Search aria-hidden className="size-3.5" />
+                <MagnifyingGlass aria-hidden className="size-3.5" />
                 Search plans, coaches…
               </div>
               <Grow />
@@ -380,7 +380,7 @@ function GlassDemo() {
       <div className="glass-header flex h-12 items-center gap-3 px-4">
         <span className="flex items-center gap-2 text-sm font-semibold">
           <span className="grid size-6 place-items-center rounded-md bg-primary text-primary-foreground">
-            <Dumbbell aria-hidden className="size-3.5" />
+            <Barbell aria-hidden className="size-3.5" />
           </span>
           Pinchblock
         </span>
@@ -410,7 +410,7 @@ function GlassDemo() {
               <Trophy aria-hidden className="size-3.5 text-success" />3 PRs this month
             </span>
             <span className="ai-surface flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium">
-              <Sparkles aria-hidden className="size-3.5" />
+              <Sparkle aria-hidden className="size-3.5" />
               AI session insights
             </span>
           </Row>

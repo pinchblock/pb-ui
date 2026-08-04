@@ -1,13 +1,13 @@
 import { useState } from "react"
 import {
-  Bike,
-  CalendarDays,
-  Dumbbell,
-  Mail,
-  Mountain,
+  Barbell,
+  Bicycle,
+  CalendarDots,
+  EnvelopeSimple,
+  Mountains,
   User,
   Users,
-} from "lucide-react"
+} from "@phosphor-icons/react"
 
 import { Button } from "../../../src/components/ui/button.tsx"
 import { Checkbox } from "../../../src/components/ui/checkbox.tsx"
@@ -180,7 +180,7 @@ function RadioRows() {
         </RadioCard>
         <RadioCard value="gym" disabled>
           <span className="flex items-center gap-2 font-medium">
-            <Mountain aria-hidden className="size-4" /> Gym (coming soon)
+            <Mountains aria-hidden className="size-4" /> Gym (coming soon)
           </span>
           <span className="mt-1 block text-xs text-muted-foreground">
             Manage walls, setters and community events.
@@ -251,13 +251,13 @@ function SegmentedDemo() {
       <VariantRow>
         <SegmentedControl defaultValue="climb" aria-label="Discipline">
           <SegmentedControlItem value="climb">
-            <Mountain aria-hidden /> Climb
+            <Mountains aria-hidden /> Climb
           </SegmentedControlItem>
           <SegmentedControlItem value="lift">
-            <Dumbbell aria-hidden /> Lift
+            <Barbell aria-hidden /> Lift
           </SegmentedControlItem>
           <SegmentedControlItem value="ride" disabled>
-            <Bike aria-hidden /> Ride
+            <Bicycle aria-hidden /> Ride
           </SegmentedControlItem>
         </SegmentedControl>
       </VariantRow>
@@ -332,7 +332,7 @@ function CoachApplication() {
         <Input leading={<User aria-hidden />} placeholder="Maria Kask" autoComplete="name" />
       </Field>
       <Field label="Email" required hint="We only use this for your application.">
-        <Input type="email" leading={<Mail aria-hidden />} placeholder="maria@example.com" />
+        <Input type="email" leading={<EnvelopeSimple aria-hidden />} placeholder="maria@example.com" />
       </Field>
       <Field label="Main discipline" required>
         <SimpleSelect options={DISCIPLINES} placeholder="Pick a discipline" />
@@ -390,7 +390,7 @@ function LogSession() {
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-foreground">Tuesday: Limit bouldering</p>
         <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <CalendarDays aria-hidden className="size-3.5" /> Today
+          <CalendarDots aria-hidden className="size-3.5" /> Today
         </span>
       </div>
       <div>
@@ -460,9 +460,9 @@ export const sections: SinkSection[] = [
           hint="leading is non-interactive; trailing may hold a button. Invalid via aria-invalid or a Field error."
         >
           <div className="max-w-sm space-y-3">
-            <Input leading={<Mail aria-hidden />} placeholder="With leading icon" />
+            <Input leading={<EnvelopeSimple aria-hidden />} placeholder="With leading icon" />
             <Input
-              leading={<Dumbbell aria-hidden />}
+              leading={<Barbell aria-hidden />}
               trailing={<span className="text-xs">kg</span>}
               type="number"
               placeholder="Working weight"

@@ -2,7 +2,7 @@
 
 import "media-chrome"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Pause, Play } from "lucide-react"
+import { Pause, Play } from "@phosphor-icons/react"
 import * as React from "react"
 
 import { cn } from "../lib/cn.ts"

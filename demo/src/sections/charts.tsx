@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Flame, Trophy } from "lucide-react"
+import { Flame, Trophy } from "@phosphor-icons/react"
 import {
   Area,
   AreaChart,

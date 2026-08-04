@@ -29,7 +29,7 @@ export const emptyStateVariants = cva(
 export interface EmptyStateProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
     VariantProps<typeof emptyStateVariants> {
-  /** Icon element (a lucide icon); rendered in a soft circle. */
+  /** Icon element (a phosphor icon); rendered in a soft circle. */
   icon?: React.ReactNode
   title: React.ReactNode
   /** Supporting body copy under the title. */

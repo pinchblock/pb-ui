@@ -2,7 +2,7 @@
 
 import { Button as BaseButton } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Loader2 } from "lucide-react"
+import { CircleNotch } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -79,7 +79,7 @@ export function Button({
       className={cn(buttonVariants({ variant, size, pill }), className)}
       {...props}
     >
-      {loading && <Loader2 aria-hidden className="animate-spin" />}
+      {loading && <CircleNotch aria-hidden className="animate-spin" />}
       {children}
     </BaseButton>
   )

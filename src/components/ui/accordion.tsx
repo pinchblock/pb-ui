@@ -1,7 +1,7 @@
 "use client"
 
 import { Accordion as BaseAccordion } from "@base-ui/react/accordion"
-import { ChevronDown } from "lucide-react"
+import { CaretDown } from "@phosphor-icons/react"
 import type * as React from "react"
 
 import { cn } from "../../lib/cn.ts"
@@ -53,7 +53,7 @@ export function AccordionTrigger({
         {...props}
       >
         {children}
-        <ChevronDown aria-hidden className="size-4 shrink-0 text-muted-foreground" />
+        <CaretDown aria-hidden className="size-4 shrink-0 text-muted-foreground" />
       </BaseAccordion.Trigger>
     </BaseAccordion.Header>
   )

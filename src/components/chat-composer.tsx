@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUp, Paperclip } from "lucide-react"
+import { ArrowUp, Paperclip } from "@phosphor-icons/react"
 import { useCallback, useEffect, useRef, useState } from "react"
 import type * as React from "react"
 

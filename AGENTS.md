@@ -23,7 +23,10 @@ Rules, in order:
 6. Icons: @phosphor-icons/react only (peer dependency). Never set a
    weight on individual icons in library code; the consumer's
    IconContext controls weight globally (regular default, fill for
-   active states where the design calls for it).
+   active states where the design calls for it). ONE carve-out:
+   control-anatomy glyphs (checkbox check, menu radio dot and their
+   kin) pin bold/fill with a comment, because they are part of the
+   control, not content iconography.
 7. KISS: no new build steps, no new dependencies without strong
    justification, no thin wrapper components, no app-domain logic in
    this package (no API clients, no auth, no permissions).
