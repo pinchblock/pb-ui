@@ -32,7 +32,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | Native selects (plan editor, settings, sort controls) | Select (+SimpleSelect) | must | SimpleSelect for the plain string-option cases |
 | Native checkboxes/radios styled only by accent-color; RN Switch in CheckField | Checkbox, Switch, RadioGroup | must | |
 | Range slider (accent-primary native) in LogWorkoutDialog effort input | Slider | should | |
-| Dual icon pipelines: lucide (web) vs phosphor barrel plus hand-copied SVGs (mobile vector-icons.tsx) | lucide-react peer dependency (convention) | must (mobile) | One-set decision still open per PLAN; RN Icon component comes with the mobile phase; product icons (reactions, feel faces) stay an owned SVG set |
+| Dual icon pipelines: lucide (web) vs phosphor barrel plus hand-copied SVGs (mobile vector-icons.tsx) | @phosphor-icons/react peer dependency (decided 2026-08-04) | must (mobile) | Mobile is already compliant; web migrates during adoption; RN Icon component comes with the mobile phase; product icons (reactions, feel faces) stay an owned SVG set |
 | Type ramp bypassed: text-[10px]/[11px] micro labels on web, 328 raw fontSize + 160 fontWeight literals on mobile | Token type scale + --font-scale knob | must (mobile) | Web uses utilities off tokens now; RN Text component is the first mobile build (see parity note) |
 | Uppercase tracking-wide micro section headers (dashboard, log panel, admin) | SectionHeader | should | Icon + right slot included |
 

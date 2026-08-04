@@ -20,7 +20,10 @@ Rules, in order:
    done.
 5. Components must work in light and dark in EVERY theme without dark:
    overrides. Needing dark: means a token is missing; add the token.
-6. Icons: lucide-react only (peer dependency).
+6. Icons: @phosphor-icons/react only (peer dependency). Never set a
+   weight on individual icons in library code; the consumer's
+   IconContext controls weight globally (regular default, fill for
+   active states where the design calls for it).
 7. KISS: no new build steps, no new dependencies without strong
    justification, no thin wrapper components, no app-domain logic in
    this package (no API clients, no auth, no permissions).

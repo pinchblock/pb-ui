@@ -8,8 +8,8 @@ Pin an immutable tag; never a branch:
 
 (or "file:../pb-ui" for local side-by-side development.)
 
-Peer deps the app must own: react ^19, react-dom ^19, lucide-react,
-tailwindcss ^4.
+Peer deps the app must own: react ^19, react-dom ^19,
+@phosphor-icons/react, tailwindcss ^4.
 
 ## Web wiring (Next.js)
 
