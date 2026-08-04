@@ -1,15 +1,18 @@
 # v0.2 component roadmap
 
-The 17 deliberate gaps from docs/COMPONENT-MAP.md, sequenced into three
-build waves by product need. Same process as v0.1: parallel build
+The deliberate gaps from docs/COMPONENT-MAP.md, 15 of 17 sequenced into
+three build waves by product need; AnnualTimeline and DangerZone are
+consciously deferred (see the deferred list, which supersedes the older
+"formalize in v0.2" note in COMPONENT-MAP for DangerZone). Same process as v0.1: parallel build
 agents on disjoint files, every component lands with barrel export,
 kitchen sink section, all four themes in both modes, keyboard + screen
 reader support, reduced-motion handling; adversarial review wave after
 each build wave; minor version tag when a wave lands.
 
-Prerequisite before any wave: the icon-set decision is executed
-(Phosphor swap if confirmed) and v0.1.0 is tagged, so waves land as
-v0.2.x tags consumers can pin.
+Prerequisite before any wave: the icon swap (Phosphor, confirmed by
+Jaak 2026-08-04, superseding PLAN.md's earlier Lucide lean) and Wave 0
+below, then v0.1.0 tags, so waves land as v0.2.x tags consumers can
+pin.
 
 ## Wave 0: kitchen sink v2 (v0.1.x, before Wave A)
 
@@ -52,8 +55,8 @@ These block coach plan authoring and checkout surfaces in pb-app.
 | DatePicker + Calendar | react-day-picker v10 on our Popover | Base UI ships no calendar. Single + range; month picker variant for plan scheduling; tokens-styled like trf-ui2's proven port. |
 | NumberField | Base UI number-field | Sets/reps/weight/price inputs; stepper buttons sized for touch; pairs with Field. |
 | Combobox + AsyncCombobox | Base UI combobox and autocomplete | Client search now, generic getKey/getLabel server-search variant for rosters; replaces PeopleSearch's hand-rolled ARIA. |
-| SortableList kit | dnd-kit wrappers | SortableList, SortableItem, DragHandle (cursor-grab, keyboard reorder via arrow buttons for a11y parity); replaces the four divergent dnd blocks in plan/intake editors. |
-| DataTable | @tanstack/react-table v8 on our Table | Client-side sort/filter/pagination first; server-driven mode deferred until admin needs it. |
+| SortableList kit | dnd-kit wrappers | Pin the classic packages knowingly (@dnd-kit/core 6.3.1 + sortable 10.0.0: dormant since 2024-12 but stable and already used by pb-app); the successor @dnd-kit/react is still 0.x, re-evaluate at its 1.0. SortableList, SortableItem, DragHandle (cursor-grab, keyboard reorder via arrow buttons for a11y parity); replaces the four divergent dnd blocks in plan/intake editors. |
+| DataTable | @tanstack/react-table pinned ^8.21.3 on our Table | v9.0.0 went npm latest 2026-08-04; evaluate it before Wave A starts, else pin v8 explicitly (a bare install now yields v9). Client-side sort/filter/pagination first; server-driven mode deferred until admin needs it. |
 
 Exit criteria: a sink section composing all five into a believable
 "edit training week" demo (drag days, pick dates, set reps, choose
@@ -72,9 +75,12 @@ and is shared by web and mobile token exports.
 | Component | Foundation | Notes |
 | --- | --- | --- |
 | FullScreenTimer | owned + motion | Work/rest states on stage tokens, huge AnimatedNumber countdown, effort capture on exit; reduced-motion swaps pulses for plain state changes. |
-| Call kit | @livekit/components-react wrappers | PreCall, CallStage, CallControls (mute/camera/end on stage tokens); LiveKit Agents UI registry components as owned-source starting points. |
+| Call kit | @livekit/components-react wrappers | PreCall, CallStage, CallControls (mute/camera/end on stage tokens); LiveKit Agents UI registry components as owned-source starting points. Caveat: pb-app still owes background/system-call product decisions, so build the in-call cluster only; the surface set is not final. |
 | OTPInput | Base UI otp-field | Invite/redemption codes (REF-009 flow when it unblocks). |
-| ProgressDots + StreakMeter | owned | HomeProgressRow parity primitives shared with mobile spec. |
+
+HomeProgressRow-style progress needs are covered by the existing
+ActivityRing and StreakHeatmap; extend those if gaps appear, do not
+build parallel primitives.
 
 Exit criteria: sink "guided session" flow demo: timer running on stage
 tokens inside a PhoneFrame, call controls demo, all themes identical on
@@ -84,9 +90,9 @@ stage surfaces.
 
 | Component | Foundation | Notes |
 | --- | --- | --- |
-| NotificationPanel | Popover + ListRow | Actor avatar rows, unread dots, inline accept/decline actions, mark-all-read. |
-| OnboardingCarousel | CSS scroll-snap + motion | No new dependency; progress dots, swipe, autoplay-off by default. |
-| CelebrationOverlay | Rive (@rive-app/react-canvas) | PR/streak/milestone moments; springPop CSS fallback when the .riv asset is absent so the component ships before brand animation exists. |
+| NotificationPanel | Popover + ListRow | Actor avatar rows, unread dots, inline accept/decline actions, mark-all-read. Blocked-by note: pb-app's push/realtime notification design pass has not happened; build the shell, expect the row taxonomy to move. |
+| OnboardingCarousel | CSS scroll-snap + motion | No new dependency; progress dots, swipe, autoplay-off by default. The mobile2 handoff defers onboarding designs, so this ships as a pattern, not a finished flow. |
+| CelebrationOverlay | owned surface + motion | PR/streak/milestone moments. Rive stays app-level per PLAN.md: the overlay exposes an animation slot the app fills with its Rive canvas; the springPop motion-variant fallback (src/lib/motion.ts) plays when no asset is supplied. |
 | MarkdownRenderer | react-markdown + remark-gfm | Coach notes and AI drafts; token prose styles, no highlight.js until code blocks are a real need. |
 | ReactionPicker | Popover + product icons | The six custom reaction SVGs move into the library as the brand icon layer. |
 | SyncStatusIndicator | owned | Dot + label + attention action; shared vocabulary with mobile outbox states. |
@@ -94,14 +100,17 @@ stage surfaces.
 
 Deferred beyond v0.4 deliberately: server-driven DataTable, DangerZone
 (compose Card + ConfirmDialog inline until repetition proves it),
-admin-specific organisms, Ladle/Storybook (only if the sink stops
-being enough), visual-regression CI (needs the GitHub remote first).
+AnnualTimeline (pb-app's existing implementation is decent; it
+graduates during web adoption W4 with a token audit instead of a
+rebuild), admin-specific organisms, Ladle/Storybook (only if the sink
+stops being enough), visual-regression CI (needs the GitHub remote
+first).
 
 ## Standing rules for every wave
 
 - Additions to ModeTokens require values in all four themes and a
-  contrast check against the pairs they will carry (script pattern
-  from the v0.1 review lives in the repo history).
+  contrast check against the pairs they will carry (run
+  scripts/contrast-check.mjs, committed from the v0.1 review).
 - New dependencies need the same justification bar as v0.1: Base UI
   first, then the proven pick from the research (react-day-picker,
   TanStack, dnd-kit), never a novel library without a written reason.

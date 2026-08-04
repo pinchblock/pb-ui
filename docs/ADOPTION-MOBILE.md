@@ -11,29 +11,51 @@ testing over EAS builds.
 
 Replace the hand-maintained values inside mobile/src/theme/tokens.ts
 with an adapter that imports from @pinchblock/ui/tokens and maps the
-system's semantic names onto the role names mobile code already uses:
+system's semantic names onto the role names mobile code already uses.
+Verified mapping (nocturne's inline comments document the mobile
+carrier for each value):
 
-    bg <- background, surface <- card, surfaceSunken <-
-    backgroundSunken, border <- border, hairline <- border (thin),
-    text <- foreground, textSecondary <- mutedForeground, textMuted /
-    textFaint <- faintForeground, accent <- primary, accentQuiet /
-    accentTint <- primarySoft, accentText <- primary,
-    onAccentTint <- primary, teal/tealSoft <- success/successSoft,
-    amber/amberSoft <- warning/warningSoft, destructive*, scrim <-
-    overlay, plus the existing compat aliases.
+    bg <- background, surface <- card (and backgroundRaised),
+    surfaceSunken <- backgroundSunken, border <- border,
+    text <- foreground, textMuted <- mutedForeground,
+    textFaint <- faintForeground, accent <- primary,
+    accentTint <- primarySoft, accentTintBorder <- primaryBorder,
+    onAccentTint <- accentForeground, teal/tealSoft <-
+    success/successSoft, amber/amberSoft <- warning/warningSoft,
+    destructive/destructiveSoft <- same, scrim <- overlay.
+
+Four roles have NO pb-ui carrier and stay local adapter values until
+dedicated tokens are added (candidates for the v0.2 token work):
+textSecondary (both modes), accentQuiet (mid-tone foreground accent),
+accentText (accent-300 dark / accent-700 light), and hairline (its
+nocturne values coincide with backgroundSunken, but borrowing a
+surface token for a border role is a smell; keep it local).
+
+One deliberate visual decision, not an accident: mobile hardcodes
+primaryForeground #ffffff, which fails WCAG on the lilac primary;
+nocturne corrects it to deep indigo. M0 adopts the corrected value as
+the single intentional visible diff (design sign-off required), or
+keeps a local #ffffff if strict zero-diff wins.
 
 The theme choice is one line (nocturne keeps mobile pixel-faithful;
 switching the app to the winning theme later is that same line).
-Known gap: pb-ui tokens are semantic-only, no neutral/accent 100-900
-ramps. The few mobile call sites that read ramp steps directly keep a
-local ramp table in the adapter until a ramp export is added to pb-ui
-(candidate for the v0.2 token work). Spacing scale note: mobile's
-3/6/8/11/17/22/34 scale stays as-is in M0; converging it with the web
-4pt grid is a design decision to take with the theme decision, not a
-side effect of an adapter.
+Ramp note: pb-ui tokens are semantic-only, no neutral/accent 100-900
+ramps. No feature code reads ramp steps directly (verified); the ramp
+table survives only INSIDE the adapter, for palette construction and
+interaction.pressedTint. Spacing scale note: mobile's 3/6/8/11/17/22/34
+scale stays as-is in M0; converging it with the web 4pt grid is a
+design decision to take with the theme decision, not a side effect of
+an adapter.
 
-Exit: visual diff on key screens is zero (or intentionally
-imperceptible), both schemes, Android and iOS.
+Mechanics: mobile/package.json gains @pinchblock/ui as a git-tag pin
+(after v0.1.0 exists); Metro compiles the package's .ts-extension
+imports fine, but mobile's tsc typecheck gate needs
+allowImportingTsExtensions-compatible settings in mobile/tsconfig for
+the imported package types: verify in the M0 spike before committing
+to the approach.
+
+Exit: visual diff on key screens is zero apart from the sign-offed
+primaryForeground correction, both schemes, Android and iOS.
 
 ## M1: one theming API
 
@@ -82,7 +104,8 @@ pass on the swept screens.
   vector-icons.tsx get deleted.
 
 Exit: mobile pain-point list from the audit (dual APIs, three form
-systems, 19 headers, 9 avatar copies, hex-soup calls) is fully closed.
+systems, ~19 headers, 9+ avatar copies which a recount puts at ~14
+files, hex-soup calls) is fully closed.
 
 ## M4: styling engine, only if needed
 

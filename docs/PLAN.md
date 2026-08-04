@@ -59,11 +59,11 @@ app when ready.
 
 ## Open decisions for the designer
 
-- Icon set: web uses Lucide, mobile uses Phosphor (Nocturne handoff says
-  regular-weight Phosphor). One set should win; recommendation is Lucide
-  (already the web dependency, has an RN package, and is this library's
-  peer dependency). Custom product icons (reactions, feel faces) stay a
-  separate owned SVG set either way.
+- Icon set: DECIDED 2026-08-04, Phosphor (@phosphor-icons/react web,
+  phosphor-react-native mobile, which already uses it). Chosen over the
+  earlier Lucide lean for the weight axis (thin to fill as a design
+  knob), mobile continuity, and the designer's call. Custom product
+  icons (reactions, feel faces) stay a separate owned SVG set.
 - Display font: --font-display currently equals Inter. If the B2C brand
   wants an expressive display face, it is a one-token change; the sink
   previews candidates.
