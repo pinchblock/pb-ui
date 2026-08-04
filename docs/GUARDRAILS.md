@@ -64,6 +64,28 @@ ignores the designer.
 - Animation is seasoning, not structure: nothing may block interaction,
   and no loading state may spin forever without a fallback.
 
+## Code shape (for humans and parallel AI agents)
+
+This repo is built by multiple agents editing simultaneously; the
+consuming apps will be too. Structure exists to make that safe.
+
+- One component per file, one kitchen sink page per component. Soft
+  cap ~300 lines per file; a file that needs a second scroll to
+  understand gets split. pb-app's 1000-line feature monoliths are the
+  anti-pattern this rule exists to prevent; screens compose system
+  components plus feature hooks, nothing else.
+- Shared composition files (src/index.ts, sink group manifests) hold
+  exactly one line per unit, appended in place, and are owned by the
+  integrator of a build wave; feature work never rewrites them
+  wholesale. Everything else lives in files with a single owner per
+  task, so two agents never need the same file.
+- Registries compose from per-group manifest files (the sink's
+  pages/<group>/index.ts pattern): adding a page touches your group's
+  manifest and your page file, nothing global.
+- Reuse before rebuild, in demos too: shared demo scaffolding lives in
+  the sink helper kit, and any copy-pasted block over ~10 lines gets
+  extracted instead of duplicated.
+
 ## For product people
 
 - Specs reference components by name ("StatTile with trend", "Sheet with

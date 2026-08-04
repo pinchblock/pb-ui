@@ -88,10 +88,16 @@ app when ready.
       video player pause/error handling, API vocabulary alignment.
       Remaining before adoption: tag v0.1.0 (designer's call after
       theme exploration).
-- [ ] P4 Adoption (in pb-app, separate effort): install by git tag, map
-      old utilities to tokens (amber -> warning etc., see COMPONENT-MAP),
-      replace hand-rolled primitives screen by screen, delete globals.css
-      duplication. Mobile follows with tokens-first adoption.
+- [ ] P3.5 Sink v2: one page per component, router + lazy loading,
+      per-group manifests for parallel agents (docs/ROADMAP-V02.md
+      Wave 0). Precedes the v0.2 component waves.
+- [ ] P4 v0.2+ components: three sequenced waves in
+      docs/ROADMAP-V02.md (plan editor and commerce, workout and
+      calls stage theme, engagement and oomph).
+- [ ] P5 Adoption (in pb-app, separate effort): web milestones W0-W6
+      in docs/ADOPTION-WEB.md; mobile milestones M0-M4 in
+      docs/ADOPTION-MOBILE.md, tokens first, components second,
+      styling engine only if profiling demands it.
 
 ## Consumption (when the time comes)
 
