@@ -1,8 +1,12 @@
 import type { SinkGroup } from "../types.ts"
 
-/* Pages are added by the sink v2 migration; one line per page. */
 export const group: SinkGroup = {
   slug: "foundations",
   label: "Foundations",
-  pages: [],
+  pages: [
+    { id: "colors", label: "Colors", description: "Semantic color tokens: surfaces, text, brand, status, chrome and chart scales, all live per theme.", load: () => import("./colors.tsx") },
+    { id: "typography", label: "Typography", description: "Type scale, fluid display sizes, families and the eyebrow label, all riding --font-scale.", load: () => import("./typography.tsx") },
+    { id: "motion", label: "Motion", description: "Duration and easing tokens with hover previews and the CSS vs Motion-for-React split.", load: () => import("./motion.tsx") },
+    { id: "themes", label: "Themes", description: "Every theme in light and dark side by side, re-themed per subtree with pure CSS classes.", load: () => import("./themes.tsx") },
+  ],
 }

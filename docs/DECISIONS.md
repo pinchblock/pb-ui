@@ -3,6 +3,23 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-04 (later)
+
+- Sink v2 routing: react-router v7, BrowserRouter, URL scheme
+  /c/<group>/<component>. Pages lazy-load; knob URL params work on
+  every page, so per-component URLs are the visual regression surface.
+- Kit pages: one page per component is the rule, but tightly coupled
+  families share a page (chat = bubble+composer+typing, app-shell =
+  shell+rail+tabbar+topbar, stack-row). Recorded in each manifest
+  description.
+- TanStack Table pinned at 8.21.3 for Wave A. v9.0.0 went npm latest
+  on 2026-08-04 (yesterday, effectively): zero ecosystem mileage, no
+  shadcn patterns yet. Revisit at v9.1+.
+- Phosphor glyph deltas accepted from the swap: checkbox check and
+  menu radio dot pin bold/fill (control-anatomy carve-out in AGENTS.md
+  rule 6); caret/magnifier glyph shapes differ slightly from lucide;
+  eyeball them in the sink and flag if any feel wrong.
+
 ## 2026-08-04
 
 - Execution order: Phosphor swap runs BEFORE the sink v2 restructure
