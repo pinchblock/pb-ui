@@ -3,6 +3,26 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (pb-app adoption, design-system branch)
+
+- W1 landed on pb-app branch design-system (pushed). Zero-visual-change
+  gate: computed tokens byte-identical in both modes except three
+  DELIBERATE deltas riding the system's WCAG fixes: light warning/amber
+  fill deepened (#b56f08 -> #a66607), dark destructive button text now
+  deep red-black, light faint text slightly darker. Plus: Inter now
+  actually loads (was silently Arial), and the radius scale derives
+  from the --radius knob, so old rounded-sm/md (4/6px) render 6/8px.
+  All four visible only at squint level; flag anything you dislike.
+- Theme key stays "pinchblock-theme" with data-theme + .light stamped
+  alongside the new .dark class during the bridge (Stripe Connect
+  appearance observer and tests depend on the old markers). Full key
+  migration deferred to W6 cleanup.
+- Old --surface token had no single system equivalent (card-white in
+  light, raised-navy in dark): bridged per-mode in bridge.css.
+- pb-ui package.json version field said 0.1.0 inside the v0.2.0 tag
+  (cosmetic; never bumped). Fixed on main; release rule going forward:
+  bump version in the same commit that gets tagged.
+
 ## 2026-08-04 (evening, v0.2.0 run)
 
 - Correction: the sink router is react-router 8.3.0 (npm latest), not
