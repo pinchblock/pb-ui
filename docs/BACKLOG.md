@@ -9,13 +9,15 @@ ships or is consciously dropped.
 
 | Item | Where | Note |
 | --- | --- | --- |
-| Which theme wins | sink + both apps | All four are live on web (`?skin=`) and mobile (Settings, dev builds). Nothing locks until a default is chosen. |
-| Mobile primaryForeground | mobile/src/theme/tokens.ts | White on lilac fails WCAG; Nocturne corrects it. Withheld for zero-diff M0. One-line flip, marked FLAGGED in source. |
-| Mobile light accent | mobile/src/theme/tokens.ts | Same story: `#796cbf` kept, Nocturne corrects to `#695ab7`. |
-| Merge `design-system` to beta | pb-app | 12 commits, all gated. Big surface, so it is a judgment call. |
-| Cherry-pick the iOS storage fix | pb-app | Unrelated to the design system and currently blocks every iOS user; worth landing on beta on its own. |
-| Display font | pb-ui shared.ts | `--font-display` is still Inter. One token if a brand face is wanted. |
-| Feel-scale colors | pb-ui themes | feel-1..5 are provisional defaults, tune by eye. |
+| Which theme wins | sink + both apps | Deliberately open, possibly long-term: Jaak may even ship multiple themes. The architecture treats this as cheap, so nothing is blocked. Colors overall are pre-brand and expected to change. |
+| Push beta to origin | pb-app | Merged locally (15 commits ahead, all gated). pb-app's own rules require an explicit push instruction naming the branch. |
+| Display font | pb-ui shared.ts | Inter stays for now; changing it later is one token. |
+
+Closed 2026-08-05: both mobile WCAG corrections adopted (dark
+primaryForeground now 5.45:1, light accent 5.60:1 and 4.55:1 as text);
+`design-system` merged into local beta; the iOS storage fix rides in
+that merge, so no separate cherry-pick is needed; feel-scale colors
+dropped from this list as an ordinary design judgment call.
 
 ## pb-ui: token candidates
 
