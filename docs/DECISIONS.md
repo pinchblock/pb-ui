@@ -3,6 +3,29 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (mobile started, maximum parallel)
+
+- Mobile M0+M1 and the M2 component builds run CONCURRENTLY by
+  splitting on territory: M0 owns mobile/src/theme, M1 owns the 39
+  legacy feature files, M2 builds new components in mobile/src/ui
+  (creation only; adoption sweeps wait for M1 so the codemod never
+  races the migration).
+- M0 keeps primaryForeground "#ffffff" (mobile's current value) even
+  though nocturne corrects it for WCAG: strict zero-diff wins for the
+  first on-device comparison; the fix is a one-line flip after Jaak
+  sees it live.
+- Mobile components consume the frozen theme-provider API, not pb-ui
+  directly, so they are immune to the adapter rewrite happening
+  underneath; cross-platform parity is enforced where it matters
+  (web's avatar color hash is ported exactly and unit-tested so the
+  same user gets the same color on both platforms).
+- W4+W5 landed on the branch earlier today: five KPI implementations,
+  both smoothPath charts and the bespoke admin tables deleted (~256
+  lines of duplication gone); feed.tsx passes a zero-raw-color grep;
+  messages run on the chat kit; PeopleSearch is AsyncCombobox.
+  TrendChart gained yDomain upstream (feel charts pin 1-5 at the
+  v0.3.0 pin bump).
+
 ## 2026-08-05 (W3 landed; branch ready for Jaak's review)
 
 - W3 on the branch: all six territories landed in one wave. Notable
