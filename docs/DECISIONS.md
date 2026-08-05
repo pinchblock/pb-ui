@@ -3,6 +3,29 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (mobile M0-M2 landed, pb-ui v0.3.0 shipped)
+
+- pb-ui v0.3.0 tagged: stage sub-theme (always-dark, theme-invariant,
+  full contrast table passing), FullScreenTimer, presentational call
+  kit (NO LiveKit dependency: deliberate deviation from the roadmap
+  sketch, pb-app owns call state per AGENTS rule 7), OTPInput,
+  TrendChart yDomain. Sink gained nav quick search (/ shortcut) and a
+  generated Icons page (86 Phosphor icons with usage counts,
+  freshness-checked like tokens.css).
+- Mobile M0 parity proof: 80 color roles byte-identical, zero value
+  diffs. TWO WCAG corrections deliberately withheld for zero-diff
+  (primaryForeground white-on-lilac, light accent #796cbf): both are
+  one-line flips in mobile/src/theme/tokens.ts after on-device
+  sign-off; the flagged comments mark the exact lines.
+- M1 complete: 39 files on the provider API, proxy deleted. M2: twelve
+  system primitives in mobile/src/ui with web-parity vocabulary
+  (Badge soft|solid, shared avatar color hash, unit-tested). Adoption
+  sweeps (fontSize codemod, header dedupe, Alert.alert replacement)
+  are the next mobile wave, AFTER on-device validation of the current
+  state.
+- Mobile Pressable haptic prop is a documented no-op (expo-haptics not
+  a dependency; needs the native-dependency decision).
+
 ## 2026-08-05 (mobile started, maximum parallel)
 
 - Mobile M0+M1 and the M2 component builds run CONCURRENTLY by
