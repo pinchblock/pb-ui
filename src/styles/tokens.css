@@ -606,6 +606,80 @@
   --feel-5: #3ecf8e;
 }
 
+/* Stage: always-dark, theme-invariant immersive surface (timers, calls). */
+/* Vars live on the .stage element itself; inheritance from the nearest
+   defining ancestor beats any .theme-x.dark set on <html>. */
+.stage {
+  color-scheme: dark;
+
+  --background: #07090c;
+  --background-raised: #0d1117;
+  --background-sunken: #030405;
+  --card: #0e1319;
+  --card-foreground: #f2f5f8;
+  --popover: #151b23;
+  --popover-foreground: #f2f5f8;
+  --muted: #131920;
+  --foreground: #f2f5f8;
+  --muted-foreground: #9aa7b4;
+  --faint-foreground: #7a8695;
+  --primary: #aebfd1;
+  --primary-hover: #9db0c4;
+  --primary-foreground: #07090c;
+  --primary-soft: rgba(174, 191, 209, 0.14);
+  --primary-border: rgba(174, 191, 209, 0.32);
+  --secondary: #1a222c;
+  --secondary-foreground: #f2f5f8;
+  --secondary-soft: rgba(242, 245, 248, 0.07);
+  --accent: rgba(174, 191, 209, 0.12);
+  --accent-foreground: #f2f5f8;
+  --success: #4ade80;
+  --success-foreground: #07090c;
+  --success-soft: rgba(74, 222, 128, 0.14);
+  --warning: #fbbf24;
+  --warning-foreground: #07090c;
+  --warning-soft: rgba(251, 191, 36, 0.14);
+  --destructive: #f87171;
+  --destructive-foreground: #250607;
+  --destructive-soft: rgba(248, 113, 113, 0.14);
+  --info: #60a5fa;
+  --info-foreground: #07090c;
+  --info-soft: rgba(96, 165, 250, 0.14);
+  --ai: rgba(174, 191, 209, 0.1);
+  --ai-foreground: #c8d5e2;
+  --ai-border: rgba(174, 191, 209, 0.3);
+  --border: rgba(242, 245, 248, 0.1);
+  --border-strong: rgba(242, 245, 248, 0.2);
+  --input: rgba(242, 245, 248, 0.16);
+  --input-background: rgba(255, 255, 255, 0.06);
+  --ring: #aebfd1;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --glass-bg: rgba(14, 19, 25, 0.6);
+  --glass-bg-raised: rgba(21, 27, 35, 0.72);
+  --glass-border: rgba(242, 245, 248, 0.08);
+  --glass-filter: blur(12px) saturate(120%);
+  --shadow-card: 0 12px 32px -20px rgba(0, 0, 0, 0.8);
+  --shadow-raised: 0 24px 64px -28px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --shadow-overlay: 0 32px 96px -32px rgba(0, 0, 0, 0.95), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  --chart-1: #aebfd1;
+  --chart-2: #5eead4;
+  --chart-3: #fcd34d;
+  --chart-4: #a5b4fc;
+  --chart-5: #f0abfc;
+  --chart-6: #bef264;
+  --chart-7: #67e8f9;
+  --chart-8: #fda4af;
+  --chart-track: rgba(242, 245, 248, 0.12);
+  --chart-positive: #4ade80;
+  --chart-negative: #f87171;
+  --chart-target: rgba(242, 245, 248, 0.5);
+  --feel-1: #f87171;
+  --feel-2: #fb923c;
+  --feel-3: #fbbf24;
+  --feel-4: #a3e635;
+  --feel-5: #4ade80;
+}
+
 @theme inline {
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);

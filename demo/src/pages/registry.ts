@@ -15,6 +15,7 @@ import { group as content } from "./content/index.ts"
 import { group as charts } from "./charts/index.ts"
 import { group as media } from "./media/index.ts"
 import { group as layout } from "./layout/index.ts"
+import { group as stage } from "./stage/index.ts"
 
 export const GROUPS: SinkGroup[] = [
   foundations,
@@ -25,6 +26,7 @@ export const GROUPS: SinkGroup[] = [
   charts,
   media,
   layout,
+  stage,
 ]
 
 /** Stable lazy components, created once at module scope. */

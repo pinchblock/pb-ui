@@ -16,6 +16,9 @@ import { ocean } from "./themes/ocean.ts"
 
 export { ember, glacier, nocturne, ocean }
 
+/** Stage: always-dark, theme-invariant surface set (wrap in class "stage"). */
+export { stage } from "./stage.ts"
+
 /** All themes, default first. Add new themes here and in src/styles via `npm run gen`. */
 export const themes: ThemeDefinition[] = [ocean, nocturne, ember, glacier]
 

@@ -48,6 +48,34 @@ Themes are color-only. Radius, type, density and motion do not belong
 to a theme; they are separate knobs by design, so a theme decision and
 a shape decision can be made independently.
 
+## Stage
+
+Stage is the always-dark surface set for immersive full-screen moments:
+workout timers, call screens, anything meant to fill the display and
+stay legible at arm's length. It is not a theme and is never registered
+in the themes array; it is a single token set (src/tokens/stage.ts,
+typed as ModeTokens so completeness is compiler-enforced).
+
+The guarantee: a stage subtree looks identical in every theme and in
+light or dark mode, the same way status colors are fixed across themes.
+It works because `npm run gen` emits one .stage block that sets every
+token variable on the .stage element itself; custom properties inherit
+from the nearest ancestor that defines them, so those values beat
+whatever .theme-x / .dark set on <html>, with no specificity tricks.
+
+Usage: wrap the subtree, then use normal token utilities inside.
+
+    <div className="stage">
+      ...bg-background, text-foreground, bg-success and every other
+      token utility now resolve to the stage palette...
+    </div>
+
+Palette notes: OLED near-black background, barely lifted cards, bright
+status hues (success green for work states, destructive red for
+end-call and rest warnings, warning amber for caution), and a
+neutral-cool steel primary that deliberately carries no theme's brand
+color. Available from TS as `import { stage } from "@pinchblock/ui/tokens"`.
+
 ## What themes must not touch
 
 - Status semantics (see docs/GUARDRAILS.md)

@@ -35,7 +35,7 @@ export {
 export { useFileDrop, type UseFileDropOptions, type UseFileDropResult } from "./hooks/use-file-drop.ts"
 
 /* Tokens (also available as @pinchblock/ui/tokens for React Native) */
-export { defaultTheme, ember, glacier, nocturne, ocean, shared, themes } from "./tokens/index.ts"
+export { defaultTheme, ember, glacier, nocturne, ocean, shared, stage, themes } from "./tokens/index.ts"
 export type { Mode, ModeTokens, SharedTokens, ThemeDefinition } from "./tokens/index.ts"
 
 /* Primitives */
@@ -65,6 +65,7 @@ export { Input, inputVariants, type InputProps } from "./components/ui/input.tsx
 export { Label, labelVariants, type LabelProps } from "./components/ui/label.tsx"
 export { MonthPicker, type MonthPickerProps } from "./components/ui/month-picker.tsx"
 export { NumberField, numberFieldButtonVariants, numberFieldGroupVariants, type NumberFieldProps } from "./components/ui/number-field.tsx"
+export { OTPInput, otpInputCellVariants, otpInputVariants, type OTPInputProps } from "./components/ui/otp-input.tsx"
 export { RadioCard, radioCardVariants, type RadioCardProps } from "./components/ui/radio-card.tsx"
 export { Radio, RadioGroup, radioVariants, type RadioGroupProps, type RadioProps } from "./components/ui/radio-group.tsx"
 export { SearchInput, type SearchInputProps } from "./components/ui/search-input.tsx"
@@ -218,6 +219,13 @@ export { MediaFrame, mediaFrameVariants, type MediaFrameProps, type MediaFrameRa
 export { TypingIndicator, type TypingIndicatorProps } from "./components/typing-indicator.tsx"
 export { UploadDropzone, UploadFileChip, uploadDropzoneVariants, type UploadDropzoneProps, type UploadFileChipProps } from "./components/upload-dropzone.tsx"
 export { VideoPlayer, videoPlayerVariants, type VideoPlayerProps } from "./components/video-player.tsx"
+
+/* Stage (immersive, theme-invariant surfaces) */
+export { FullScreenTimer, fullScreenTimerPhaseVariants, type FullScreenTimerPhase, type FullScreenTimerProps } from "./components/full-screen-timer.tsx"
+export { CallCameraToggle, CallControlButton, CallControls, CallEndButton, CallFlipCameraButton, CallMicToggle, callControlVariants, type CallCameraToggleProps, type CallControlButtonProps, type CallControlsProps, type CallEndButtonProps, type CallFlipCameraButtonProps, type CallMicToggleProps } from "./components/call/call-controls.tsx"
+export { CallQualityIndicator, CallStage, type CallQualityIndicatorProps, type CallQualityLevel, type CallStageProps } from "./components/call/call-stage.tsx"
+export { IncomingCallBanner, type IncomingCallBannerProps } from "./components/call/incoming-call-banner.tsx"
+export { PreCallDeviceRow, PreCallPanel, type PreCallDeviceRowProps, type PreCallDeviceStatus, type PreCallPanelProps } from "./components/call/pre-call-panel.tsx"
 
 /* Layout and navigation */
 export { AppShell, type AppShellLayout, type AppShellProps } from "./components/app-shell.tsx"

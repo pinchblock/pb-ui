@@ -8,6 +8,7 @@ export const group: SinkGroup = {
     { id: "field", label: "Field", description: "THE form-row molecule: label, hint, error, counter. Covers Label.", load: () => import("./field.tsx") },
     { id: "input", label: "Input", description: "Single-line text primitive: sizes, adornments, invalid, native types.", load: () => import("./input.tsx") },
     { id: "number-field", label: "NumberField", description: "Stepped numeric entry: min/max/step, unit and currency formats, optional scrub.", load: () => import("./number-field.tsx") },
+    { id: "otp-input", label: "OTPInput", description: "Segmented one-time code entry: paste distribution, autofill, invite-code flows.", load: () => import("./otp-input.tsx") },
     { id: "textarea", label: "Textarea", description: "Multi-line entry with autoGrow and Field character counter.", load: () => import("./textarea.tsx") },
     { id: "select", label: "Select", description: "Dropdown family: SimpleSelect for flat options, compound parts for groups.", load: () => import("./select.tsx") },
     { id: "combobox", label: "Combobox", description: "Typeahead select: input-shaped trigger, grouped options; AsyncCombobox for server-backed search.", load: () => import("./combobox.tsx") },
