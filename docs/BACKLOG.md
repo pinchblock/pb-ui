@@ -111,10 +111,15 @@ admin-specific organisms, Storybook/Ladle.
 
 ## pb-app: adoption follow-ups
 
-- Mobile M3 screen adoption: the twelve `mobile/src/ui` primitives are
-  built but not yet imported by any screen. Measured targets: ~340 raw
-  `fontSize`, ~171 `fontWeight`, 21 duplicated back headers, 15
-  `Alert.alert` sites, ~14 avatar implementations.
+- Mobile M3 screen adoption: DONE in two waves (79 files now import
+  `@/ui`; ~2,700 net lines removed). Remaining by design: `calls/`
+  (15 raw literals) waits for the stage sub-theme, 3 informational
+  `Alert.alert` sites stay (single-action notices, not confirmations),
+  and CommunicationsHeader is a clean ScreenHeader swap blocked only by
+  contract-test assertions that pin its source.
+- iOS: confirm() from inside a feature Modal is fixed via the innermost-
+  host-wins stack and unit-tested, but needs a physical-device pass when
+  iOS acceptance starts.
 - Mobile calls screens still carry ~40 hardcoded hex values; they move
   onto the stage theme the way the web calls screens did in W6.
 - pb-app's own change checklist expects `docs/mobile-parity-matrix.md`
