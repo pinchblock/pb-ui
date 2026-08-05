@@ -1,5 +1,12 @@
 # pb-app mobile adoption plan
 
+STATUS 2026-08-05: M0 (token adapter, zero-diff parity proven), M1
+(39 files onto the provider API, legacy proxy deleted) and M2/M3
+(twelve primitives built, then adopted across 79 files in two sweeps,
+net ~2,000 lines removed) are landed on pb-app branch `design-system`.
+M4 (styling engine) stays conditional on profiling. calls/ waits for
+the stage sub-theme. Open items are in pb-ui docs/BACKLOG.md.
+
 Tokens first, components second, styling engine last. Mobile keeps
 idiomatic React Native components; what it shares with web is the
 token contract and the design vocabulary. All work follows pb-app's

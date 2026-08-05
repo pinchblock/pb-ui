@@ -1,7 +1,14 @@
 # Pinchblock design system: plan
 
-Status: v0.1 built, reviewed and hardened; ready for designer theme
-exploration in the kitchen sink. Updated 2026-08-03.
+Status: v0.3.1 shipped. Web adoption W1-W6 and mobile M0-M3 are all
+landed on pb-app's `design-system` branch (14 commits, beta untouched).
+What remains is decisions, not construction: see docs/BACKLOG.md.
+Updated 2026-08-05.
+
+RESUME HERE after a gap, in this order:
+1. docs/BACKLOG.md    what is still open, decisions first
+2. docs/DECISIONS.md  every autonomous call and why, newest first
+3. this file          the architecture and why it looks like this
 
 ## Why this exists
 
@@ -91,14 +98,16 @@ app when ready.
 - [x] P3.5 Sink v2: 66+ per-component pages, router + lazy loading,
       per-group manifests for parallel agents (docs/ROADMAP-V02.md
       Wave 0). Landed 2026-08-04 with the Phosphor icon swap.
-- [ ] P4 v0.2+ components: Wave A (DatePicker/Calendar/MonthPicker,
-      NumberField, Combobox/AsyncCombobox, SortableList kit,
-      DataTable) SHIPPED and reviewed; Waves B and C remain
-      (docs/ROADMAP-V02.md).
-- [ ] P5 Adoption (in pb-app, separate effort): web milestones W0-W6
-      in docs/ADOPTION-WEB.md; mobile milestones M0-M4 in
-      docs/ADOPTION-MOBILE.md, tokens first, components second,
-      styling engine only if profiling demands it.
+- [x] P4 v0.2+ components: Wave A (date picking, NumberField,
+      Combobox/AsyncCombobox, SortableList, DataTable) in v0.2.0 and
+      Wave B (stage sub-theme, FullScreenTimer, call kit, OTPInput) in
+      v0.3.0, both adversarially reviewed. Wave C remains and is
+      partly design-blocked (docs/ROADMAP-V02.md).
+- [x] P5 Adoption (pb-app branch `design-system`): web W0-W6 and
+      mobile M0-M3 complete; see the status blocks in
+      docs/ADOPTION-WEB.md and docs/ADOPTION-MOBILE.md. M4 (styling
+      engine) stays conditional on profiling. Merging the branch to
+      beta is Jaak's call.
 
 ## Consumption (when the time comes)
 

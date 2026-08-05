@@ -24,7 +24,10 @@ configuration for links and screenshots.
     src/components/   ui/ primitives and composed components
     src/lib/          cn(), theme runtime, no-flash boot script
     demo/             kitchen sink (Vite)
-    docs/             PLAN, GUARDRAILS, THEMING, COMPONENT-MAP, CONSUMING
+    docs/             PLAN (start here), BACKLOG (what is open),
+                      DECISIONS (why things are the way they are),
+                      GUARDRAILS, THEMING, CONSUMING, COMPONENT-MAP,
+                      ROADMAP-V02, ADOPTION-WEB, ADOPTION-MOBILE
 
 ## Everyday commands
 

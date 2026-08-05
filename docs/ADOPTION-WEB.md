@@ -1,5 +1,11 @@
 # pb-app web adoption plan
 
+STATUS 2026-08-05: W0-W6 all landed on pb-app branch `design-system`
+(not merged to beta). Every milestone gated on strict typecheck, 244
+tests and a production build. bridge.css is deleted; the only raw hex
+left in web/src is the sanctioned Google brand mark. Open items are in
+pb-ui docs/BACKLOG.md.
+
 How @pinchblock/ui replaces the hand-rolled UI in pb-app/web, milestone
 by milestone. Each milestone is one feature worktree off beta following
 pb-app's own workflow rules (worktree at .worktrees/<task>, run
