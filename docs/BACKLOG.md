@@ -45,6 +45,45 @@ for non-Nocturne theme previews.
   dashboard (its scripts live on beta, outside the branch). Options: a
   make target in pb-ui, or a deployment like trf-ui2's ui.trf.is.
 
+## Component API gaps found during mobile M3 adoption
+
+Real friction hit while adopting the primitives across ~90 screens.
+None blocked the sweep (the call sites kept local styles instead), but
+each is a component that could not be adopted where it should have
+been.
+
+- `ListRow` hardcodes `paddingHorizontal: space.lg` on its inner row and
+  `style` lands on the Pressable, so rows that must sit flush with a
+  screen gutter cannot adopt it. Needs a padding or inset prop.
+- `ListRow` synthesizes its accessible name from title + meta, which
+  drops trailing content (timestamps, unread counts) from the
+  announcement. Needs an accessibilityLabel escape hatch.
+- `Card`'s non-pressable branch sets neither `accessible` nor
+  `accessibilityLiveRegion`, so any surface that announces (error
+  panels, live status) cannot use it.
+- `Card` has no accent or warning variant, so tinted callout containers
+  stay hand-rolled; it also uses `border` where several call sites used
+  the quieter `hairline` role.
+- `Badge` has no `accessibilityLabel` prop (unread counts lose their
+  "N unread" announcement) and no outline appearance (soft/solid only).
+- `Avatar` cannot be adopted by the ~14 existing mobile avatars: sizes
+  are off-preset (32/38/42/46/62/72/88/96), fills are accent tints
+  rather than the identity hash, and some paint initials immediately
+  then overlay the photo. Unifying them changes rendered initials and
+  colors, so it is a design decision, not a sweep.
+- `NumberInput` cannot represent an empty "not recorded yet" draft
+  (`value: number`), so string-backed numeric fields use TextInput.
+- `Field` renders hint text below the control; forms that put help text
+  above it cannot adopt without moving copy.
+- `ScreenHeader` has no disabled state for its leading control and
+  exposes the label only via `leadingLabel`, so screens with a visible
+  text close affordance or a disabled-while-saving close kept local
+  headers.
+
+Accessibility item this sweep did not fix: the Explore segmented
+control keeps a 32dp touch target (pre-existing geometry preserved),
+below Android's 48dp guidance.
+
 ## pb-ui: Wave C and deferred
 
 Wave C (docs/ROADMAP-V02.md): NotificationPanel, OnboardingCarousel,
