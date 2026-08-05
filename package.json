@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Pinchblock design system and component library. Owned source (shadcn-style), Base UI + Tailwind v4, TS-authored tokens generated to CSS, no build step.",
   "scripts": {
-    "gen": "node scripts/generate-css.ts",
-    "gen:check": "node scripts/generate-css.ts --check",
+    "gen": "node scripts/generate-css.ts && node scripts/generate-icon-manifest.ts",
+    "gen:check": "node scripts/generate-css.ts --check && node scripts/generate-icon-manifest.ts --check",
     "typecheck": "tsc --noEmit",
     "dev": "npm --prefix demo run dev",
     "demo:install": "npm --prefix demo install",

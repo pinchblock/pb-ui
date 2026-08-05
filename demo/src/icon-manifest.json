@@ -1,0 +1,434 @@
+{
+  "icons": [
+    {
+      "name": "Flame",
+      "library": 0,
+      "sink": 15
+    },
+    {
+      "name": "Barbell",
+      "library": 0,
+      "sink": 14
+    },
+    {
+      "name": "Trophy",
+      "library": 0,
+      "sink": 10
+    },
+    {
+      "name": "X",
+      "library": 9,
+      "sink": 0
+    },
+    {
+      "name": "Plus",
+      "library": 1,
+      "sink": 7
+    },
+    {
+      "name": "Check",
+      "library": 6,
+      "sink": 1
+    },
+    {
+      "name": "CaretRight",
+      "library": 3,
+      "sink": 3
+    },
+    {
+      "name": "CircleNotch",
+      "library": 6,
+      "sink": 0
+    },
+    {
+      "name": "Play",
+      "library": 2,
+      "sink": 4
+    },
+    {
+      "name": "ArrowsClockwise",
+      "library": 0,
+      "sink": 5
+    },
+    {
+      "name": "CalendarDots",
+      "library": 0,
+      "sink": 5
+    },
+    {
+      "name": "CaretDown",
+      "library": 5,
+      "sink": 0
+    },
+    {
+      "name": "MagnifyingGlass",
+      "library": 1,
+      "sink": 4
+    },
+    {
+      "name": "Sparkle",
+      "library": 2,
+      "sink": 2
+    },
+    {
+      "name": "VideoCamera",
+      "library": 1,
+      "sink": 3
+    },
+    {
+      "name": "Bell",
+      "library": 0,
+      "sink": 3
+    },
+    {
+      "name": "CaretLeft",
+      "library": 3,
+      "sink": 0
+    },
+    {
+      "name": "Chat",
+      "library": 0,
+      "sink": 3
+    },
+    {
+      "name": "CheckCircle",
+      "library": 3,
+      "sink": 0
+    },
+    {
+      "name": "Users",
+      "library": 0,
+      "sink": 3
+    },
+    {
+      "name": "Warning",
+      "library": 3,
+      "sink": 0
+    },
+    {
+      "name": "ArrowRight",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "ArrowUp",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "CalendarPlus",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "CaretUp",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "DotsSixVertical",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "DownloadSimple",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "EnvelopeSimple",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "Heartbeat",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "House",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "Info",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "Microphone",
+      "library": 1,
+      "sink": 1
+    },
+    {
+      "name": "Minus",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "Moon",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "Mountains",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "Pause",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "PhoneDisconnect",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "Trash",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "User",
+      "library": 0,
+      "sink": 2
+    },
+    {
+      "name": "VideoCameraSlash",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "WarningCircle",
+      "library": 2,
+      "sink": 0
+    },
+    {
+      "name": "ArrowDown",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ArrowDownRight",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ArrowLeft",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ArrowUpRight",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "BellSlash",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Bicycle",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Calendar",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "CalendarBlank",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "CameraRotate",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "CaretUpDown",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ChartLine",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Circle",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "CircleHalf",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Clock",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ClockCounterClockwise",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "CloudArrowUp",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "CloudSlash",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Compass",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Copy",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "DotsThree",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "DotsThreeVertical",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "File",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "FloppyDisk",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Gear",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Image",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ImageBroken",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "Lightning",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "LinkSimple",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "List",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "ListChecks",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "LockKeyOpen",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "MicrophoneSlash",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "Newspaper",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Paperclip",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "PencilSimple",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "PersonSimpleRun",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Phone",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "Repeat",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "ShareNetwork",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "ShieldCheck",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "SkipForward",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "Sun",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "Timer",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "TrendUp",
+      "library": 0,
+      "sink": 1
+    },
+    {
+      "name": "UserCircle",
+      "library": 0,
+      "sink": 1
+    }
+  ]
+}

@@ -8,5 +8,6 @@ export const group: SinkGroup = {
     { id: "typography", label: "Typography", description: "Type scale, fluid display sizes, families and the eyebrow label, all riding --font-scale.", load: () => import("./typography.tsx") },
     { id: "motion", label: "Motion", description: "Duration and easing tokens with hover previews and the CSS vs Motion-for-React split.", load: () => import("./motion.tsx") },
     { id: "themes", label: "Themes", description: "Every theme in light and dark side by side, re-themed per subtree with pure CSS classes.", load: () => import("./themes.tsx") },
+    { id: "icons", label: "Icons", description: "Every Phosphor icon in use, from the generated manifest; live under the weight toggle.", load: () => import("./icons.tsx") },
   ],
 }
