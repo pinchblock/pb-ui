@@ -76,7 +76,7 @@ export const navRailItemVariants = cva(
 
 export interface NavRailItemProps extends VariantProps<typeof navRailItemVariants> {
   item: NavItem
-  className?: string
+  className?: string | undefined
 }
 
 /**

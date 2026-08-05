@@ -51,7 +51,7 @@ function ArrowSvg(props: React.ComponentProps<"svg">) {
 }
 
 export interface PopoverPopupProps extends Omit<BasePopover.Popup.Props, "className"> {
-  className?: string
+  className?: string | undefined
   /** Which side of the anchor to open on. May flip to avoid collisions. */
   side?: BasePopover.Positioner.Props["side"]
   align?: BasePopover.Positioner.Props["align"]
@@ -106,7 +106,7 @@ export function PopoverPopup({
 }
 
 export interface PopoverTitleProps extends Omit<BasePopover.Title.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function PopoverTitle({ className, ...props }: PopoverTitleProps) {
@@ -120,7 +120,7 @@ export function PopoverTitle({ className, ...props }: PopoverTitleProps) {
 
 export interface PopoverDescriptionProps
   extends Omit<BasePopover.Description.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function PopoverDescription({ className, ...props }: PopoverDescriptionProps) {

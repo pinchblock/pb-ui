@@ -30,7 +30,7 @@ const supportsFieldSizing =
 
 export interface TextareaProps
   extends Omit<React.ComponentPropsWithRef<"textarea">, "className" | "style"> {
-  className?: string
+  className?: string | undefined
   /** Grows with content instead of scrolling. */
   autoGrow?: boolean
 }

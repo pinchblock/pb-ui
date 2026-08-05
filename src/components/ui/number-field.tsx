@@ -75,7 +75,7 @@ const inputSizeClasses = {
 export interface NumberFieldProps
   extends Omit<BaseNumberField.Root.Props, "className">,
     VariantProps<typeof numberFieldGroupVariants> {
-  className?: string
+  className?: string | undefined
   /** Placeholder for the inner input. */
   placeholder?: string
   /** Accessible name for the inner input when not inside a Field with a label. */

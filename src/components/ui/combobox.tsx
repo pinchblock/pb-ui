@@ -62,7 +62,7 @@ const inputButtonClassName = cn(
 export interface ComboboxInputProps
   extends Omit<BaseCombobox.Input.Props, "className" | "size">,
     VariantProps<typeof comboboxInputVariants> {
-  className?: string
+  className?: string | undefined
 }
 
 /**
@@ -99,7 +99,7 @@ export function ComboboxInput({
 }
 
 export interface ComboboxPopupProps extends Omit<BaseCombobox.Popup.Props, "className"> {
-  className?: string
+  className?: string | undefined
   /** Gap between input and popup, px. */
   sideOffset?: number
 }
@@ -131,7 +131,7 @@ export function ComboboxPopup({
 }
 
 export interface ComboboxListProps extends Omit<BaseCombobox.List.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function ComboboxList({ className, ...props }: ComboboxListProps) {
@@ -139,7 +139,7 @@ export function ComboboxList({ className, ...props }: ComboboxListProps) {
 }
 
 export interface ComboboxItemProps extends Omit<BaseCombobox.Item.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function ComboboxItem({ className, children, ...props }: ComboboxItemProps) {
@@ -163,7 +163,7 @@ export function ComboboxItem({ className, children, ...props }: ComboboxItemProp
 
 export interface ComboboxGroupLabelProps
   extends Omit<BaseCombobox.GroupLabel.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function ComboboxGroupLabel({ className, ...props }: ComboboxGroupLabelProps) {
@@ -176,7 +176,7 @@ export function ComboboxGroupLabel({ className, ...props }: ComboboxGroupLabelPr
 }
 
 export interface ComboboxEmptyProps extends Omit<BaseCombobox.Empty.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 /**
@@ -197,7 +197,7 @@ export function ComboboxEmpty({ className, ...props }: ComboboxEmptyProps) {
 }
 
 export interface ComboboxStatusProps extends Omit<BaseCombobox.Status.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 /**

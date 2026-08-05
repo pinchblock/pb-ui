@@ -68,7 +68,7 @@ export interface FeelPickerProps extends VariantProps<typeof feelPickerItemVaria
   readOnly?: boolean
   /** Form field name (RadioGroup renders a hidden input). */
   name?: string
-  className?: string
+  className?: string | undefined
   "aria-label"?: string
 }
 

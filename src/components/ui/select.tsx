@@ -44,7 +44,7 @@ export const selectTriggerVariants = cva(
 export interface SelectTriggerProps
   extends Omit<BaseSelect.Trigger.Props, "className">,
     VariantProps<typeof selectTriggerVariants> {
-  className?: string
+  className?: string | undefined
 }
 
 export function SelectTrigger({ className, size, children, ...props }: SelectTriggerProps) {
@@ -64,7 +64,7 @@ export function SelectTrigger({ className, size, children, ...props }: SelectTri
 }
 
 export interface SelectPopupProps extends Omit<BaseSelect.Popup.Props, "className"> {
-  className?: string
+  className?: string | undefined
   /** Gap between trigger and popup, px. */
   sideOffset?: number
   /**
@@ -106,7 +106,7 @@ export function SelectPopup({
 }
 
 export interface SelectItemProps extends Omit<BaseSelect.Item.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function SelectItem({ className, children, ...props }: SelectItemProps) {
@@ -132,7 +132,7 @@ export function SelectItem({ className, children, ...props }: SelectItemProps) {
 
 export interface SelectGroupLabelProps
   extends Omit<BaseSelect.GroupLabel.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function SelectGroupLabel({ className, ...props }: SelectGroupLabelProps) {
@@ -163,7 +163,7 @@ export interface SimpleSelectProps {
   name?: string
   id?: string
   /** Applied to the trigger. */
-  className?: string
+  className?: string | undefined
 }
 
 /** One-prop Select for the common flat options case. */
@@ -176,7 +176,7 @@ export function SimpleSelect({
 }: SimpleSelectProps) {
   return (
     <Select items={options} {...rootProps}>
-      <SelectTrigger size={size} className={className}>
+      <SelectTrigger size={size} {...(className !== undefined ? { className } : {})}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectPopup>

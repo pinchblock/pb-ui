@@ -104,7 +104,7 @@ export const sheetPopupVariants = cva(
 export interface SheetPopupProps
   extends Omit<Drawer.Popup.Props, "className">,
     VariantProps<typeof sheetPopupVariants> {
-  className?: string
+  className?: string | undefined
 }
 
 /**
@@ -158,7 +158,7 @@ export function SheetHeader({ className, ...props }: React.ComponentProps<"div">
  * selectable without triggering swipe-dismiss.
  */
 export interface SheetBodyProps extends Omit<Drawer.Content.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function SheetBody({ className, ...props }: SheetBodyProps) {
@@ -184,7 +184,7 @@ export function SheetFooter({ className, ...props }: React.ComponentProps<"div">
 }
 
 export interface SheetTitleProps extends Omit<Drawer.Title.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function SheetTitle({ className, ...props }: SheetTitleProps) {
@@ -197,7 +197,7 @@ export function SheetTitle({ className, ...props }: SheetTitleProps) {
 }
 
 export interface SheetDescriptionProps extends Omit<Drawer.Description.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function SheetDescription({ className, ...props }: SheetDescriptionProps) {

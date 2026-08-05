@@ -134,7 +134,7 @@ export interface ChartTooltipContentProps {
   indicator?: "dot" | "line"
   /** Config key override when dataKey does not match the config. */
   nameKey?: string
-  className?: string
+  className?: string | undefined
 }
 
 export function ChartTooltipContent({
@@ -205,7 +205,7 @@ export interface ChartLegendContentProps {
   payload?: ReadonlyArray<LegendPayload>
   hideIcon?: boolean
   nameKey?: string
-  className?: string
+  className?: string | undefined
 }
 
 export function ChartLegendContent({

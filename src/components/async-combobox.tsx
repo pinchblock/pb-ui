@@ -166,9 +166,9 @@ export function AsyncCombobox<Item>({
             then a completion summary (count or no-results copy), so
             screen readers hear that the search finished, not silence. */}
         <ComboboxStatus
-          className={
-            !loading && searched && items.length === 0 ? "justify-center py-4" : undefined
-          }
+          {...(!loading && searched && items.length === 0
+            ? { className: "justify-center py-4" }
+            : {})}
         >
           {loading ? (
             <>

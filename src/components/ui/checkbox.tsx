@@ -24,7 +24,7 @@ export const checkboxVariants = cva(
 )
 
 export interface CheckboxProps extends Omit<BaseCheckbox.Root.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function Checkbox({ className, ...props }: CheckboxProps) {

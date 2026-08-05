@@ -53,7 +53,7 @@ export function UploadDropzone({
   ...props
 }: UploadDropzoneProps) {
   const { isDragOver, rootProps, inputProps, browse } = useFileDrop({
-    accept,
+    ...(accept !== undefined ? { accept } : {}),
     multiple,
     disabled,
     onFiles,

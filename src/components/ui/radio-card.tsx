@@ -24,7 +24,7 @@ export const radioCardVariants = cva(
 )
 
 export interface RadioCardProps extends Omit<BaseRadio.Root.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function RadioCard({ className, children, ...props }: RadioCardProps) {

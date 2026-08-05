@@ -27,7 +27,7 @@ export interface ChatComposerProps {
   attachments?: React.ReactNode
   /** Accessible label for the textarea. */
   label?: string
-  className?: string
+  className?: string | undefined
 }
 
 export function ChatComposer({

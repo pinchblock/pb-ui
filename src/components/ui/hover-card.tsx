@@ -80,7 +80,7 @@ export function HoverCardTrigger({ onClick, ...props }: PreviewCard.Trigger.Prop
 }
 
 export interface HoverCardPopupProps extends Omit<PreviewCard.Popup.Props, "className"> {
-  className?: string
+  className?: string | undefined
   side?: PreviewCard.Positioner.Props["side"]
   align?: PreviewCard.Positioner.Props["align"]
   sideOffset?: PreviewCard.Positioner.Props["sideOffset"]

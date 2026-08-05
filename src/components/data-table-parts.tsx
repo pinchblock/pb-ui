@@ -48,7 +48,7 @@ export function DataTableHeaderCell<TData>({ header }: { header: Header<TData, u
 
   return (
     <TableHead
-      numeric={meta.numeric}
+      numeric={meta.numeric ?? false}
       colSpan={header.colSpan}
       aria-sort={
         sorted === "asc"

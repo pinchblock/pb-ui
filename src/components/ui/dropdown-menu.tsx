@@ -32,7 +32,7 @@ export function DropdownMenuTrigger(props: BaseMenu.Trigger.Props) {
 }
 
 export interface DropdownMenuPopupProps extends Omit<BaseMenu.Popup.Props, "className"> {
-  className?: string
+  className?: string | undefined
   side?: BaseMenu.Positioner.Props["side"]
   align?: BaseMenu.Positioner.Props["align"]
   sideOffset?: BaseMenu.Positioner.Props["sideOffset"]
@@ -102,7 +102,7 @@ export const dropdownMenuItemVariants = cva(
 export interface DropdownMenuItemProps
   extends Omit<BaseMenu.Item.Props, "className">,
     VariantProps<typeof dropdownMenuItemVariants> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DropdownMenuItem({ className, variant, ...props }: DropdownMenuItemProps) {
@@ -116,7 +116,7 @@ export function DropdownMenuItem({ className, variant, ...props }: DropdownMenuI
 
 export interface DropdownMenuCheckboxItemProps
   extends Omit<BaseMenu.CheckboxItem.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DropdownMenuCheckboxItem({
@@ -143,7 +143,7 @@ export function DropdownMenuRadioGroup(props: BaseMenu.RadioGroup.Props) {
 
 export interface DropdownMenuRadioItemProps
   extends Omit<BaseMenu.RadioItem.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DropdownMenuRadioItem({
@@ -172,7 +172,7 @@ export function DropdownMenuGroup(props: BaseMenu.Group.Props) {
 
 export interface DropdownMenuGroupLabelProps
   extends Omit<BaseMenu.GroupLabel.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DropdownMenuGroupLabel({
@@ -189,7 +189,7 @@ export function DropdownMenuGroupLabel({
 
 export interface DropdownMenuSeparatorProps
   extends Omit<BaseMenu.Separator.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DropdownMenuSeparator({

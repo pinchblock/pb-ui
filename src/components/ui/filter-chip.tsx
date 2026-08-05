@@ -38,7 +38,7 @@ export const filterChipVariants = cva(
 export interface FilterChipProps
   extends Omit<Toggle.Props<string>, "className">,
     VariantProps<typeof filterChipVariants> {
-  className?: string
+  className?: string | undefined
   /** Result count shown after the label ("Climbing 12"). */
   count?: number
 }
@@ -58,7 +58,7 @@ export function FilterChip({ className, size, count, children, ...props }: Filte
 
 export interface ChipGroupProps
   extends Omit<ToggleGroup.Props<string>, "className" | "multiple"> {
-  className?: string
+  className?: string | undefined
   /** Allow several chips pressed at once; single-select otherwise. */
   multiple?: boolean
 }

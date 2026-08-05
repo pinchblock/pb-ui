@@ -79,8 +79,8 @@ export function AppShell({
       )}
     >
       <NavRail
-        items={railSections ? undefined : items}
-        sections={railSections}
+        /* exactOptionalPropertyTypes: pass only the prop that is set. */
+        {...(railSections ? { sections: railSections } : { items })}
         expanded={railExpanded}
         header={railHeader}
         footer={railFooter}
@@ -94,7 +94,7 @@ export function AppShell({
       </div>
       <MobileTabBar
         items={tabItems ?? items}
-        fab={fab}
+        {...(fab !== undefined ? { fab } : {})}
         className={cn(tabBarVisibility, contained && "absolute")}
       />
     </div>

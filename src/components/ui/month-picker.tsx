@@ -26,7 +26,7 @@ export interface MonthPickerProps {
   max?: Date
   /** Accessible name of the widget. */
   "aria-label"?: string
-  className?: string
+  className?: string | undefined
 }
 
 const monthButtonClassName = cn(

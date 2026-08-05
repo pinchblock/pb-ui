@@ -81,7 +81,7 @@ export const dialogPopupVariants = cva(
 export interface DialogPopupProps
   extends Omit<BaseDialog.Popup.Props, "className">,
     VariantProps<typeof dialogPopupVariants> {
-  className?: string
+  className?: string | undefined
   /** Renders an X button in the top-right corner. Default true. */
   showClose?: boolean
 }
@@ -134,7 +134,7 @@ export function DialogHeader({ className, ...props }: React.ComponentProps<"div"
 }
 
 export interface DialogTitleProps extends Omit<BaseDialog.Title.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DialogTitle({ className, ...props }: DialogTitleProps) {
@@ -148,7 +148,7 @@ export function DialogTitle({ className, ...props }: DialogTitleProps) {
 
 export interface DialogDescriptionProps
   extends Omit<BaseDialog.Description.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function DialogDescription({ className, ...props }: DialogDescriptionProps) {

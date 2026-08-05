@@ -12,7 +12,7 @@ import { cn } from "../../lib/cn.ts"
  * RadioCard for the card-styled variant.
  */
 export interface RadioGroupProps extends Omit<BaseRadioGroup.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function RadioGroup({ className, ...props }: RadioGroupProps) {
@@ -31,7 +31,7 @@ export const radioVariants = cva(
 )
 
 export interface RadioProps extends Omit<BaseRadio.Root.Props, "className"> {
-  className?: string
+  className?: string | undefined
 }
 
 export function Radio({ className, ...props }: RadioProps) {

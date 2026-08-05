@@ -131,7 +131,9 @@ export function TrendChart({
           )}
           <ChartTooltip
             cursor={{ strokeDasharray: "3 3" }}
-            content={<ChartTooltipContent valueFormatter={valueFormatter} />}
+            content={
+              <ChartTooltipContent {...(valueFormatter ? { valueFormatter } : {})} />
+            }
           />
           {target != null && (
             <ReferenceLine

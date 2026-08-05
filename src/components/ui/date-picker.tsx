@@ -65,10 +65,10 @@ interface PickerBaseProps {
   /** Forwarded to the trigger (label association outside Field). */
   id?: string
   /** Applied to the trigger. */
-  className?: string
+  className?: string | undefined
 }
 
-interface PickerShellProps extends Pick<PickerBaseProps, "size" | "disabled" | "id" | "className"> {
+interface PickerShellProps extends Pick<PickerBaseProps, "size" | "disabled"> {
   open: boolean
   onOpenChange: (open: boolean) => void
   display: string | undefined
@@ -76,6 +76,10 @@ interface PickerShellProps extends Pick<PickerBaseProps, "size" | "disabled" | "
   showClear: boolean
   onClear: () => void
   clearLabel: string
+  /* Internal shell: `| undefined` because both pickers forward possibly
+     absent values under exactOptionalPropertyTypes; undefined = absent. */
+  id?: string | undefined
+  className?: string | undefined
   children: React.ReactNode
 }
 
@@ -159,6 +163,10 @@ export function DatePicker(props: DatePickerProps) {
     onValueChange?.(date)
   }
 
+  /* DayPicker types defaultMonth without `| undefined`; a narrowed const
+     lets the conditional spread below include the key only when known. */
+  const initialMonth = selected ?? defaultMonth
+
   return (
     <PickerShell
       open={open}
@@ -181,7 +189,7 @@ export function DatePicker(props: DatePickerProps) {
           if (date) setOpen(false)
         }}
         disabled={disabledDates}
-        defaultMonth={selected ?? defaultMonth}
+        {...(initialMonth ? { defaultMonth: initialMonth } : {})}
       />
     </PickerShell>
   )
@@ -227,6 +235,9 @@ export function DateRangePicker(props: DateRangePickerProps) {
       : format(selected.from)
     : undefined
 
+  /* Same defaultMonth handling as DatePicker above. */
+  const initialMonth = selected?.from ?? defaultMonth
+
   return (
     <PickerShell
       open={open}
@@ -254,7 +265,7 @@ export function DateRangePicker(props: DateRangePickerProps) {
         }}
         resetOnSelect
         disabled={disabledDates}
-        defaultMonth={selected?.from ?? defaultMonth}
+        {...(initialMonth ? { defaultMonth: initialMonth } : {})}
         numberOfMonths={numberOfMonths}
       />
     </PickerShell>

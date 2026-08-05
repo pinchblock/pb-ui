@@ -18,7 +18,7 @@ import { labelVariants } from "./label.tsx"
  *   surface automatically in the same slot.
  */
 export interface FieldProps extends Omit<BaseField.Root.Props, "className"> {
-  className?: string
+  className?: string | undefined
   label?: React.ReactNode
   /** Quiet helper text under the control; hidden while an error shows. */
   hint?: React.ReactNode

@@ -87,7 +87,7 @@ export interface VideoPlayerProps
   /** Action slot shown when src is missing or the load failed
    * (e.g. a retry Button). Activating it re-attempts the load. */
   retry?: React.ReactNode
-  className?: string
+  className?: string | undefined
 }
 
 /** matchMedia in state so JS-driven playback respects the OS setting. */

@@ -21,7 +21,7 @@ export const sliderThumbVariants = cva(
 )
 
 export interface SliderProps extends Omit<BaseSlider.Root.Props, "className"> {
-  className?: string
+  className?: string | undefined
   /** aria-label for the (single) thumb. */
   "aria-label"?: string
   /** aria-label per thumb for range sliders. */

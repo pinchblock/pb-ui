@@ -57,7 +57,7 @@ export interface SegmentedControlProps
     ToggleGroup.Props<string>,
     "className" | "value" | "defaultValue" | "onValueChange" | "multiple"
   > {
-  className?: string
+  className?: string | undefined
   size?: "sm" | "md"
   /** Selected segment value (controlled). */
   value?: string
@@ -104,7 +104,7 @@ export function SegmentedControl({
 export interface SegmentedControlItemProps
   extends Omit<Toggle.Props<string>, "className" | "value">,
     VariantProps<typeof segmentedControlItemVariants> {
-  className?: string
+  className?: string | undefined
   value: string
 }
 

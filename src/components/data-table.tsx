@@ -76,7 +76,7 @@ export interface DataTableProps<TData> {
    * accessible name.
    */
   getRowLabel?: (row: TData) => string
-  className?: string
+  className?: string | undefined
 }
 
 /**
@@ -133,7 +133,9 @@ export function DataTable<TData>({
     getPaginationRowModel: getPaginationRowModel(),
     globalFilterFn: "includesString",
     enableRowSelection: selectable,
-    getRowId,
+    /* exactOptionalPropertyTypes: TanStack types getRowId without
+       `| undefined`, so include the key only when the prop is set. */
+    ...(getRowId ? { getRowId } : {}),
   })
 
   /* Ref keeps the effect off the callback identity: an inline callback
@@ -237,7 +239,11 @@ export function DataTable<TData>({
                   {row.getVisibleCells().map((cell) => {
                     const meta = columnMetaOf(cell.column.columnDef.meta)
                     return (
-                      <TableCell key={cell.id} numeric={meta.numeric} mono={meta.mono}>
+                      <TableCell
+                        key={cell.id}
+                        numeric={meta.numeric ?? false}
+                        mono={meta.mono ?? false}
+                      >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </TableCell>
                     )

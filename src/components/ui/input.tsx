@@ -38,7 +38,7 @@ export const inputVariants = cva(
 export interface InputProps
   extends Omit<BaseInput.Props, "size" | "className">,
     VariantProps<typeof inputVariants> {
-  className?: string
+  className?: string | undefined
   /** Icon/adornment before the text; non-interactive (clicks pass through). */
   leading?: React.ReactNode
   /** Icon/adornment after the text; may be interactive (e.g. clear button). */
