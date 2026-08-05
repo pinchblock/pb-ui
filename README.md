@@ -29,6 +29,15 @@ configuration for links and screenshots.
                       GUARDRAILS, THEMING, CONSUMING, COMPONENT-MAP,
                       ROADMAP-V02, ADOPTION-WEB, ADOPTION-MOBILE
 
+## Deploying the sink
+
+`vercel.json` is ready: connect this repo as a Vercel project with the
+repository root as the root directory (the config supplies the build
+command, output directory and the SPA rewrite that deep links like
+/c/forms/input need). Then add `ui.pinchblock.app` as a domain and
+point a CNAME at Vercel. The repo can stay private; only the built
+sink is served.
+
 ## Everyday commands
 
     npm run gen        regenerate tokens.css after editing src/tokens
