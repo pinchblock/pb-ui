@@ -3,6 +3,25 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (W3 landed; branch ready for Jaak's review)
+
+- W3 on the branch: all six territories landed in one wave. Notable
+  judgment calls: route-navigation tabs kept real links styled with
+  the system's tab classes (Base UI Tabs owns panel state, wrong
+  semantics for navigation); report-bug kept its compact attach flow
+  (UploadDropzone was not 1:1); feed composer is now bottom-anchored
+  at all widths (was centered card on desktop); log-session panel is
+  12px narrower (system max-w-md instead of an arbitrary 460px).
+- Menus now close on item click/outside click/Escape everywhere
+  (details/summary never did): strictly better, but muscle memory may
+  notice.
+- HOW TO TEST THE BRANCH: cd pb-app && git worktree list (the
+  design-system worktree), run make start against it or
+  npm run dev:web:beta from the worktree; walk feed, log session,
+  settings, apply, auth, explore, coach dashboard/plans/clients,
+  admin. Calls + interval timer intentionally still old-style.
+  Everything is on branch design-system (pushed); beta untouched.
+
 ## 2026-08-05 (W2 landed, W3 in flight)
 
 - W2 on the branch: ui.tsx/chrome.tsx/app-loading.tsx are wrappers over
@@ -101,3 +120,4 @@ after a gap; challenge anything, everything here is reversible.
   sign-off on editing pb-app's root AGENTS.md ("minimal and
   reversible" clause) and web/AGENTS.md (reference visual language).
   Everything up to and including v0.2.0 happens in pb-ui only.
+
