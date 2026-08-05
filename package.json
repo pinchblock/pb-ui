@@ -1,7 +1,7 @@
 {
   "name": "@pinchblock/ui",
   "private": true,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "description": "Pinchblock design system and component library. Owned source (shadcn-style), Base UI + Tailwind v4, TS-authored tokens generated to CSS, no build step.",
   "scripts": {
@@ -60,6 +60,12 @@
     "tailwindcss": "^4.0.0"
   },
   "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    },
+    "@phosphor-icons/react": {
+      "optional": true
+    },
     "tailwindcss": {
       "optional": true
     }
