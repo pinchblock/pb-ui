@@ -10,7 +10,9 @@ ships or is consciously dropped.
 | Item | Where | Note |
 | --- | --- | --- |
 | Which theme wins | sink + both apps | Deliberately open, possibly long-term: Jaak may even ship multiple themes. The architecture treats this as cheap, so nothing is blocked. Colors overall are pre-brand and expected to change. |
-| Push beta to origin | pb-app | Merged locally (15 commits ahead, all gated). pb-app's own rules require an explicit push instruction naming the branch. |
+| pb-ui public vs private | pb-ui | Made public 2026-08-05 to unblock CI without a Vercel secret. Reversible. If you want it private again, Erik adds a GitHub token to the pb-app-web Vercel project and we repin. |
+| Move internal docs to pb-app | pb-ui docs/ | DECISIONS, BACKLOG and the two ADOPTION plans describe pb-app internals and are now publicly readable. Moving them leaves pb-ui as a clean public design system. History already exposed either way. |
+| iOS device verification | pb-app | Build installed on Jaak's iPhone. Priority: confirm() fired from inside feed modals (fixed for the iOS double-presentation rule, unit-tested but never seen on a device). |
 | Display font | pb-ui shared.ts | Inter stays for now; changing it later is one token. |
 
 Closed 2026-08-05: both mobile WCAG corrections adopted (dark
