@@ -3,6 +3,34 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (evening: iOS runs, two real bugs found and fixed)
+
+- iOS simulator now runs the app (iPhone 17 / iOS 26.4, dev client built
+  from the branch). Running iOS for the first time surfaced a
+  PRE-EXISTING blocker, unrelated to the design system: every
+  signed-out iOS start dead-ended on "Session needs attention". Cause:
+  clearing the three encrypted stores calls deleteDatabaseAsync on
+  databases that were never created; iOS throws a Swift
+  FunctionCallException (DatabaseNotFoundException) while only the
+  Android message shape was recognized, so a benign no-op became a
+  fatal cleanup failure. Fixed with one shared platform-aware guard
+  plus tests; genuine deletion failures deliberately stay fatal
+  (sign-out cleanup is a security guarantee). Worth cherry-picking to
+  beta on its own; it has nothing to do with pb-ui.
+- Jaak reported the sidebar jumping and the background changing between
+  Feed and Settings. Measured, root-caused, fixed in pb-ui v0.3.1:
+  (1) centered layouts shifted 2.5px because scrollbar-gutter reserves
+  nothing under macOS overlay scrollbars, so a short route and a tall
+  route differed by the 5px track; the track is now unconditional.
+  (2) pb-backdrop's percentage-positioned gradients scaled to document
+  height (862px on Feed vs 2245px on Settings), painting a visibly
+  different wash per route; the backdrop is now viewport-sized and
+  non-repeating. Verified live: aside x-position identical on both
+  routes, jump = 0px.
+- Kitchen sink is deliberately NOT in pb-app's make-start dashboard
+  (its scripts live on beta, outside the branch). Options when wanted:
+  a make target in pb-ui, or deploy the sink to a URL.
+
 ## 2026-08-05 (W6 landed: the adoption plan is fully executed)
 
 - W6 survived a mid-flight usage-credit outage: all three agents died
