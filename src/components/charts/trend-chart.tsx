@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { useReducedMotion } from "motion/react"
 import { useId } from "react"
 import type * as React from "react"
-import { Area, AreaChart, ReferenceLine, XAxis } from "recharts"
+import { Area, AreaChart, ReferenceLine, XAxis, YAxis } from "recharts"
 import type { DotItemDotProps } from "recharts"
 
 import { cn } from "../../lib/cn.ts"
@@ -54,6 +54,12 @@ export interface TrendChartProps
   target?: number
   /** Dot markers on every point; defaults on when any point carries a feel. */
   showDots?: boolean
+  /**
+   * Fixed y domain, e.g. [1, 5] for the feel scale. Bounded scales
+   * should always pin their domain: autoscaling a 1-5 rating makes
+   * small wobbles look dramatic. Omit for open-ended metrics.
+   */
+  yDomain?: readonly [number, number]
   /** Gradient area fill under the line. @default true */
   area?: boolean
   valueFormatter?: (value: number | string) => React.ReactNode
@@ -83,6 +89,7 @@ export function TrendChart({
   color = "var(--chart-1)",
   target,
   showDots,
+  yDomain,
   area = true,
   valueFormatter,
   className,
@@ -129,6 +136,7 @@ export function TrendChart({
           {!compact && (
             <XAxis dataKey="label" tickLine={false} axisLine={false} tickMargin={8} />
           )}
+          {yDomain && <YAxis hide domain={[yDomain[0], yDomain[1]]} />}
           <ChartTooltip
             cursor={{ strokeDasharray: "3 3" }}
             content={
