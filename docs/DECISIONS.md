@@ -3,6 +3,26 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (W2 landed, W3 in flight)
+
+- W2 on the branch: ui.tsx/chrome.tsx/app-loading.tsx are wrappers over
+  the system (33 importers untouched); Toaster mounted once in the
+  shell layout; 5 window.confirm sites now ConfirmDialog with identical
+  wording; 4 transient notices now toasts, 4 persistent error surfaces
+  deliberately stayed inline.
+- Judgment calls to eyeball when testing the branch: avatar sizes
+  snapped to system presets (xs 20->24, sm 32->28, md 40->36px); Field
+  hint text moved below the control; "Your Stripe link expired..."
+  changed from persistent inline text to a 5s info toast (the page CTA
+  still offers recovery); sidebar/tab-bar surfaces moved to system
+  tokens (raised/card).
+- pb-ui v0.2.1 cut mid-adoption: pb-app compiles the raw library under
+  exactOptionalPropertyTypes, which v0.2.0 failed. Fixed the 8 files,
+  turned the flag ON in pb-ui itself, widened 52 exported className
+  props to string | undefined. pb-app pin bumped, no tsconfig override
+  left behind. Rule learned: pb-ui must compile under the STRICTEST
+  consumer's flags; the flag now lives in pb-ui tsconfig.
+
 ## 2026-08-05 (pb-app adoption, design-system branch)
 
 - W1 landed on pb-app branch design-system (pushed). Zero-visual-change
