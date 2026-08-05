@@ -3,6 +3,43 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (late: merged to beta, pb-ui made public, CI lesson)
+
+- design-system merged into beta and PUSHED. Rebased onto the 12
+  commits others landed today (push notifications, incoming-call
+  actions, Play updates, composer keyboard fix, Google chooser). Four
+  conflicts, all resolved keeping their functionality and our
+  presentation; the Play-updates section in mobile Settings was
+  re-expressed on the system components rather than left mixed.
+- THE LESSON OF THE DAY: every local gate passed while every CI build
+  failed, since W1. The lockfile resolved @pinchblock/ui over
+  git+ssh to a PRIVATE repo; this machine has GitHub credentials and
+  Vercel does not. Check the deployment status after the first push of
+  any new dependency, not just local builds. Vercel posts commit
+  statuses, so `gh api repos/<org>/<repo>/commits/<sha>/status` is the
+  cheap check that would have caught it hours earlier.
+- pb-ui is now PUBLIC (github.com/pinchblock/pb-ui), chosen over
+  putting a GitHub token in Vercel because Erik was offline. Scanned
+  the full history first: no credentials anywhere, only ordinary
+  product prose. Reversible, though forks and caches can persist.
+  Follow-up worth doing: move DECISIONS/BACKLOG/ADOPTION-* into pb-app
+  so the public front page is a design system, not an internal audit.
+- v0.3.2: the web-only peers (react-dom, the icon set, tailwindcss)
+  are optional now. They were required, which made the package
+  unresolvable in the React Native workspace the moment a lockfile had
+  to be rebuilt from scratch. Mobile imports only /tokens, which is
+  pure TS.
+- pb-app pins over explicit https and declares @phosphor-icons/react
+  in web, where a peer belongs. Verified by installing in a
+  credential-less environment, the way the builder does.
+- Result: pb-app-web and pb-app-api deployments both green;
+  beta.pinchblock.app serves the design system.
+- Both withheld WCAG corrections adopted (dark primaryForeground
+  5.45:1, light accent 5.60:1 and 4.55:1 as text).
+- iOS dev client rebuilt for the simulator (their push module needs
+  native compilation) and a device build for Jaak's iPhone 15 Pro Max
+  compiled cleanly; installation waits on the phone.
+
 ## 2026-08-05 (evening: iOS runs, two real bugs found and fixed)
 
 - iOS simulator now runs the app (iPhone 17 / iOS 26.4, dev client built
