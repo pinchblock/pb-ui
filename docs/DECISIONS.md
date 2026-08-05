@@ -3,6 +3,26 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-08-05 (W6 landed: the adoption plan is fully executed)
+
+- W6 survived a mid-flight usage-credit outage: all three agents died
+  but most work had landed on disk; I completed the remainder inline
+  (waitlist glass-input retirement, nativeButton console errors, two
+  decorative hexes in landing-community). Lesson: the workflow gates
+  (grep + tsc + tests) made the partial state diagnosable in minutes.
+- Final state on branch design-system (9 commits ahead of beta):
+  W1-W6 web + M0-M2 mobile. Zero raw hex in web/src except the
+  sanctioned Google brand mark; bridge.css gone; calls/timer on the
+  stage kit; landing on display/glass/motion; both workspaces pinned
+  to pb-ui v0.3.0.
+- --surface stayed an app-level token in pb-app globals.css (documented
+  as a pb-ui candidate): the old token meant different things per mode
+  and forcing a rename across 110+ call sites was judged churn without
+  design benefit. Decide at leisure.
+- Sink is NOT in pb-app's make-start dashboard (deliberate: dashboard
+  scripts live on beta, outside the branch). Options if wanted: a
+  make target in pb-ui, or deploy the sink to a URL.
+
 ## 2026-08-05 (mobile M0-M2 landed, pb-ui v0.3.0 shipped)
 
 - pb-ui v0.3.0 tagged: stage sub-theme (always-dark, theme-invariant,
