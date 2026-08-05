@@ -53,6 +53,12 @@
    current primary so it works in every theme. Apply to body or a
    full-height wrapper. Light themes usually skip it. */
 @utility pb-backdrop {
+  /* Viewport-sized and non-repeating. The gradients are positioned in
+     percentages of the element's box, so without this a short route and
+     a long route paint visibly different washes; pinning the height to
+     one viewport keeps the backdrop identical on every screen. */
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
   background-image:
     radial-gradient(ellipse 80% 60% at 20% 10%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 60%),
     radial-gradient(ellipse 60% 50% at 80% 20%, color-mix(in srgb, var(--success) 10%, transparent), transparent 55%),

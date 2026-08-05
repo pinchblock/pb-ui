@@ -14,6 +14,12 @@
   html {
     min-width: 320px;
     font-family: var(--font-sans);
+    /* Always reserve the scrollbar track. scrollbar-gutter alone is not
+       enough: with overlay scrollbars (macOS default) it reserves
+       nothing, so a short route and a tall route differ by the
+       scrollbar width and every centered layout jumps sideways on
+       navigation. overflow-y: scroll makes the track unconditional. */
+    overflow-y: scroll;
     scrollbar-gutter: stable;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -75,12 +81,6 @@
   ::-webkit-scrollbar-thumb {
     border-radius: 9999px;
     background: var(--border-strong);
-  }
-}
-
-@supports not (scrollbar-gutter: stable) {
-  html {
-    overflow-y: scroll;
   }
 }
 
