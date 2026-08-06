@@ -37,6 +37,20 @@ for non-Nocturne theme previews.
 - `interaction.pressedTint` is still Nocturne-ramp-specific; parameterize
   per theme when themes stop being a preview
 
+## Type scale: the platforms disagree below 12px
+
+Found while adding enforcement to pb-app (2026-08-06). The web scale
+starts at `text-xs` (12px), but the product leans hard on micro-labels:
+44 uses of 11px, 25 of 10px, plus 9px and 8px. Mobile's scale already
+has those steps (overline 11, tabLabel 10, caption 11.5), so the two
+platforms are inconsistent and web code has no legal way to express a
+micro-label.
+
+Fix: add `2xs` (11px) and `3xs` (10px) to the web type scale so the two
+platforms match, then convert the 29 files currently frozen in
+pb-app's guardrail debt list. Until then those files are exempted and
+the exemption cannot grow.
+
 ## pb-ui: known gaps
 
 - Mobile `Pressable` `haptic` prop is API-stable but a no-op:
