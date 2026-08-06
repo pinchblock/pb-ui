@@ -135,6 +135,15 @@ admin-specific organisms, Storybook/Ladle.
   `Alert.alert` sites stay (single-action notices, not confirmations),
   and CommunicationsHeader is a clean ScreenHeader swap blocked only by
   contract-test assertions that pin its source.
+- Parallel-work debt, frozen 2026-08-06 in the mobile guardrail test's
+  `LEGACY_*_DEBT` sets: the admin workspace, the coach intake-form
+  editor/list, structured plan, subscription-offering, coach profile
+  settings and public About screens landed from other branches while the
+  adoption sweep was running, so they never went through it. Nine files;
+  the same treatment as the two waves above (roles from `useTheme`,
+  `Text` variants, `Pressable` from `@/ui`). This is the first real test
+  of the ratchet: the guard caught them the moment beta moved, and it
+  blocks anything new while these wait.
 - iOS: confirm() from inside a feature Modal is fixed via the innermost-
   host-wins stack and unit-tested, but needs a physical-device pass when
   iOS acceptance starts.
