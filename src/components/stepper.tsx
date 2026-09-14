@@ -69,7 +69,7 @@ export function Stepper({
                 <div
                   className={cn(
                     "h-1.5 rounded-full transition-colors duration-(--duration-base) ease-(--ease-out)",
-                    completed || current ? "bg-primary" : "bg-muted",
+                    completed || current ? "bg-foreground" : "bg-muted",
                   )}
                 />
                 {label ? (
@@ -103,8 +103,8 @@ export function Stepper({
                   className={cn(
                     "flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold",
                     "transition-colors duration-(--duration-base) ease-(--ease-out)",
-                    completed && "bg-primary text-primary-foreground",
-                    current && "bg-primary-soft text-primary ring-2 ring-primary",
+                    completed && "bg-foreground text-background",
+                    current && "bg-secondary text-foreground ring-2 ring-foreground",
                     !completed && !current && "bg-muted text-muted-foreground",
                   )}
                 >
@@ -128,7 +128,7 @@ export function Stepper({
                   className={cn(
                     "mx-2 mt-3.5 h-0.5 flex-1 rounded-full",
                     "transition-colors duration-(--duration-base) ease-(--ease-out)",
-                    completed ? "bg-primary" : "bg-border",
+                    completed ? "bg-foreground" : "bg-border",
                   )}
                 />
               ) : null}

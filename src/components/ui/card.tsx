@@ -21,7 +21,7 @@ export const cardVariants = cva("rounded-xl text-card-foreground", {
       interactive: cn(
         "border border-border bg-card shadow-card",
         "transition-[border-color,box-shadow] duration-(--duration-fast) ease-(--ease-out)",
-        "hover:border-primary-border",
+        "hover:border-border-strong",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       ),
       glass: "glass-card",

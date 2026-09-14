@@ -18,7 +18,7 @@ export const filterChipVariants = cva(
     "inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-transparent font-medium whitespace-nowrap text-muted-foreground select-none",
     "transition-[background-color,border-color,color] duration-(--duration-fast) ease-(--ease-out)",
     "hover:border-border-strong hover:text-foreground",
-    "data-pressed:border-primary-border data-pressed:bg-primary-soft data-pressed:text-primary",
+    "data-pressed:border-border-strong data-pressed:bg-secondary data-pressed:text-foreground",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
   ),

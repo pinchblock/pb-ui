@@ -13,7 +13,7 @@ export const switchVariants = cva(
   cn(
     "group inline-flex shrink-0 items-center rounded-full bg-input p-0.5",
     "transition-[background-color] duration-(--duration-fast) ease-(--ease-out)",
-    "data-checked:bg-primary",
+    "data-checked:bg-foreground",
     "data-disabled:pointer-events-none data-disabled:opacity-50",
   ),
   {

@@ -30,7 +30,7 @@ export function SectionHeader({
       className={cn("flex items-center justify-between gap-3", className)}
       {...props}
     >
-      <h2 className="eyebrow flex items-center gap-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-primary">
+      <h2 className="eyebrow flex items-center gap-2 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-foreground">
         {icon}
         {title}
       </h2>

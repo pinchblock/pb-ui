@@ -67,11 +67,11 @@ const dayButtonClassName = cn(
   "hover:bg-muted",
   "disabled:pointer-events-none",
   // Today: quiet inset ring, distinct from the 2px focus outline.
-  "data-today:font-medium data-today:ring-1 data-today:ring-primary-border data-today:ring-inset",
-  // Selected day / range endpoints: solid primary.
-  "data-selected-single:bg-primary data-selected-single:text-primary-foreground data-selected-single:hover:bg-primary",
-  "data-range-start:bg-primary data-range-start:text-primary-foreground data-range-start:hover:bg-primary",
-  "data-range-end:bg-primary data-range-end:text-primary-foreground data-range-end:hover:bg-primary",
+  "data-today:font-medium data-today:ring-1 data-today:ring-border-strong data-today:ring-inset",
+  // Selected day / range endpoints: solid foreground (brand stays on buttons and links).
+  "data-selected-single:bg-foreground data-selected-single:text-background data-selected-single:hover:bg-foreground",
+  "data-range-start:bg-foreground data-range-start:text-background data-range-start:hover:bg-foreground",
+  "data-range-end:bg-foreground data-range-end:text-background data-range-end:hover:bg-foreground",
   // Range middle: the cell paints the accent band; keep the button quiet.
   "data-range-middle:hover:bg-transparent",
 )

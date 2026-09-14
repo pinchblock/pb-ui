@@ -154,7 +154,7 @@ export function ComboboxItem({ className, children, ...props }: ComboboxItemProp
       {...props}
     >
       <span className="min-w-0 flex-1 truncate">{children}</span>
-      <BaseCombobox.ItemIndicator className="flex shrink-0 text-primary">
+      <BaseCombobox.ItemIndicator className="flex shrink-0 text-foreground">
         <Check aria-hidden className="size-4" />
       </BaseCombobox.ItemIndicator>
     </BaseCombobox.Item>

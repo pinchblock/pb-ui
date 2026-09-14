@@ -85,7 +85,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | Pattern in pb-app today | Covered by | Priority | Notes |
 |---|---|---|---|
 | AppShell in web/src/components/chrome.tsx: 64px side rail, sticky topbar, mobile bottom tabs with center Log FAB | AppShell (NavRail + MobileTabBar + TopBar) | must | FAB is the MobileTabBar center action slot; nav prefetch stays app-side |
-| Inline themeInitScript + localStorage theme switching (web); SecureStore appearance pref (mobile) | themeBootScript + ocean/nocturne/ember/glacier themes, .dark class | must | Covers the mobile cross-platform token package must; tokens import from @pinchblock/ui/tokens on RN |
+| Inline themeInitScript + localStorage theme switching (web); SecureStore appearance pref (mobile) | themeBootScript + ocean/nocturne/ember/glacier/turquoise themes, .dark class | must | Covers the mobile cross-platform token package must; tokens import from @pinchblock/ui/tokens on RN |
 | Ad-hoc max-w containers and flex stacks per page | Page, Stack, Row | - | |
 | Marketing glass kit: glass-card/panel/chip/tile utilities, eyebrow labels, gradient text, PhoneFrame mockups | glass-* utilities, eyebrow, text-gradient-primary, PhoneFrame, Card glass variant | later | Glass on public surfaces and overlays only; the rule is now enforced by which variant you can pick |
 | Body radial-gradient glow (dark only) | pb-backdrop utility | - | |

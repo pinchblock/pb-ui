@@ -13,7 +13,7 @@ import { cn } from "../../lib/cn.ts"
  */
 export const sliderThumbVariants = cva(
   cn(
-    "size-4 rounded-full border border-primary bg-card shadow-card select-none",
+    "size-4 rounded-full border border-foreground bg-card shadow-card select-none",
     "transition-[box-shadow] duration-(--duration-fast) ease-(--ease-out)",
     "data-dragging:shadow-raised",
     "data-disabled:pointer-events-none",
@@ -43,7 +43,7 @@ export function Slider({
     >
       <BaseSlider.Control className="flex w-full touch-none items-center py-2 select-none">
         <BaseSlider.Track className="h-1.5 w-full rounded-full bg-muted select-none">
-          <BaseSlider.Indicator className="rounded-full bg-primary select-none" />
+          <BaseSlider.Indicator className="rounded-full bg-foreground select-none" />
           {Array.from({ length: thumbCount }, (_, index) => (
             <BaseSlider.Thumb
               key={index}

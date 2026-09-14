@@ -35,7 +35,7 @@ export {
 export { useFileDrop, type UseFileDropOptions, type UseFileDropResult } from "./hooks/use-file-drop.ts"
 
 /* Tokens (also available as @pinchblock/ui/tokens for React Native) */
-export { defaultTheme, ember, glacier, nocturne, ocean, shared, stage, themes } from "./tokens/index.ts"
+export { defaultTheme, ember, glacier, marquee, marqueeDisplayFont, marqueePalette, nocturne, turquoise, ocean, shared, stage, themes } from "./tokens/index.ts"
 export type { Mode, ModeTokens, SharedTokens, ThemeDefinition } from "./tokens/index.ts"
 
 /* Primitives */

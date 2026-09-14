@@ -123,7 +123,7 @@ export function SelectItem({ className, children, ...props }: SelectItemProps) {
       <BaseSelect.ItemText className="min-w-0 flex-1 truncate">
         {children}
       </BaseSelect.ItemText>
-      <BaseSelect.ItemIndicator className="flex shrink-0 text-primary">
+      <BaseSelect.ItemIndicator className="flex shrink-0 text-foreground">
         <Check className="size-4" />
       </BaseSelect.ItemIndicator>
     </BaseSelect.Item>

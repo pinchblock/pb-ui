@@ -6,7 +6,7 @@ import { cn } from "../../lib/cn.ts"
 
 /**
  * Table. Dependency-free table primitives with the pb-app look:
- * uppercase text-xs header row, quiet row hover, roomy cells. Wrap the
+ * sentence-case text-xs header row, quiet row hover, roomy cells. Wrap the
  * Table in a TableContainer (usually inside a Card) so wide tables
  * scroll horizontally instead of breaking the page on mobile.
  *
@@ -54,7 +54,7 @@ export function TableRow({
     <tr
       className={cn(
         "border-b border-border transition-colors duration-(--duration-fast) ease-(--ease-out)",
-        "hover:bg-muted/50 data-[selected]:bg-primary-soft",
+        "hover:bg-muted/50 data-[selected]:bg-secondary",
         className,
       )}
       {...props}
@@ -72,7 +72,7 @@ export function TableHead({ className, numeric = false, ...props }: TableHeadPro
   return (
     <th
       className={cn(
-        "h-10 px-3 text-left align-middle text-xs font-semibold tracking-wider whitespace-nowrap text-muted-foreground uppercase",
+        "h-10 px-3 text-left align-middle text-xs font-semibold tracking-wide whitespace-nowrap text-muted-foreground",
         numeric && "text-right",
         className,
       )}

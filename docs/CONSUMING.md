@@ -35,6 +35,17 @@ client component modules:
 Fonts: load InterVariable in the app (next/font or
 @fontsource-variable/inter). The tokens only name the family.
 
+Marquee (public landing): the .marquee surface set wants Archivo for
+display text. Load it in the landing route only and hand it over
+through the hook the tokens declare:
+
+    import { Archivo } from "next/font/google"
+    const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"],
+      variable: "--font-marquee-display", display: "swap" })
+    <div className={`marquee ${archivo.variable}`}>...</div>
+
+Without the variable the stack falls back to the shared sans.
+
 Then: import { Button } from "@pinchblock/ui".
 
 ### App Router / RSC boundaries

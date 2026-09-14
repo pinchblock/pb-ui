@@ -8,7 +8,7 @@
  *   @custom-variant dark (&:where(.dark, .dark *));
  *
  * Runtime knobs (set on <html> via JS or a theme class):
- *   --radius       one value reshapes every corner (default 0.625rem)
+ *   --radius       one value reshapes every corner (default 0.375rem)
  *   --font-scale   multiplies the whole type scale (default 1)
  *   --density      multiplies spacing, paddings, control sizes (default 1)
  *   .theme-<id>    color theme class; .dark composes orthogonally
@@ -17,7 +17,7 @@
 :root {
   color-scheme: light;
 
-  --radius: 0.625rem;
+  --radius: 0.375rem;
   --font-scale: 1;
   --density: 1;
   /* Scales every Tailwind spacing utility (p-*, gap-*, h-*, size-*). */
@@ -606,6 +606,150 @@
   --feel-5: #3ecf8e;
 }
 
+/* Turquoise: The landing's palette as an app theme: deep cool charcoal ground, panels one step lighter, visible hairlines, warm off-white ink and the icon's cyan on primary actions. Light mode is the same ink on paper with a deep teal primary. */
+.theme-turquoise {
+  color-scheme: light;
+
+  --background: #f3f2ed;
+  --background-raised: #f8f7f3;
+  --background-sunken: #eae9e3;
+  --card: #ffffff;
+  --card-foreground: #0a0c0e;
+  --popover: #ffffff;
+  --popover-foreground: #0a0c0e;
+  --muted: #ecebe5;
+  --foreground: #0a0c0e;
+  --muted-foreground: #5a5f64;
+  --faint-foreground: #7a7f84;
+  --primary: #077683;
+  --primary-hover: #066470;
+  --primary-foreground: #ffffff;
+  --primary-soft: #dcf3f5;
+  --primary-border: #a9dde2;
+  --secondary: #e9e8e2;
+  --secondary-foreground: #0a0c0e;
+  --secondary-soft: #f0efe9;
+  --accent: #dcf3f5;
+  --accent-foreground: #053f46;
+  --success: #2e7d5e;
+  --success-foreground: #ffffff;
+  --success-soft: #e2f0eb;
+  --warning: #a66607;
+  --warning-foreground: #ffffff;
+  --warning-soft: #fef3e2;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fdecec;
+  --info: #2563a8;
+  --info-foreground: #ffffff;
+  --info-soft: #e3edf8;
+  --ai: #e6ebf0;
+  --ai-foreground: #3f5567;
+  --ai-border: #c3cfda;
+  --border: #dad9d2;
+  --border-strong: #c2c1ba;
+  --input: #cfcec7;
+  --input-background: #ffffff;
+  --ring: #077683;
+  --overlay: rgba(10, 12, 14, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-raised: rgba(255, 255, 255, 0.86);
+  --glass-border: rgba(10, 12, 14, 0.08);
+  --glass-filter: blur(12px) saturate(120%);
+  --shadow-card: 0 1px 2px rgba(10, 12, 14, 0.06);
+  --shadow-raised: 0 12px 32px -12px rgba(10, 12, 14, 0.18);
+  --shadow-overlay: 0 24px 64px -24px rgba(10, 12, 14, 0.32);
+  --chart-1: #077683;
+  --chart-2: #b7791f;
+  --chart-3: #5b5fc7;
+  --chart-4: #b03aa8;
+  --chart-5: #5f8f1f;
+  --chart-6: #c7455f;
+  --chart-7: #1f8f88;
+  --chart-8: #5f7285;
+  --chart-track: rgba(10, 12, 14, 0.1);
+  --chart-positive: #2e7d5e;
+  --chart-negative: #dc2626;
+  --chart-target: rgba(10, 12, 14, 0.45);
+  --feel-1: #dc2626;
+  --feel-2: #d97b2f;
+  --feel-3: #b56f08;
+  --feel-4: #5f9c3f;
+  --feel-5: #2e7d5e;
+}
+
+.theme-turquoise.dark,
+.theme-turquoise .dark {
+  color-scheme: dark;
+
+  --background: #0f181d;
+  --background-raised: #131e24;
+  --background-sunken: #0a1115;
+  --card: #131e24;
+  --card-foreground: #f2f1ec;
+  --popover: #172329;
+  --popover-foreground: #f2f1ec;
+  --muted: #182428;
+  --foreground: #f2f1ec;
+  --muted-foreground: rgba(242, 241, 236, 0.72);
+  --faint-foreground: rgba(242, 241, 236, 0.5);
+  --primary: #16c8f2;
+  --primary-hover: #14b4da;
+  --primary-foreground: #052426;
+  --primary-soft: rgba(22, 200, 242, 0.14);
+  --primary-border: rgba(22, 200, 242, 0.32);
+  --secondary: #1f2d35;
+  --secondary-foreground: #f2f1ec;
+  --secondary-soft: rgba(242, 241, 236, 0.06);
+  --accent: #243740;
+  --accent-foreground: #f2f1ec;
+  --success: #4ade80;
+  --success-foreground: #0a0c0e;
+  --success-soft: rgba(74, 222, 128, 0.14);
+  --warning: #fbbf24;
+  --warning-foreground: #0a0c0e;
+  --warning-soft: rgba(251, 191, 36, 0.14);
+  --destructive: #f87171;
+  --destructive-foreground: #250607;
+  --destructive-soft: rgba(248, 113, 113, 0.14);
+  --info: #60a5fa;
+  --info-foreground: #0a0c0e;
+  --info-soft: rgba(96, 165, 250, 0.14);
+  --ai: rgba(174, 191, 209, 0.1);
+  --ai-foreground: #c8d5e2;
+  --ai-border: rgba(174, 191, 209, 0.3);
+  --border: #243741;
+  --border-strong: #33474f;
+  --input: #2b3f48;
+  --input-background: #131e24;
+  --ring: #16c8f2;
+  --overlay: rgba(6, 10, 13, 0.7);
+  --glass-bg: rgba(15, 24, 29, 0.72);
+  --glass-bg-raised: rgba(19, 30, 36, 0.82);
+  --glass-border: rgba(242, 241, 236, 0.08);
+  --glass-filter: blur(12px) saturate(120%);
+  --shadow-card: 0 1px 0 rgba(242, 241, 236, 0.03) inset, 0 8px 24px -16px rgba(0, 0, 0, 0.6);
+  --shadow-raised: 0 24px 64px -28px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(242, 241, 236, 0.05) inset;
+  --shadow-overlay: 0 32px 96px -32px rgba(0, 0, 0, 0.85), 0 1px 0 rgba(242, 241, 236, 0.06) inset;
+  --chart-1: #16c8f2;
+  --chart-2: #fcd34d;
+  --chart-3: #a5b4fc;
+  --chart-4: #f0abfc;
+  --chart-5: #bef264;
+  --chart-6: #fda4af;
+  --chart-7: #5eead4;
+  --chart-8: #aebfd1;
+  --chart-track: rgba(242, 241, 236, 0.12);
+  --chart-positive: #4ade80;
+  --chart-negative: #f87171;
+  --chart-target: rgba(242, 241, 236, 0.5);
+  --feel-1: #f87171;
+  --feel-2: #fb923c;
+  --feel-3: #fbbf24;
+  --feel-4: #a3e635;
+  --feel-5: #4ade80;
+}
+
 /* Stage: always-dark, theme-invariant immersive surface (timers, calls). */
 /* Vars live on the .stage element itself; inheritance from the nearest
    defining ancestor beats any .theme-x.dark set on <html>. */
@@ -680,19 +824,99 @@
   --feel-5: #4ade80;
 }
 
+/* Marquee: always-dark, theme-invariant public marketing surface (the landing). */
+/* Vars live on the .marquee element itself; inheritance from the nearest
+   defining ancestor beats any .theme-x.dark set on <html>. */
+.marquee {
+  color-scheme: dark;
+
+  --font-display: var(--font-marquee-display, Archivo, InterVariable, Inter, system-ui, sans-serif);
+
+  --background: #0a0c0e;
+  --background-raised: #0f1216;
+  --background-sunken: #050607;
+  --card: #0f1317;
+  --card-foreground: #f2f1ec;
+  --popover: #161b21;
+  --popover-foreground: #f2f1ec;
+  --muted: #13181d;
+  --foreground: #f2f1ec;
+  --muted-foreground: rgba(242, 241, 236, 0.72);
+  --faint-foreground: rgba(242, 241, 236, 0.5);
+  --primary: #16c8f2;
+  --primary-hover: #14b4da;
+  --primary-foreground: #052426;
+  --primary-soft: rgba(22, 200, 242, 0.14);
+  --primary-border: rgba(22, 200, 242, 0.32);
+  --secondary: #1a1f25;
+  --secondary-foreground: #f2f1ec;
+  --secondary-soft: rgba(242, 241, 236, 0.07);
+  --accent: rgba(22, 200, 242, 0.12);
+  --accent-foreground: #f2f1ec;
+  --success: #4ade80;
+  --success-foreground: #0a0c0e;
+  --success-soft: rgba(74, 222, 128, 0.14);
+  --warning: #fbbf24;
+  --warning-foreground: #0a0c0e;
+  --warning-soft: rgba(251, 191, 36, 0.14);
+  --destructive: #f87171;
+  --destructive-foreground: #250607;
+  --destructive-soft: rgba(248, 113, 113, 0.14);
+  --info: #60a5fa;
+  --info-foreground: #0a0c0e;
+  --info-soft: rgba(96, 165, 250, 0.14);
+  --ai: rgba(174, 191, 209, 0.1);
+  --ai-foreground: #c8d5e2;
+  --ai-border: rgba(174, 191, 209, 0.3);
+  --border: rgba(242, 241, 236, 0.14);
+  --border-strong: rgba(242, 241, 236, 0.28);
+  --input: rgba(242, 241, 236, 0.2);
+  --input-background: rgba(255, 255, 255, 0.06);
+  --ring: #16c8f2;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --glass-bg: rgba(10, 12, 14, 0.6);
+  --glass-bg-raised: rgba(15, 18, 22, 0.72);
+  --glass-border: rgba(242, 241, 236, 0.1);
+  --glass-filter: blur(12px) saturate(120%);
+  --shadow-card: 0 12px 32px -20px rgba(0, 0, 0, 0.8);
+  --shadow-raised: 0 24px 64px -28px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --shadow-overlay: 0 32px 96px -32px rgba(0, 0, 0, 0.95), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  --chart-1: #16c8f2;
+  --chart-2: #fcd34d;
+  --chart-3: #a5b4fc;
+  --chart-4: #f0abfc;
+  --chart-5: #bef264;
+  --chart-6: #fda4af;
+  --chart-7: #5eead4;
+  --chart-8: #aebfd1;
+  --chart-track: rgba(242, 241, 236, 0.12);
+  --chart-positive: #4ade80;
+  --chart-negative: #f87171;
+  --chart-target: rgba(242, 241, 236, 0.5);
+  --feel-1: #f87171;
+  --feel-2: #fb923c;
+  --feel-3: #fbbf24;
+  --feel-4: #a3e635;
+  --feel-5: #4ade80;
+}
+
 @theme inline {
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
 
-  /* Corner scale derived from the single --radius knob. */
-  --radius-xs: max(2px, calc(var(--radius) - 6px));
-  --radius-sm: max(2px, calc(var(--radius) - 4px));
-  --radius-md: max(3px, calc(var(--radius) - 2px));
+  /* Corners: one general radius for every surface and control
+     (rounded-sm through rounded-3xl all resolve to --radius), a fixed
+     2px xs step for control anatomy only (checkbox, kbd), and
+     rounded-full for buttons, chips and avatars. By decision
+     (docs/GUARDRAILS.md): no size hierarchy in corners. */
+  --radius-xs: 2px;
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 16px);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
 
   /* Motion: ease-out / ease-in-out / ease-spring utilities. */
   --ease-out: var(--ease-out);

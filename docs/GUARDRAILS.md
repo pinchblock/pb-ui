@@ -46,8 +46,28 @@ ignores the designer.
   colors.
 - The AI treatment (ai tokens + sparkle icon) marks every AI-assisted
   moment, and only AI-assisted moments.
-- Soft tints (primary-soft, success-soft...) are for chips, badges and
-  quiet emphasis; solid fills are for primary actions and status pills.
+- The brand colour is intense, so it is spent only where it means
+  "act": the primary Button, links and the active tab underline. Selected and checked states,
+  pressed chips and segments, eyebrows, step numbers, kickers, counters,
+  progress, icons and dots use the foreground (ink on light, white on
+  dark) with secondary or border-strong for the surface. `text-primary`,
+  `bg-primary`, `bg-primary-soft`, `border-primary` and `ring-primary`
+  anywhere else are rejected; focus rings are the one exception.
+  Backdrops and glows never mix the brand in either: pb-backdrop is a
+  neutral foreground vignette.
+- Corners: one radius, 6px, for every surface and control. There is no
+  size hierarchy: rounded-sm through rounded-3xl all resolve to the
+  token, so pick any and get 6px. rounded-xs is a fixed 2px for control
+  anatomy only (checkbox, kbd). Buttons, icon buttons, chips and avatars
+  are fully rounded, always; `pill` on Button is the default and a
+  rounded-* override on a button is rejected. Device mock-ups
+  (PhoneFrame) may use literal device corners; nothing else may use a
+  literal radius.
+- No caps. Eyebrows, table headers, badges and labels are sentence case
+  with modest tracking; `uppercase` is rejected.
+- Soft tints (success-soft, warning-soft...) are for status chips and
+  badges; solid status fills are for status pills. primary-soft exists
+  for the primary Button family only.
 - Charts use chart tokens (chart-1..8, chart-positive/negative/target/
   track, feel-1..5). Never pick chart colors by hand.
 

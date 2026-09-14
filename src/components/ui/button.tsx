@@ -17,7 +17,7 @@ import { cn } from "../../lib/cn.ts"
 export const buttonVariants = cva(
   cn(
     "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap",
-    "rounded-md font-medium select-none",
+    "rounded-full font-medium select-none" /* buttons are always fully rounded by rule */,
     "transition-[background-color,border-color,color,box-shadow,transform] duration-(--duration-fast) ease-(--ease-out)",
     "active:scale-[0.98]",
     "disabled:pointer-events-none disabled:opacity-50",

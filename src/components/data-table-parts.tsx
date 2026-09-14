@@ -65,7 +65,7 @@ export function DataTableHeaderCell<TData>({ header }: { header: Header<TData, u
           type="button"
           onClick={column.getToggleSortingHandler()}
           className={cn(
-            "-mx-1 inline-flex items-center gap-1 rounded-sm px-1 py-0.5 uppercase select-none",
+            "-mx-1 inline-flex items-center gap-1 rounded-sm px-1 py-0.5 select-none",
             "transition-colors duration-(--duration-fast) ease-(--ease-out)",
             "hover:text-foreground",
             "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",

@@ -76,6 +76,46 @@ end-call and rest warnings, warning amber for caution), and a
 neutral-cool steel primary that deliberately carries no theme's brand
 color. Available from TS as `import { stage } from "@pinchblock/ui/tokens"`.
 
+## Marquee
+
+Marquee is the second fixed surface set, for the public landing page.
+Same mechanism and guarantee as stage (one .marquee block, every token
+set on the element itself, identical in every theme and mode), but it
+carries the brand where stage deliberately does not: near-black ground,
+warm off-white ink, the app icon's accent as primary, and its own
+display face.
+
+Two things are particular to it:
+
+- The brand accent is ONE constant, `BRAND`, at the top of
+  src/tokens/marquee.ts. primary, primary-hover, primary-soft,
+  primary-border and ring derive from it. Recolouring the icon later
+  means changing that line and running `npm run gen`.
+- It overrides --font-display inside the block through a hook,
+  `--font-marquee-display`, that the consumer fills with the loaded
+  face (next/font's `variable` on the wrapper). The stack falls back
+  to the shared sans, so an unloaded font never means an unstyled
+  headline. The shared --font-display default is untouched: nothing
+  outside .marquee changes.
+
+Usage: wrap the landing subtree, supply the font variable, use normal
+token utilities inside. Sink: Stage group, "Marquee tokens".
+
+## Turquoise
+
+Turquoise is the landing palette as an app theme, so a visitor who
+signs in from the landing lands in an app that continues it. Its dark
+mode spreads marquee and overrides the surface and border slots (see
+DECISIONS.md, 2026-09-09) in src/tokens/themes/turquoise.ts,
+token for token, no copy. That keeps one source for the brand colour
+(the `BRAND` constant above reaches the theme too) and means the two
+can never drift. Light mode keeps the same near-black ink on warm
+paper; the icon cyan cannot carry text on paper (1.3:1), so light's
+primary is the same hue pulled down to a deep teal (#077683, 4.8:1 on
+the page, 5.4:1 with white on it). Status, AI and chart hues follow
+the other themes' light tuning. It is registered like any theme
+(`.theme-turquoise`), not the default.
+
 ## What themes must not touch
 
 - Status semantics (see docs/GUARDRAILS.md)
