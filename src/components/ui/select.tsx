@@ -107,9 +107,14 @@ export function SelectPopup({
 
 export interface SelectItemProps extends Omit<BaseSelect.Item.Props, "className"> {
   className?: string | undefined
+  /** Right-aligned secondary text: a count, a unit, a date. Sits before the selected mark. */
+  trailing?: React.ReactNode
 }
 
-export function SelectItem({ className, children, ...props }: SelectItemProps) {
+/** Meta text at the end of an item row: small, muted, digits aligned. */
+const itemTrailingClassName = "shrink-0 text-xs tabular-nums text-muted-foreground"
+
+export function SelectItem({ className, children, trailing, ...props }: SelectItemProps) {
   return (
     <BaseSelect.Item
       className={cn(
@@ -123,6 +128,7 @@ export function SelectItem({ className, children, ...props }: SelectItemProps) {
       <BaseSelect.ItemText className="min-w-0 flex-1 truncate">
         {children}
       </BaseSelect.ItemText>
+      {trailing ? <span className={itemTrailingClassName}>{trailing}</span> : null}
       <BaseSelect.ItemIndicator className="flex shrink-0 text-foreground">
         <Check className="size-4" />
       </BaseSelect.ItemIndicator>

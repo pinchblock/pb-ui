@@ -97,6 +97,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 Everything the audits surfaced that v0.1 intentionally does not cover.
 
 - SHIPPED in v0.2.0: Combobox + AsyncCombobox (Base UI combobox; AsyncCombobox replaces PeopleSearch's hand-rolled ARIA). Command palette still waits for a use case.
+- SHIPPED in v0.4.1: `trailing` slot on ComboboxItem and SelectItem for a count, unit or date at the end of the row (Explore's country facet with coach counts was the first consumer). Do not nest spans inside the item label for this.
 - SHIPPED in v0.2.0: Calendar, DatePicker, DateRangePicker, MonthPicker (react-day-picker v10, Monday weeks).
 - SHIPPED in v0.2.0: SortableList/SortableItem/DragHandle/ReorderButtons (dnd-kit classic packages, keyboard drag plus arrow-button parity path).
 - AnnualTimeline/periodization Gantt: already the most reusable organism in pb-app, needs a token audit and phase/event API cleanup before porting.
