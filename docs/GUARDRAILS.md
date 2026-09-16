@@ -70,6 +70,15 @@ ignores the designer.
   for the primary Button family only.
 - Charts use chart tokens (chart-1..8, chart-positive/negative/target/
   track, feel-1..5). Never pick chart colors by hand.
+- Buttons are as wide as their label. Never stretch an action button to
+  its container: no `w-full`, `flex-1`, `block` or `mx-auto max-w-*` on
+  a Button, and no full-width button rows. Actions sit at the end of
+  their row (start in a left-aligned form), and on phones a row of
+  actions wraps rather than stretching. A column of choices that are
+  really list items (a ghost button with `justify-start` and
+  `text-left`) is a list, not a stretched button: use ListRow, or keep
+  the row styling until it is migrated. The sign-in card is the one
+  accepted full-width stack.
 
 ## Motion rules
 
