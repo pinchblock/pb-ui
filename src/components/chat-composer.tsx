@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUp, Paperclip } from "@phosphor-icons/react"
+import { PaperPlaneRight, Paperclip } from "@phosphor-icons/react"
 import { useCallback, useEffect, useRef, useState } from "react"
 import type * as React from "react"
 
@@ -75,12 +75,36 @@ export function ChatComposer({
     resize()
   }, [resize, currentValue])
 
+  /* The first measurement runs against the fallback face. When the real one
+     swaps in the content grows by a pixel or two and the box, already sized,
+     shows a scrollbar beside the send button. Measure again once fonts are
+     ready, and whenever the composer changes width. */
+  useEffect(() => {
+    let cancelled = false
+    void document.fonts?.ready.then(() => {
+      if (!cancelled) resize()
+    })
+    const textarea = textareaRef.current
+    if (!textarea || typeof ResizeObserver === "undefined") return () => { cancelled = true }
+    const observer = new ResizeObserver(() => resize())
+    observer.observe(textarea)
+    return () => {
+      cancelled = true
+      observer.disconnect()
+    }
+  }, [resize])
+
   const send = useCallback(() => {
     const message = currentValue.trim()
     if (disabled || (!message && !canSendWithoutText)) return
     onSend?.(message)
     setValue("")
-    requestAnimationFrame(resize)
+    requestAnimationFrame(() => {
+      resize()
+      /* A sent message is rarely the last one; the cursor stays where the
+         next one is typed, whether the send came from Enter or the button. */
+      textareaRef.current?.focus()
+    })
   }, [canSendWithoutText, currentValue, disabled, onSend, setValue, resize])
 
   return (
@@ -139,7 +163,7 @@ export function ChatComposer({
           disabled={disabled || (currentValue.trim().length === 0 && !canSendWithoutText)}
           onClick={send}
         >
-          <ArrowUp aria-hidden />
+          <PaperPlaneRight aria-hidden />
         </Button>
       </div>
     </div>
