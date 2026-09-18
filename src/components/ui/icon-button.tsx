@@ -32,9 +32,9 @@ export const iconButtonVariants = cva(
           "border border-border bg-transparent text-muted-foreground hover:border-border-strong hover:bg-muted hover:text-foreground",
       },
       size: {
-        md: "size-9 [&_svg:not([class*='size-'])]:size-4",
-        sm: "size-8 [&_svg:not([class*='size-'])]:size-4",
-        xs: "size-6 [&_svg:not([class*='size-'])]:size-3.5",
+        md: "size-9 max-sm:size-10 [&_svg:not([class*='size-'])]:size-4",
+        sm: "size-8 max-sm:size-10 [&_svg:not([class*='size-'])]:size-4",
+        xs: "size-6 max-sm:size-10 [&_svg:not([class*='size-'])]:size-3.5",
       },
       /** Circular shape (floating actions, avatar-adjacent controls). */
       pill: {

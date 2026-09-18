@@ -70,6 +70,10 @@ ignores the designer.
   for the primary Button family only.
 - Charts use chart tokens (chart-1..8, chart-positive/negative/target/
   track, feel-1..5). Never pick chart colors by hand.
+- Square controls stay square. The base layer lifts every button to a
+  40px tap target below 640px, so icon sizes grow in both directions
+  there rather than stretching into an oval. A control that opts out of
+  the tap target carries `no-min-tap`.
 - Buttons are as wide as their label. Never stretch an action button to
   its container: no `w-full`, `flex-1`, `block` or `mx-auto max-w-*` on
   a Button, and no full-width button rows. Actions sit at the end of

@@ -39,9 +39,9 @@ export const buttonVariants = cva(
         md: "h-9 px-4 text-sm",
         lg: "h-10 px-6 text-sm",
         xl: "h-12 px-8 text-base",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-xs": "size-6",
+        icon: "size-9 max-sm:size-10",
+        "icon-sm": "size-8 max-sm:size-10",
+        "icon-xs": "size-6 max-sm:size-10",
       },
       /** Pill shape for marketing CTAs and chips-adjacent actions. */
       pill: {
