@@ -94,6 +94,14 @@ export {
   type DialogTitleProps,
 } from "./components/ui/dialog.tsx"
 export {
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuPopup,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+  type ContextMenuPopupProps,
+} from "./components/ui/context-menu.tsx"
+export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuGroup,
