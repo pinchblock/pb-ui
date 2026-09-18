@@ -93,6 +93,8 @@ export {
   type DialogPopupProps,
   type DialogTitleProps,
 } from "./components/ui/dialog.tsx"
+export { EmojiPicker, type EmojiPickerProps } from "./components/ui/emoji-picker.tsx"
+export { emojiGroups, searchEmoji, type EmojiGroup } from "./components/ui/emoji-data.ts"
 export {
   ContextMenu,
   ContextMenuItem,

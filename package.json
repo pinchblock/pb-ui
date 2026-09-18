@@ -1,7 +1,7 @@
 {
   "name": "@pinchblock/ui",
   "private": true,
-  "version": "0.4.5",
+  "version": "0.4.6",
   "type": "module",
   "description": "Pinchblock design system and component library. Owned source (shadcn-style), Base UI + Tailwind v4, TS-authored tokens generated to CSS, no build step.",
   "scripts": {

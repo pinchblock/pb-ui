@@ -1,4 +1,6 @@
-import { useRef, useState } from "react"
+import {
+  EmojiPicker,
+} from "react"
 
 import {
   ChatBubble,
@@ -167,6 +169,15 @@ export default function ChatPage() {
               />
             }
           />
+        </div>
+      </Showcase>
+
+      <Showcase
+        title="Emoji picker"
+        hint="Native emoji in a searchable grid, for surfaces where the platform picker is out of reach: a desktop composer, a reaction row. A touch keyboard already carries one, so callers usually render this only on pointer devices. The set loads on first open."
+      >
+        <div className="mx-auto w-fit rounded-lg border border-border bg-popover p-2 shadow-raised">
+          <EmojiPicker onSelect={() => {}} recent={["\u{1F4AA}", "\u{1F525}", "\u{1F44D}"]} />
         </div>
       </Showcase>
 
