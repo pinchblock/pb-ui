@@ -134,7 +134,7 @@ export default function ChatPage() {
         </div>
       </Showcase>
 
-      <Showcase title="Composer with attachments" hint="Attachment chips render in the slot above the input row. Send stays disabled while empty; Enter sends, Shift+Enter breaks the line.">
+      <Showcase title="Composer with attachments" hint="Attachment chips render in the slot above the input row. Send stays disabled while empty unless canSendWithoutText says the attachment is the message; Enter sends, Shift+Enter breaks the line.">
         <div className="mx-auto max-w-md">
           <ChatComposer
             placeholder="Add a note for your coach"
@@ -145,6 +145,24 @@ export default function ChatPage() {
                 name="warmup-set.mp4"
                 previewUrl={img("pb-attach", 96, 96)}
                 progress={38}
+                onRemove={() => {}}
+              />
+            }
+          />
+        </div>
+      </Showcase>
+
+      <Showcase title="Composer sending an attachment alone" hint="canSendWithoutText keeps Send live while the message is empty, for a photo or a clip that is the whole message. Without it the caller needs a second send button beside the disabled one.">
+        <div className="mx-auto max-w-md">
+          <ChatComposer
+            canSendWithoutText
+            placeholder="Add a note for your coach"
+            onSend={() => {}}
+            onAttach={() => {}}
+            attachments={
+              <UploadFileChip
+                name="topout.jpg"
+                previewUrl={img("pb-attach-solo", 96, 96)}
                 onRemove={() => {}}
               />
             }

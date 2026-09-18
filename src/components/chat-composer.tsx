@@ -25,6 +25,12 @@ export interface ChatComposerProps {
   disabled?: boolean
   /** Attachment chips (e.g. UploadFileChip) rendered above the input. */
   attachments?: React.ReactNode
+  /**
+   * Lets the composer send with an empty message, for a caller whose
+   * attachments carry the content (a photo or a clip on its own). Without it
+   * such a caller needs a second send button beside the disabled one.
+   */
+  canSendWithoutText?: boolean
   /** Accessible label for the textarea. */
   label?: string
   className?: string | undefined
@@ -39,6 +45,7 @@ export function ChatComposer({
   placeholder = "Message",
   disabled = false,
   attachments,
+  canSendWithoutText = false,
   label = "Message",
   className,
 }: ChatComposerProps) {
@@ -70,11 +77,11 @@ export function ChatComposer({
 
   const send = useCallback(() => {
     const message = currentValue.trim()
-    if (!message || disabled) return
+    if (disabled || (!message && !canSendWithoutText)) return
     onSend?.(message)
     setValue("")
     requestAnimationFrame(resize)
-  }, [currentValue, disabled, onSend, setValue, resize])
+  }, [canSendWithoutText, currentValue, disabled, onSend, setValue, resize])
 
   return (
     <div
@@ -129,7 +136,7 @@ export function ChatComposer({
           size="icon-sm"
           pill
           aria-label="Send message"
-          disabled={disabled || currentValue.trim().length === 0}
+          disabled={disabled || (currentValue.trim().length === 0 && !canSendWithoutText)}
           onClick={send}
         >
           <ArrowUp aria-hidden />
