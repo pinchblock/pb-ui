@@ -18,8 +18,8 @@ export const segmentedControlVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-8",
-        md: "h-9",
+        sm: "h-8 max-sm:h-12",
+        md: "h-9 max-sm:h-12",
       },
     },
     defaultVariants: {
