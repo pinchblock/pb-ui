@@ -21,6 +21,12 @@ export interface ChatComposerProps {
   onSend?: (value: string) => void
   /** Renders the attach button when provided. */
   onAttach?: () => void
+  /**
+   * Extra controls on the input row, beside the attach button: an emoji
+   * picker trigger, a voice note, whatever the surface adds. They sit
+   * before the message so the send control stays last.
+   */
+  actions?: React.ReactNode
   placeholder?: string
   disabled?: boolean
   /** Attachment chips (e.g. UploadFileChip) rendered above the input. */
@@ -42,6 +48,7 @@ export function ChatComposer({
   onValueChange,
   onSend,
   onAttach,
+  actions,
   placeholder = "Message",
   disabled = false,
   attachments,
@@ -133,6 +140,7 @@ export function ChatComposer({
             <Paperclip aria-hidden />
           </Button>
         )}
+        {actions}
         <textarea
           ref={textareaRef}
           rows={1}
