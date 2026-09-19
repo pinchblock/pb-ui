@@ -22,7 +22,12 @@ export { stage } from "./stage.ts"
 /** Marquee: always-dark, theme-invariant marketing surface set (wrap in class "marquee"). */
 export { marquee, marqueeDisplayFont, marqueePalette } from "./marquee.ts"
 
-/** All themes, default first. Add new themes here and in src/styles via `npm run gen`. */
+/** Every theme. Add new ones here and in src/styles via `npm run gen`. */
 export const themes: ThemeDefinition[] = [ocean, nocturne, ember, glacier, turquoise]
 
-export const defaultTheme: ThemeDefinition = ocean
+/**
+ * What a surface renders when nobody has chosen: the product moved to
+ * turquoise on 9 September 2026, so the system says so too. Order in
+ * `themes` is the catalogue order, not a statement about the default.
+ */
+export const defaultTheme: ThemeDefinition = turquoise
