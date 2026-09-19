@@ -1,6 +1,7 @@
 import {
   applyMode,
   applyTheme,
+  defaultTheme,
   MODE_STORAGE_KEY,
   setDensity,
   setFontScale,
@@ -35,9 +36,9 @@ function readInitialTheme(): string {
   const fromUrl = params.get("theme")
   if (fromUrl && themes.some((t) => t.id === fromUrl)) return fromUrl
   try {
-    return localStorage.getItem(THEME_STORAGE_KEY) ?? "ocean"
+    return localStorage.getItem(THEME_STORAGE_KEY) ?? defaultTheme.id
   } catch {
-    return "ocean"
+    return defaultTheme.id
   }
 }
 
@@ -45,9 +46,9 @@ function readInitialMode(): ModeSetting {
   const fromUrl = params.get("mode")
   if (fromUrl === "light" || fromUrl === "dark" || fromUrl === "system") return fromUrl
   try {
-    return (localStorage.getItem(MODE_STORAGE_KEY) as ModeSetting) ?? "system"
+    return (localStorage.getItem(MODE_STORAGE_KEY) as ModeSetting) ?? "dark"
   } catch {
-    return "system"
+    return "dark"
   }
 }
 
