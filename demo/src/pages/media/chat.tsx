@@ -1,11 +1,10 @@
-import {
-  EmojiPicker,
-} from "react"
+import { useRef, useState } from "react"
 
 import {
   ChatBubble,
   ChatComposer,
   DateDivider,
+  EmojiPicker,
   TypingIndicator,
   UploadFileChip,
 } from "@pinchblock/ui"

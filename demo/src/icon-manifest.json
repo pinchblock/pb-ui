@@ -41,6 +41,11 @@
       "sink": 0
     },
     {
+      "name": "MagnifyingGlass",
+      "library": 2,
+      "sink": 4
+    },
+    {
       "name": "Play",
       "library": 2,
       "sink": 4
@@ -59,11 +64,6 @@
       "name": "CaretDown",
       "library": 5,
       "sink": 0
-    },
-    {
-      "name": "MagnifyingGlass",
-      "library": 1,
-      "sink": 4
     },
     {
       "name": "Sparkle",
@@ -109,11 +109,6 @@
       "name": "ArrowRight",
       "library": 0,
       "sink": 2
-    },
-    {
-      "name": "ArrowUp",
-      "library": 2,
-      "sink": 0
     },
     {
       "name": "CalendarPlus",
@@ -217,6 +212,11 @@
     },
     {
       "name": "ArrowLeft",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "ArrowUp",
       "library": 1,
       "sink": 0
     },
@@ -372,6 +372,11 @@
     },
     {
       "name": "Paperclip",
+      "library": 1,
+      "sink": 0
+    },
+    {
+      "name": "PaperPlaneRight",
       "library": 1,
       "sink": 0
     },
