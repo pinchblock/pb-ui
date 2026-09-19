@@ -1,92 +1,96 @@
-import { renderEmail, type EmailInput } from "@pinchblock/ui/email"
-import { useState } from "react"
+import { emailSamples, renderEmail } from "@pinchblock/ui/email"
+import { useMemo, useState } from "react"
 
 import { CodeBlock, PageIntro, Showcase } from "../../sink/showcase.tsx"
 
-const ORIGIN = "https://pinchblock.app"
+type Scheme = "light" | "dark"
+type Width = "desktop" | "phone"
+type View = "rendered" | "text" | "source"
 
-const samples: { id: string; label: string; input: EmailInput }[] = [
-  {
-    id: "message",
-    label: "Message digest",
-    input: {
-      action: { href: `${ORIGIN}/messages/abc`, label: "Open the conversation" },
-      footerLinks: [
-        { href: `${ORIGIN}/settings?tab=notifications`, label: "Email settings" },
-        { href: `${ORIGIN}/email-preferences/unsubscribe?token=x`, label: "Turn off message emails" },
-      ],
-      info: [
-        "You get this email because message emails are on in your Pinchblock settings.",
-        "Pinchblock, coaching that travels with you.",
-      ],
-      origin: ORIGIN,
-      paragraphs: ["She wrote while you were away. Here is the latest."],
-      quote: [
-        "Saturday session moved to seven, the gym opens late",
-        "Bring the crash pad if you still have it",
-        "Also, how did the deadlift set feel on Tuesday?",
-      ],
-      title: "Maya Rivera sent you 3 messages",
-    },
-  },
-  {
-    id: "reset",
-    label: "Password reset",
-    input: {
-      action: { href: `${ORIGIN}/auth/reset?token=x`, label: "Choose a new password" },
-      actionNote: "The link expires in 60 minutes and can be used once.",
-      footerLinks: [{ href: `${ORIGIN}/help`, label: "Help" }],
-      headerNote: "Account security",
-      info: ["Sent by Pinchblock because a reset was requested for this address."],
-      origin: ORIGIN,
-      paragraphs: [
-        "Somebody asked to reset the password for this account. Use the button below within the next hour.",
-        "If it was not you, nothing has changed and you can close this email.",
-      ],
-      title: "Reset your password",
-    },
-  },
-  {
-    id: "notice",
-    label: "Notice, no action",
-    input: {
-      footerLinks: [{ href: `${ORIGIN}/settings`, label: "Email settings" }],
-      info: ["You get this email because plan updates are on."],
-      origin: ORIGIN,
-      paragraphs: [
-        "Maya finished building your twelve week block. It is waiting in the app whenever you are.",
-      ],
-      title: "Your plan is ready",
-    },
-  },
+/**
+ * The frame renders the mail in isolation. Client colour scheme is
+ * forced rather than inherited, so both halves of the design can be
+ * checked from one machine: the dark rules live in a media query that
+ * the preview neutralises for the light view.
+ */
+function frameFor(html: string, scheme: Scheme): string {
+  return scheme === "dark"
+    ? html.replaceAll("prefers-color-scheme:dark", "prefers-color-scheme:no-preference")
+    : html.replaceAll("prefers-color-scheme:dark", "prefers-color-scheme:never-match")
+}
+
+const schemes: { id: Scheme; label: string }[] = [
+  { id: "light", label: "Light" },
+  { id: "dark", label: "Dark" },
+]
+const widths: { id: Width; label: string; px: number }[] = [
+  { id: "desktop", label: "Desktop", px: 680 },
+  { id: "phone", label: "Phone", px: 390 },
+]
+const views: { id: View; label: string }[] = [
+  { id: "rendered", label: "Rendered" },
+  { id: "text", label: "Plain text" },
+  { id: "source", label: "HTML source" },
 ]
 
+function Choice<T extends string>({
+  onSelect,
+  options,
+  value,
+}: {
+  onSelect: (value: T) => void
+  options: { id: T; label: string }[]
+  value: T
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((option) => (
+        <button
+          key={option.id}
+          type="button"
+          aria-pressed={option.id === value}
+          onClick={() => onSelect(option.id)}
+          className={
+            option.id === value
+              ? "rounded-full border border-border-strong bg-secondary px-3 py-1.5 text-sm font-medium"
+              : "rounded-full border border-border px-3 py-1.5 text-sm text-muted-foreground"
+          }
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 export default function EmailPage() {
-  const [selected, setSelected] = useState(samples[0]!.id)
-  const sample = samples.find((entry) => entry.id === selected) ?? samples[0]!
-  const { html, text } = renderEmail(sample.input)
+  const [sampleId, setSampleId] = useState(emailSamples[0]!.id)
+  const [scheme, setScheme] = useState<Scheme>("light")
+  const [width, setWidth] = useState<Width>("desktop")
+  const [view, setView] = useState<View>("rendered")
+
+  const sample = emailSamples.find((entry) => entry.id === sampleId) ?? emailSamples[0]!
+  const { html, text } = useMemo(() => renderEmail(sample.input), [sample])
+  const frameWidth = widths.find((entry) => entry.id === width)!.px
 
   return (
     <div>
       <PageIntro
         title="Email"
-        description="One transactional template for every message the product sends: a message digest, a password reset, a receipt, an invitation. It emits a self-contained HTML document plus its plain text alternative."
-        use="renderEmail is framework-free, so a backend worker imports it without React: import { renderEmail } from '@pinchblock/ui/email'. Colours come from the marquee brand surface and the turquoise light set, the type from the shared stack and scale, corners from the one radius, and the action is a fully rounded button sized to its label."
+        description="Every transactional mail the product sends, on one layout. The catalogue lives in the library (src/email/samples.ts), so a new kind of email appears here by adding a record rather than a page."
+        use="renderEmail is framework-free, so a backend worker imports it without React: import { renderEmail } from '@pinchblock/ui/email'. It returns the HTML document and the matching plain text from one input. Colours come from the marquee brand surface and the turquoise light set, type from the shared stack and scale, corners from the one radius, and the action is a fully rounded button sized to its label."
       />
 
-      <Showcase
-        title="Templates"
-        hint="Rendered in a frame, exactly as sent. A mail client shows the dark variant when the reader's system is dark."
-      >
+      <Showcase title="Catalogue" hint="Pick a mail, then check it in both colour schemes and at phone width.">
         <div className="flex flex-wrap gap-2">
-          {samples.map((entry) => (
+          {emailSamples.map((entry) => (
             <button
               key={entry.id}
               type="button"
-              onClick={() => setSelected(entry.id)}
-              aria-pressed={entry.id === selected}
+              aria-pressed={entry.id === sampleId}
+              onClick={() => setSampleId(entry.id)}
               className={
-                entry.id === selected
+                entry.id === sampleId
                   ? "rounded-full border border-border-strong bg-secondary px-4 py-2 text-sm font-medium"
                   : "rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
               }
@@ -95,32 +99,78 @@ export default function EmailPage() {
             </button>
           ))}
         </div>
-        <iframe
-          key={sample.id}
-          title={`${sample.label} email`}
-          srcDoc={html}
-          className="mt-4 h-[640px] w-full rounded-md border border-border bg-white"
-        />
+
+        <div className="mt-4 rounded-md border border-border bg-muted p-4">
+          <p className="text-sm">{sample.description}</p>
+          <dl className="mt-3 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1 text-xs">
+            <dt className="text-muted-foreground">Subject</dt>
+            <dd className="font-mono">{sample.subject}</dd>
+            <dt className="text-muted-foreground">Built in</dt>
+            <dd className="font-mono break-all">{sample.builtIn}</dd>
+          </dl>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <Choice options={views} onSelect={setView} value={view} />
+          {view === "rendered" ? (
+            <>
+              <Choice options={schemes} onSelect={setScheme} value={scheme} />
+              <Choice options={widths} onSelect={setWidth} value={width} />
+            </>
+          ) : null}
+        </div>
+
+        {view === "rendered" ? (
+          <div className="mt-4 flex justify-center rounded-md border border-border bg-background-sunken p-4">
+            <iframe
+              key={`${sample.id}-${scheme}-${width}`}
+              title={`${sample.label}, ${scheme}`}
+              srcDoc={frameFor(html, scheme)}
+              style={{ width: frameWidth }}
+              className="h-[680px] max-w-full rounded-md border border-border bg-white"
+            />
+          </div>
+        ) : (
+          <pre className="mt-4 max-h-[680px] overflow-auto rounded-md border border-border bg-muted p-4 font-mono text-xs whitespace-pre-wrap">
+            {view === "text" ? text : html}
+          </pre>
+        )}
       </Showcase>
 
-      <Showcase title="Plain text alternative" hint="Built from the same input, so the two never drift.">
-        <pre className="overflow-x-auto rounded-md border border-border bg-muted p-4 font-mono text-xs whitespace-pre-wrap">
-          {text}
-        </pre>
+      <Showcase title="Blocks" hint="Every part is optional except the title, so one layout covers a receipt and a one-line notice.">
+        <ul className="grid gap-2 text-sm md:grid-cols-2">
+          <li><span className="font-medium">eyebrow</span> <span className="text-muted-foreground">a short line above the headline, sentence case</span></li>
+          <li><span className="font-medium">title</span> <span className="text-muted-foreground">the headline, the one required field</span></li>
+          <li><span className="font-medium">paragraphs</span> <span className="text-muted-foreground">body copy, one string per paragraph</span></li>
+          <li><span className="font-medium">quote</span> <span className="text-muted-foreground">quoted lines, for message previews</span></li>
+          <li><span className="font-medium">details</span> <span className="text-muted-foreground">label and value rows, one may carry the figure</span></li>
+          <li><span className="font-medium">action</span> <span className="text-muted-foreground">one button, sized to its label</span></li>
+          <li><span className="font-medium">actionNote</span> <span className="text-muted-foreground">a quiet caveat under the button</span></li>
+          <li><span className="font-medium">fine</span> <span className="text-muted-foreground">reference identifiers in small print</span></li>
+          <li><span className="font-medium">footerLinks</span> <span className="text-muted-foreground">the links area</span></li>
+          <li><span className="font-medium">info</span> <span className="text-muted-foreground">the info area: why this arrived</span></li>
+        </ul>
       </Showcase>
 
       <CodeBlock
-        code={`import { renderEmail } from "@pinchblock/ui/email"
+        code={`import { emailSamples, renderEmail } from "@pinchblock/ui/email"
 
 const { html, text } = renderEmail({
   origin: "https://pinchblock.app",
-  title: "Maya Rivera sent you 3 messages",
-  paragraphs: ["She wrote while you were away."],
-  quote: ["Saturday session moved to seven"],
-  action: { href: threadUrl, label: "Open the conversation" },
-  footerLinks: [{ href: settingsUrl, label: "Email settings" }],
-  info: ["You get this because message emails are on."],
-})`}
+  eyebrow: "Payment received",
+  title: "Your payment went through",
+  paragraphs: ["Your coaching purchase is confirmed."],
+  details: [
+    { label: "Offering", value: "Twelve week strength block" },
+    { label: "Amount", value: "149.00 EUR", emphasis: true },
+  ],
+  action: { href: transactionUrl, label: "View the transaction" },
+  fine: [{ label: "Transaction", value: transactionId }],
+  footerLinks: [{ href: billingUrl, label: "Payments and purchases" }],
+  info: ["Pinchblock sends this whenever a payment settles."],
+})
+
+// Every mail the product sends is listed in emailSamples.`}
       />
     </div>
   )

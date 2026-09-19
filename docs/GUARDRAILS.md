@@ -44,7 +44,9 @@ ignores the designer.
   the brand colour appears only on that action and on links. Send no
   transactional mail that does not go through `renderEmail`, and add a
   new kind of message by passing different input, never by writing
-  another template.
+  another template. Every kind the product sends also gets a record in
+  `src/email/samples.ts`, which is what the sink's Email page lists, so
+  the catalogue stays the honest answer to "what do we send?".
 
 ## Visual rules (product decisions, not preferences)
 

@@ -78,6 +78,8 @@ const type = {
   smallLine: px(textScale.sm!.lineHeight),
   fine: px(textScale.xs!.size),
   fineLine: px(textScale.xs!.lineHeight),
+  figure: px(textScale["3xl"]!.size),
+  figureLine: px(textScale["3xl"]!.lineHeight),
 } as const
 
 /** The one general radius; buttons are fully rounded. See GUARDRAILS. */
@@ -98,17 +100,33 @@ export type EmailLink = {
   label: string
 }
 
+/** One row of the detail panel: a label, its value, and how loud it is. */
+export type EmailDetail = {
+  label: string
+  value: string
+  /** The one figure the mail is about, set large. At most one row. */
+  emphasis?: boolean
+}
+
 export type EmailInput = {
   /** Absolute origin of the app this mail points at, no trailing slash. */
   origin: string
   /** Big line at the top of the sheet. Sentence case, no full stop. */
   title: string
+  /** Short line above the title. Sentence case; the no-caps rule holds. */
+  eyebrow?: string
+  /** Document language. Mail is localised per recipient. */
+  locale?: string
   /** Body copy, one string per paragraph. */
   paragraphs?: string[]
   /** Inbox preview line. Falls back to the first paragraph. */
   preheader?: string
   /** Quoted lines, for message previews and excerpts. */
   quote?: string[]
+  /** Label and value rows in a panel: what was bought, how much, when. */
+  details?: EmailDetail[]
+  /** Small print under the body: transaction and document identifiers. */
+  fine?: EmailDetail[]
   /** The one call to action. Rendered as a button sized to its label. */
   action?: EmailLink
   /** Quiet line under the action, for a fallback URL or a caveat. */
@@ -189,6 +207,56 @@ function quoteBlock(lines: string[]): string {
   )
 }
 
+function detailPanel(rows: EmailDetail[]): string {
+  const painted = rows
+    .filter((row) => row.label.trim().length > 0 || row.value.trim().length > 0)
+    .map((row, index) => {
+      const top = index === 0 ? 0 : 16
+      if (row.emphasis) {
+        // The figure the mail is about: its own block, set large.
+        return (
+          `<div style="margin:${top}px 0 0;font-family:${font};font-size:${type.small}px;` +
+          `line-height:${type.smallLine}px;color:${palette.inkFaint};" class="pb-detail-label">${escapeHtml(row.label)}</div>` +
+          `<div style="margin:4px 0 0;font-family:${font};font-size:${type.figure}px;` +
+          `line-height:${type.figureLine}px;font-weight:600;letter-spacing:${headingTracking};` +
+          `color:${palette.ink};" class="pb-detail-figure">${escapeHtml(row.value)}</div>`
+        )
+      }
+      // Two columns that collapse on a narrow client, so nothing is clipped.
+      return (
+        `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" ` +
+        `style="margin:${top}px 0 0;table-layout:fixed;"><tr>` +
+        `<td width="45%" valign="top" style="font-family:${font};font-size:${type.small}px;` +
+        `line-height:${type.smallLine}px;color:${palette.inkFaint};" class="pb-detail-label">${escapeHtml(row.label)}</td>` +
+        `<td valign="top" align="right" style="font-family:${font};font-size:${type.small}px;` +
+        `line-height:${type.smallLine}px;font-weight:500;color:${palette.ink};` +
+        `overflow-wrap:anywhere;" class="pb-detail-value">${escapeHtml(row.value)}</td>` +
+        `</tr></table>`
+      )
+    })
+    .join("")
+  if (!painted) return ""
+  return (
+    `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:24px 0 0;">` +
+    `<tr><td class="pb-detail" style="padding:20px;border-radius:${radius};` +
+    `background:${palette.quote};border:1px solid ${palette.border};">${painted}</td></tr></table>`
+  )
+}
+
+function finePrint(rows: EmailDetail[]): string {
+  const painted = rows
+    .filter((row) => row.value.trim().length > 0)
+    .map(
+      (row, index) =>
+        `<p class="pb-fine" style="margin:${index === 0 ? 24 : 10}px 0 0;font-family:${font};` +
+        `font-size:${type.fine}px;line-height:${type.fineLine}px;color:${palette.inkFaint};">` +
+        `${escapeHtml(row.label)}<br><span style="overflow-wrap:anywhere;word-break:break-all;">` +
+        `${escapeHtml(row.value)}</span></p>`,
+    )
+    .join("")
+  return painted
+}
+
 function footerLinkRow(links: EmailLink[]): string {
   const painted = links
     .map((link) => {
@@ -253,15 +321,23 @@ function body(input: EmailInput): string {
         top: 16,
       })
     : ""
+  const eyebrow = input.eyebrow
+    ? `<p class="pb-eyebrow" style="margin:0 0 8px;font-family:${font};font-size:${type.small}px;` +
+      `line-height:${type.smallLine}px;font-weight:500;letter-spacing:0.01em;` +
+      `color:${palette.inkFaint};">${escapeHtml(input.eyebrow)}</p>`
+    : ""
   return (
     `<tr><td class="pb-body-cell" style="padding:32px;">` +
+    eyebrow +
     `<h1 class="pb-title" style="margin:0;font-family:${font};font-size:${type.title}px;` +
     `line-height:${type.titleLine}px;font-weight:600;letter-spacing:${headingTracking};` +
     `color:${palette.ink};">${escapeHtml(input.title)}</h1>` +
     paragraphs +
     (input.quote?.length ? quoteBlock(input.quote) : "") +
+    (input.details?.length ? detailPanel(input.details) : "") +
     (input.action ? actionButton(input.action) : "") +
     note +
+    (input.fine?.length ? finePrint(input.fine) : "") +
     `</td></tr>`
   )
 }
@@ -308,6 +384,9 @@ function styleBlock(): string {
     `.pb-title{color:${palette.darkInk}!important;}` +
     `.pb-body,.pb-quote-line{color:${palette.darkInkMuted}!important;}` +
     `.pb-note,.pb-info,.pb-footer-dot{color:${palette.darkInkFaint}!important;}` +
+    `.pb-eyebrow,.pb-detail-label,.pb-fine{color:${palette.darkInkFaint}!important;}` +
+    `.pb-detail-value,.pb-detail-figure{color:${palette.darkInk}!important;}` +
+    `.pb-detail{background:${palette.darkQuote}!important;border-color:${palette.darkBorder}!important;}` +
     `.pb-quote{background:${palette.darkQuote}!important;border-left-color:${palette.darkBorderStrong}!important;}` +
     `.pb-footer{background:${palette.darkQuote}!important;border-top-color:${palette.darkBorder}!important;}` +
     `.pb-action{background:${palette.darkAction}!important;}` +
@@ -319,15 +398,19 @@ function styleBlock(): string {
 }
 
 function plainText(input: EmailInput): string {
-  const blocks: string[] = [input.title]
+  const blocks: string[] = []
+  if (input.eyebrow) blocks.push(input.eyebrow)
+  blocks.push(input.title)
   for (const line of input.paragraphs ?? []) blocks.push(line)
   for (const line of input.quote ?? []) {
     if (line.trim().length > 0) blocks.push(`> ${line}`)
   }
+  for (const row of input.details ?? []) blocks.push(`${row.label}: ${row.value}`)
   if (input.action && safeHref(input.action.href)) {
     blocks.push(`${input.action.label}: ${input.action.href}`)
   }
   if (input.actionNote) blocks.push(input.actionNote)
+  for (const row of input.fine ?? []) blocks.push(`${row.label}: ${row.value}`)
   for (const line of input.info ?? []) blocks.push(line)
   for (const link of input.footerLinks ?? []) {
     if (safeHref(link.href)) blocks.push(`${link.label}: ${link.href}`)
@@ -340,7 +423,7 @@ export function renderEmail(input: EmailInput): RenderedEmail {
   const preheader = input.preheader ?? input.paragraphs?.[0] ?? input.title
   return {
     html:
-      `<!doctype html><html lang="en"><head>` +
+      `<!doctype html><html lang="${escapeHtml(input.locale ?? "en")}"><head>` +
       `<meta charset="utf-8">` +
       `<meta name="viewport" content="width=device-width,initial-scale=1">` +
       `<meta name="color-scheme" content="light dark">` +
