@@ -47,7 +47,7 @@ const FALLBACK_COLORS = [
 ]
 
 const RING_CLASSES = {
-  primary: "ring-2 ring-primary",
+  primary: "ring-2 ring-foreground",
   success: "ring-2 ring-success",
   warning: "ring-2 ring-warning",
   destructive: "ring-2 ring-destructive",
@@ -131,7 +131,7 @@ export function Avatar({
         </span>
       </BaseAvatar.Fallback>
       {badge ? (
-        <span className="absolute -right-0.5 -bottom-0.5 z-10 inline-flex items-center justify-center rounded-full bg-card p-0.5 text-primary">
+        <span className="absolute -right-0.5 -bottom-0.5 z-10 inline-flex items-center justify-center rounded-full bg-card p-0.5 text-foreground">
           {badge}
         </span>
       ) : null}

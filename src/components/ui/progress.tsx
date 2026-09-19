@@ -64,7 +64,7 @@ export function Progress({
       <BaseProgress.Track className={progressVariants({ size })}>
         <BaseProgress.Indicator
           className={cn(
-            "h-full rounded-full bg-primary",
+            "h-full rounded-full bg-foreground",
             "transition-[width] duration-(--duration-base) ease-(--ease-out)",
             "data-[indeterminate]:w-1/3 data-[indeterminate]:animate-progress-indeterminate",
           )}

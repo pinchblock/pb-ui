@@ -58,7 +58,7 @@ export const navRailItemVariants = cva(
     "relative flex items-center gap-3 rounded-lg text-sm font-medium",
     "text-muted-foreground hover:bg-muted hover:text-foreground",
     "transition-colors duration-(--duration-fast) ease-(--ease-out)",
-    "data-active:bg-primary-soft data-active:text-primary",
+    "data-active:bg-secondary data-active:text-foreground",
     "[&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0",
   ),
   {
@@ -103,13 +103,13 @@ export function NavRailItem({ item, expanded = false, className }: NavRailItemPr
           {expanded ? <span className="truncate">{label}</span> : null}
           {badge != null ? (
             expanded ? (
-              <span className="ml-auto grid h-5 min-w-5 shrink-0 place-items-center rounded-full bg-primary px-1.5 text-xs font-semibold text-primary-foreground">
+              <span className="ml-auto grid h-5 min-w-5 shrink-0 place-items-center rounded-full bg-foreground px-1.5 text-xs font-semibold text-background">
                 {badge}
               </span>
             ) : (
               <span
                 aria-hidden
-                className="absolute top-1.5 right-1.5 size-2 rounded-full bg-primary"
+                className="absolute top-1.5 right-1.5 size-2 rounded-full bg-foreground"
               />
             )
           ) : null}

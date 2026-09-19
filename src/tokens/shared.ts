@@ -6,7 +6,7 @@ import type { SharedTokens } from "./types.ts"
  * and have their own runtime knobs.
  */
 export const shared: SharedTokens = {
-  radius: "0.625rem",
+  radius: "0.375rem" /* 6px: the general corner; buttons are fully rounded */,
   fontScale: 1,
   density: 1,
   fontSans:

@@ -19,7 +19,7 @@ export const chatBubbleVariants = cva(
   {
     variants: {
       variant: {
-        mine: "ml-auto rounded-br-md bg-primary text-primary-foreground",
+        mine: "ml-auto rounded-br-md bg-foreground text-background",
         theirs: "mr-auto rounded-bl-md border border-border bg-card text-card-foreground",
       },
       pending: {

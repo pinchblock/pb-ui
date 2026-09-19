@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUp, Paperclip } from "@phosphor-icons/react"
+import { PaperPlaneRight, Paperclip } from "@phosphor-icons/react"
 import { useCallback, useEffect, useRef, useState } from "react"
 import type * as React from "react"
 
@@ -21,10 +21,22 @@ export interface ChatComposerProps {
   onSend?: (value: string) => void
   /** Renders the attach button when provided. */
   onAttach?: () => void
+  /**
+   * Extra controls on the input row, beside the attach button: an emoji
+   * picker trigger, a voice note, whatever the surface adds. They sit
+   * before the message so the send control stays last.
+   */
+  actions?: React.ReactNode
   placeholder?: string
   disabled?: boolean
   /** Attachment chips (e.g. UploadFileChip) rendered above the input. */
   attachments?: React.ReactNode
+  /**
+   * Lets the composer send with an empty message, for a caller whose
+   * attachments carry the content (a photo or a clip on its own). Without it
+   * such a caller needs a second send button beside the disabled one.
+   */
+  canSendWithoutText?: boolean
   /** Accessible label for the textarea. */
   label?: string
   className?: string | undefined
@@ -36,9 +48,11 @@ export function ChatComposer({
   onValueChange,
   onSend,
   onAttach,
+  actions,
   placeholder = "Message",
   disabled = false,
   attachments,
+  canSendWithoutText = false,
   label = "Message",
   className,
 }: ChatComposerProps) {
@@ -68,13 +82,37 @@ export function ChatComposer({
     resize()
   }, [resize, currentValue])
 
+  /* The first measurement runs against the fallback face. When the real one
+     swaps in the content grows by a pixel or two and the box, already sized,
+     shows a scrollbar beside the send button. Measure again once fonts are
+     ready, and whenever the composer changes width. */
+  useEffect(() => {
+    let cancelled = false
+    void document.fonts?.ready.then(() => {
+      if (!cancelled) resize()
+    })
+    const textarea = textareaRef.current
+    if (!textarea || typeof ResizeObserver === "undefined") return () => { cancelled = true }
+    const observer = new ResizeObserver(() => resize())
+    observer.observe(textarea)
+    return () => {
+      cancelled = true
+      observer.disconnect()
+    }
+  }, [resize])
+
   const send = useCallback(() => {
     const message = currentValue.trim()
-    if (!message || disabled) return
+    if (disabled || (!message && !canSendWithoutText)) return
     onSend?.(message)
     setValue("")
-    requestAnimationFrame(resize)
-  }, [currentValue, disabled, onSend, setValue, resize])
+    requestAnimationFrame(() => {
+      resize()
+      /* A sent message is rarely the last one; the cursor stays where the
+         next one is typed, whether the send came from Enter or the button. */
+      textareaRef.current?.focus()
+    })
+  }, [canSendWithoutText, currentValue, disabled, onSend, setValue, resize])
 
   return (
     <div
@@ -102,6 +140,7 @@ export function ChatComposer({
             <Paperclip aria-hidden />
           </Button>
         )}
+        {actions}
         <textarea
           ref={textareaRef}
           rows={1}
@@ -129,10 +168,10 @@ export function ChatComposer({
           size="icon-sm"
           pill
           aria-label="Send message"
-          disabled={disabled || currentValue.trim().length === 0}
+          disabled={disabled || (currentValue.trim().length === 0 && !canSendWithoutText)}
           onClick={send}
         >
-          <ArrowUp aria-hidden />
+          <PaperPlaneRight aria-hidden />
         </Button>
       </div>
     </div>

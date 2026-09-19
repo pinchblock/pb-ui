@@ -49,9 +49,10 @@
   color: var(--ai-foreground);
 }
 
-/* Theme-aware ambient glow for hero/app backdrops; derives from the
-   current primary so it works in every theme. Apply to body or a
-   full-height wrapper. Light themes usually skip it. */
+/* Quiet ambient vignette for full-screen backdrops. Neutral by rule:
+   it lifts the ground with the foreground at a few percent, never with
+   the brand colour (that is reserved for primary buttons and links).
+   Apply to a full-height wrapper. Light themes usually skip it. */
 @utility pb-backdrop {
   /* Viewport-sized and non-repeating. The gradients are positioned in
      percentages of the element's box, so without this a short route and
@@ -60,9 +61,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100vh;
   background-image:
-    radial-gradient(ellipse 80% 60% at 20% 10%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 20%, color-mix(in srgb, var(--success) 10%, transparent), transparent 55%),
-    radial-gradient(ellipse 70% 60% at 50% 80%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 60%);
+    radial-gradient(ellipse 80% 60% at 20% 10%, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 80%, color-mix(in srgb, var(--foreground) 3%, transparent), transparent 60%);
 }
 
 /* B2C display accent: gradient headline text. */
@@ -73,12 +73,12 @@
   color: transparent;
 }
 
-/* Uppercase section eyebrow (marketing + dashboard section labels). */
+/* Section eyebrow (marketing + dashboard section labels). Sentence
+   case with a little tracking; no caps anywhere by rule. */
 @utility eyebrow {
   font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--muted-foreground);
 }
 

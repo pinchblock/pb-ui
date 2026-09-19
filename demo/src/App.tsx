@@ -70,7 +70,7 @@ function readNumberParam(name: string, fallback: number, min: number): number {
 function Layout() {
   const [theme, setTheme] = useState(readInitialTheme)
   const [mode, setMode] = useState<ModeSetting>(readInitialMode)
-  const [radius, setRadiusState] = useState(() => readNumberParam("radius", 10, 0))
+  const [radius, setRadiusState] = useState(() => readNumberParam("radius", 6, 0))
   const [fontScale, setFontScaleState] = useState(() => readNumberParam("font", 1, 0.5))
   const [density, setDensityState] = useState(() => readNumberParam("density", 1, 0.5))
   const [iconWeight, setIconWeight] = useState<SinkIconWeight>(readInitialIconWeight)

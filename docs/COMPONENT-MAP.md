@@ -57,7 +57,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | AdminPaginationControl | Pagination | should | |
 | FeelIcon 5-point pickers in logger, guided timer, review steps | RatingFeel (FeelPicker/FeelBadge) | should | Colors from feel-1..5 chart tokens, not the hardcoded hexes |
 | FollowsHoverCard (hover/focus only, unusable on touch) | HoverCard | should | Click/touch mode fixes the a11y hole |
-| Post overflow menu via details/summary (no Escape/outside close), notification dropdown click-outside hacks | DropdownMenu | must | Menu roles, keyboard nav, destructive item style |
+| Post overflow menu via details/summary (no Escape/outside close), notification dropdown click-outside hacks | DropdownMenu, ContextMenu | must | Menu roles, keyboard nav, destructive item style. ContextMenu (v0.4.6) opens the same popup on right-click and long-press, for message and post actions without a visible trigger |
 | Chat bubbles (mine/theirs/pending) and date divider pills in messages/[id] | ChatBubble (+DateDivider) | later | Audit priority later, shipped early because messaging design debt is flagged |
 | Upload flows: bug screenshot, feed media, avatar (progress, preview, remove, cancel/retry) | UploadDropzone (+useFileDrop), MediaFrame | later | Direct-to-R2 wiring stays app-side |
 
@@ -76,7 +76,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | HomeProgressRow streak + week dots, compliance meters | ActivityRing, StreakHeatmap | should | Covers the mobile progress-indicators need |
 | NotificationsBell hand-rolled dropdown (15 type mappings, no keyboard nav) | Popover + ListRow + CounterBadge for now | should | Dedicated notification center panel is a v0.2 gap; waits on the push/realtime design pass |
 | PeopleSearch (keyboard nav but no combobox ARIA) | AsyncCombobox (v0.2.0) | should | Server-search generic with stale-response guard |
-| Message thread composer (Enter-to-send, char counter) | ChatComposer (+TypingIndicator) | later | TypingIndicator is ahead of product (no typing events yet), costs little |
+| Message thread composer (Enter-to-send, char counter) | ChatComposer (+TypingIndicator, EmojiPicker) | later | TypingIndicator is ahead of product (no typing events yet), costs little. The composer takes an actions slot, which is where the desktop EmojiPicker hangs |
 | Instructional video on structured blocks, future exercise demos | VideoPlayer, MediaFrame | later | media-chrome wrapper, R2/HLS ready |
 | LiveNotificationBanner call banners (off-token emerald/red/slate) | gap | later | Toast action variant covers generic banners; the call stack itself belongs to the LiveKit call kit (v0.2) |
 
@@ -85,7 +85,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 | Pattern in pb-app today | Covered by | Priority | Notes |
 |---|---|---|---|
 | AppShell in web/src/components/chrome.tsx: 64px side rail, sticky topbar, mobile bottom tabs with center Log FAB | AppShell (NavRail + MobileTabBar + TopBar) | must | FAB is the MobileTabBar center action slot; nav prefetch stays app-side |
-| Inline themeInitScript + localStorage theme switching (web); SecureStore appearance pref (mobile) | themeBootScript + ocean/nocturne/ember/glacier themes, .dark class | must | Covers the mobile cross-platform token package must; tokens import from @pinchblock/ui/tokens on RN |
+| Inline themeInitScript + localStorage theme switching (web); SecureStore appearance pref (mobile) | themeBootScript + ocean/nocturne/ember/glacier/turquoise themes, .dark class | must | Covers the mobile cross-platform token package must; tokens import from @pinchblock/ui/tokens on RN |
 | Ad-hoc max-w containers and flex stacks per page | Page, Stack, Row | - | |
 | Marketing glass kit: glass-card/panel/chip/tile utilities, eyebrow labels, gradient text, PhoneFrame mockups | glass-* utilities, eyebrow, text-gradient-primary, PhoneFrame, Card glass variant | later | Glass on public surfaces and overlays only; the rule is now enforced by which variant you can pick |
 | Body radial-gradient glow (dark only) | pb-backdrop utility | - | |
@@ -97,6 +97,7 @@ Legend for pattern sources: web paths are `web/src/...`, mobile paths are
 Everything the audits surfaced that v0.1 intentionally does not cover.
 
 - SHIPPED in v0.2.0: Combobox + AsyncCombobox (Base UI combobox; AsyncCombobox replaces PeopleSearch's hand-rolled ARIA). Command palette still waits for a use case.
+- SHIPPED in v0.4.1: `trailing` slot on ComboboxItem and SelectItem for a count, unit or date at the end of the row (Explore's country facet with coach counts was the first consumer). Do not nest spans inside the item label for this.
 - SHIPPED in v0.2.0: Calendar, DatePicker, DateRangePicker, MonthPicker (react-day-picker v10, Monday weeks).
 - SHIPPED in v0.2.0: SortableList/SortableItem/DragHandle/ReorderButtons (dnd-kit classic packages, keyboard drag plus arrow-button parity path).
 - AnnualTimeline/periodization Gantt: already the most reusable organism in pb-app, needs a token audit and phase/event API cleanup before porting.
@@ -111,7 +112,7 @@ Everything the audits surfaced that v0.1 intentionally does not cover.
 - PR/celebration full-screen moment: pbPending hints at PR confirmation flows; Rive at app level per PLAN, the system supplies the surface and motion tokens.
 - Onboarding carousel: mobile2 handoff explicitly defers onboarding designs; build alongside the M6 onboarding milestone.
 - SyncStatusIndicator: mobile offline/outbox states (synced/waiting/syncing/needs attention plus conflict actions); RN-first, lands with the mobile component phase.
-- ReactionPicker: six custom SVG reactions are an owned product icon set; picker waits on the icon-set decision and the RN sheet primitive.
+- ReactionPicker: partly answered in v0.4.7. EmojiPicker ships a native unicode picker (grouped, searchable, recent row) and messaging reactions use it on the web, so the feed picker needs only the six-reaction preset on top. A custom SVG reaction set is no longer on the critical path; the RN sheet primitive still is.
 - MoneyText/formatEUR and timeAgo utilities: three EUR formats and three timeAgo copies in web; small lib helpers rather than components, slot into v0.2 utils.
 
 ## Product-domain coverage check
@@ -123,9 +124,9 @@ Against research-product.json domains, honestly:
 - Workout execution and logging: logging flows covered (Sheet, Slider, RatingFeel, Stepper, Progress). The flagship immersive timer waits on FullScreenTimer + fixed-dark sub-theme; mobile sync states wait on SyncStatusIndicator.
 - Coach analytics: covered for core screens. StatTile, Sparkline, TrendChart, Chart, FilterChip, SearchInput, ListRow replace all five KPI impls and both sparklines. Sortable rosters and plan-performance upgrades: DataTable shipped in v0.2.0.
 - Commerce, billing, payouts: covered at the flagged-as-minimal baseline. Card price tiles, Badge purchase states, Alert requirement banners, StatTile earnings, Chart revenue bars, ToggleRow feature lists. Stripe embeds and checkout polling logic stay app-side.
-- Feed: mostly covered. PostCard composes from Card, Badge, Avatar, Sparkline journey strips, DropdownMenu, Sheet composer, UploadDropzone, EmptyState. Waits on ReactionPicker and the PR celebration moment.
+- Feed: mostly covered. PostCard composes from Card, Badge, Avatar, Sparkline journey strips, DropdownMenu, Sheet composer, UploadDropzone, EmptyState. Waits on the feed reaction preset over EmojiPicker and on the PR celebration moment.
 - Social graph and profiles: covered. Avatar/AvatarGroup, HoverCard follower popovers, ListRow requests/blocked lists, ConfirmDialog for block.
-- Messaging and calls: messaging covered (ChatBubble, ChatComposer, ListRow inbox, CounterBadge unread). Calls not covered: the whole call surface waits on the fixed-dark sub-theme and LiveKit kit, which is honest, that UI is off-token on both platforms today.
+- Messaging and calls: messaging covered (ChatBubble, ChatComposer, ListRow inbox, CounterBadge unread, ContextMenu message actions, EmojiPicker on desktop). Calls not covered: the whole call surface waits on the fixed-dark sub-theme and LiveKit kit, which is honest, that UI is off-token on both platforms today.
 - Media: covered for current purposes (avatar, bug screenshot, feed image) via UploadDropzone, MediaFrame, Skeleton placeholders, VideoPlayer for block videos. Derivatives/transcoding are app infra, not component work.
 - AI: covered. Badge ai tone, ai-surface, motion presets for reveal; suggestion diff cards are app compositions of Card + Button. Background-generation status (REF-023) will use Toast + Progress when built.
 - Admin: covered for core (Table, Pagination, Badge, Tabs, SearchInput, ConfirmDialog with reason field replacing window.prompt). DataTable shipped in v0.2.0; admin stays web-only by product decision.

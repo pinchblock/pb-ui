@@ -40,14 +40,14 @@ const PHASE_TITLES: Record<FullScreenTimerPhase, string> = {
 
 /** Phase badge: soft status tint, fixed across themes by stage tokens. */
 export const fullScreenTimerPhaseVariants = cva(
-  "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-widest uppercase",
+  "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide",
   {
     variants: {
       phase: {
         work: "bg-success-soft text-success",
         rest: "bg-info-soft text-info",
         paused: "bg-secondary-soft text-muted-foreground",
-        done: "bg-primary-soft text-primary",
+        done: "bg-secondary text-foreground",
       },
     },
     defaultVariants: {

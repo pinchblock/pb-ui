@@ -4,6 +4,7 @@ import {
   ChatBubble,
   ChatComposer,
   DateDivider,
+  EmojiPicker,
   TypingIndicator,
   UploadFileChip,
 } from "@pinchblock/ui"
@@ -134,7 +135,7 @@ export default function ChatPage() {
         </div>
       </Showcase>
 
-      <Showcase title="Composer with attachments" hint="Attachment chips render in the slot above the input row. Send stays disabled while empty; Enter sends, Shift+Enter breaks the line.">
+      <Showcase title="Composer with attachments" hint="Attachment chips render in the slot above the input row. Send stays disabled while empty unless canSendWithoutText says the attachment is the message; Enter sends, Shift+Enter breaks the line.">
         <div className="mx-auto max-w-md">
           <ChatComposer
             placeholder="Add a note for your coach"
@@ -149,6 +150,33 @@ export default function ChatPage() {
               />
             }
           />
+        </div>
+      </Showcase>
+
+      <Showcase title="Composer sending an attachment alone" hint="canSendWithoutText keeps Send live while the message is empty, for a photo or a clip that is the whole message. Without it the caller needs a second send button beside the disabled one.">
+        <div className="mx-auto max-w-md">
+          <ChatComposer
+            canSendWithoutText
+            placeholder="Add a note for your coach"
+            onSend={() => {}}
+            onAttach={() => {}}
+            attachments={
+              <UploadFileChip
+                name="topout.jpg"
+                previewUrl={img("pb-attach-solo", 96, 96)}
+                onRemove={() => {}}
+              />
+            }
+          />
+        </div>
+      </Showcase>
+
+      <Showcase
+        title="Emoji picker"
+        hint="Native emoji in a searchable grid, for surfaces where the platform picker is out of reach: a desktop composer, a reaction row. A touch keyboard already carries one, so callers usually render this only on pointer devices. The set loads on first open."
+      >
+        <div className="mx-auto w-fit rounded-lg border border-border bg-popover p-2 shadow-raised">
+          <EmojiPicker onSelect={() => {}} recent={["\u{1F4AA}", "\u{1F525}", "\u{1F44D}"]} />
         </div>
       </Showcase>
 

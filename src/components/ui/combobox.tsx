@@ -140,9 +140,14 @@ export function ComboboxList({ className, ...props }: ComboboxListProps) {
 
 export interface ComboboxItemProps extends Omit<BaseCombobox.Item.Props, "className"> {
   className?: string | undefined
+  /** Right-aligned secondary text: a count, a unit, a date. Sits before the selected mark. */
+  trailing?: React.ReactNode
 }
 
-export function ComboboxItem({ className, children, ...props }: ComboboxItemProps) {
+/** Meta text at the end of an item row: small, muted, digits aligned. */
+const itemTrailingClassName = "shrink-0 text-xs tabular-nums text-muted-foreground"
+
+export function ComboboxItem({ className, children, trailing, ...props }: ComboboxItemProps) {
   return (
     <BaseCombobox.Item
       className={cn(
@@ -154,7 +159,8 @@ export function ComboboxItem({ className, children, ...props }: ComboboxItemProp
       {...props}
     >
       <span className="min-w-0 flex-1 truncate">{children}</span>
-      <BaseCombobox.ItemIndicator className="flex shrink-0 text-primary">
+      {trailing ? <span className={itemTrailingClassName}>{trailing}</span> : null}
+      <BaseCombobox.ItemIndicator className="flex shrink-0 text-foreground">
         <Check aria-hidden className="size-4" />
       </BaseCombobox.ItemIndicator>
     </BaseCombobox.Item>

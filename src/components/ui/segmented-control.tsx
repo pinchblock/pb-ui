@@ -18,8 +18,8 @@ export const segmentedControlVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-8",
-        md: "h-9",
+        sm: "h-8 max-sm:h-12",
+        md: "h-9 max-sm:h-12",
       },
     },
     defaultVariants: {
@@ -33,7 +33,7 @@ export const segmentedControlItemVariants = cva(
     "inline-flex items-center justify-center gap-1.5 rounded-md font-medium whitespace-nowrap text-muted-foreground select-none",
     "transition-[background-color,color,box-shadow] duration-(--duration-fast) ease-(--ease-out)",
     "hover:text-foreground",
-    "data-pressed:bg-card data-pressed:text-primary data-pressed:shadow-card",
+    "data-pressed:bg-card data-pressed:text-foreground data-pressed:shadow-card",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   ),

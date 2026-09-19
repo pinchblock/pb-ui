@@ -43,7 +43,7 @@ export function AccordionTrigger({
       <BaseAccordion.Trigger
         className={cn(
           "flex w-full items-center justify-between gap-3 py-4 text-left text-sm font-medium text-foreground",
-          "transition-colors duration-(--duration-fast) ease-(--ease-out) hover:text-primary",
+          "transition-colors duration-(--duration-fast) ease-(--ease-out) hover:text-foreground",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
           "disabled:pointer-events-none disabled:opacity-50",
           "[&>svg]:transition-transform [&>svg]:duration-(--duration-base) [&>svg]:ease-(--ease-out)",

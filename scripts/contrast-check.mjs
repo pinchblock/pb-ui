@@ -3,6 +3,7 @@ import { ocean } from '../src/tokens/themes/ocean.ts'
 import { nocturne } from '../src/tokens/themes/nocturne.ts'
 import { ember } from '../src/tokens/themes/ember.ts'
 import { glacier } from '../src/tokens/themes/glacier.ts'
+import { turquoise } from '../src/tokens/themes/turquoise.ts'
 
 function parse(c) {
   c = c.trim()
@@ -41,7 +42,7 @@ function over(colorStr, ...bases) {
   return c
 }
 
-const themes = { ocean, nocturne, ember, glacier }
+const themes = { ocean, nocturne, ember, glacier, turquoise }
 const fmt = n => n.toFixed(2)
 
 for (const [name, theme] of Object.entries(themes)) {

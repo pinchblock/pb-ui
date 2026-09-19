@@ -11,6 +11,10 @@ import { useState } from "react"
 
 import {
   Button,
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuPopup,
+  ContextMenuTrigger,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuGroup,
@@ -150,6 +154,26 @@ import {
 </DropdownMenu>
 `}
       />
+
+      <Showcase
+        title="Context menu"
+        hint="The actions a surface carries on itself: right click on a pointer, press and hold on a touch screen. Same popup and items as the dropdown, so an action can move between the two without changing appearance."
+      >
+        <ContextMenu>
+          <ContextMenuTrigger
+            render={
+              <div className="mx-auto flex h-28 max-w-sm items-center justify-center rounded-lg border border-dashed border-border text-sm text-muted-foreground" />
+            }
+          >
+            Right click, or press and hold
+          </ContextMenuTrigger>
+          <ContextMenuPopup>
+            <ContextMenuItem>Reply</ContextMenuItem>
+            <ContextMenuItem>Copy</ContextMenuItem>
+            <ContextMenuItem variant="destructive">Remove</ContextMenuItem>
+          </ContextMenuPopup>
+        </ContextMenu>
+      </Showcase>
 
       {confirmDialog}
       <Toaster />

@@ -72,8 +72,8 @@ export default function SelectPage() {
             <SelectPopup>
               <SelectGroup>
                 <SelectGroupLabel>Climbing</SelectGroupLabel>
-                <SelectItem value="fingerboard">Fingerboard</SelectItem>
-                <SelectItem value="campus">Campus board</SelectItem>
+                <SelectItem trailing="12 plans" value="fingerboard">Fingerboard</SelectItem>
+                <SelectItem trailing="4 plans" value="campus">Campus board</SelectItem>
               </SelectGroup>
               <SelectGroup>
                 <SelectGroupLabel>Strength</SelectGroupLabel>

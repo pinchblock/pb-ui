@@ -35,6 +35,18 @@ ignores the designer.
 - No cursor-pointer in components (the base layer handles it); drag
   handles set cursor-grab explicitly.
 - No !important. No inline styles for anything a token can express.
+- Email is the one exception to both. `@pinchblock/ui/email` renders a
+  self-contained HTML document with tables, inline styles and one
+  `!important` block for client overrides, because email clients have no
+  bundler, no external CSS and no custom properties. It is still bound
+  by the system: every colour, size, font and corner is read from the
+  tokens, the action is a fully rounded button sized to its label, and
+  the brand colour appears only on that action and on links. Send no
+  transactional mail that does not go through `renderEmail`, and add a
+  new kind of message by passing different input, never by writing
+  another template. Every kind the product sends also gets a record in
+  `src/email/samples.ts`, which is what the sink's Email page lists, so
+  the catalogue stays the honest answer to "what do we send?".
 
 ## Visual rules (product decisions, not preferences)
 
@@ -46,10 +58,43 @@ ignores the designer.
   colors.
 - The AI treatment (ai tokens + sparkle icon) marks every AI-assisted
   moment, and only AI-assisted moments.
-- Soft tints (primary-soft, success-soft...) are for chips, badges and
-  quiet emphasis; solid fills are for primary actions and status pills.
+- The brand colour is intense, so it is spent only where it means
+  "act": the primary Button, links and the active tab underline. Selected and checked states,
+  pressed chips and segments, eyebrows, step numbers, kickers, counters,
+  progress, icons and dots use the foreground (ink on light, white on
+  dark) with secondary or border-strong for the surface. `text-primary`,
+  `bg-primary`, `bg-primary-soft`, `border-primary` and `ring-primary`
+  anywhere else are rejected; focus rings are the one exception.
+  Backdrops and glows never mix the brand in either: pb-backdrop is a
+  neutral foreground vignette.
+- Corners: one radius, 6px, for every surface and control. There is no
+  size hierarchy: rounded-sm through rounded-3xl all resolve to the
+  token, so pick any and get 6px. rounded-xs is a fixed 2px for control
+  anatomy only (checkbox, kbd). Buttons, icon buttons, chips and avatars
+  are fully rounded, always; `pill` on Button is the default and a
+  rounded-* override on a button is rejected. Device mock-ups
+  (PhoneFrame) may use literal device corners; nothing else may use a
+  literal radius.
+- No caps. Eyebrows, table headers, badges and labels are sentence case
+  with modest tracking; `uppercase` is rejected.
+- Soft tints (success-soft, warning-soft...) are for status chips and
+  badges; solid status fills are for status pills. primary-soft exists
+  for the primary Button family only.
 - Charts use chart tokens (chart-1..8, chart-positive/negative/target/
   track, feel-1..5). Never pick chart colors by hand.
+- Square controls stay square. The base layer lifts every button to a
+  40px tap target below 640px, so icon sizes grow in both directions
+  there rather than stretching into an oval. A control that opts out of
+  the tap target carries `no-min-tap`.
+- Buttons are as wide as their label. Never stretch an action button to
+  its container: no `w-full`, `flex-1`, `block` or `mx-auto max-w-*` on
+  a Button, and no full-width button rows. Actions sit at the end of
+  their row (start in a left-aligned form), and on phones a row of
+  actions wraps rather than stretching. A column of choices that are
+  really list items (a ghost button with `justify-start` and
+  `text-left`) is a list, not a stretched button: use ListRow, or keep
+  the row styling until it is migrated. The sign-in card is the one
+  accepted full-width stack.
 
 ## Motion rules
 

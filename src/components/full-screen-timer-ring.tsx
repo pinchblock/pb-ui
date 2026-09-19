@@ -22,7 +22,7 @@ const ringToneVariants = cva(
         work: "text-success",
         rest: "text-info",
         paused: "text-muted-foreground",
-        done: "text-primary",
+        done: "text-foreground",
       },
     },
   },

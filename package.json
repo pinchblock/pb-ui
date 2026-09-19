@@ -1,16 +1,17 @@
 {
   "name": "@pinchblock/ui",
   "private": true,
-  "version": "0.3.2",
+  "version": "0.4.10",
   "type": "module",
   "description": "Pinchblock design system and component library. Owned source (shadcn-style), Base UI + Tailwind v4, TS-authored tokens generated to CSS, no build step.",
   "scripts": {
     "gen": "node scripts/generate-css.ts && node scripts/generate-icon-manifest.ts",
     "gen:check": "node scripts/generate-css.ts --check && node scripts/generate-icon-manifest.ts --check",
     "typecheck": "tsc --noEmit",
+    "typecheck:demo": "npm --prefix demo run typecheck",
     "dev": "npm --prefix demo run dev",
     "demo:install": "npm --prefix demo install",
-    "test": "npm run gen:check && npm run typecheck"
+    "test": "npm run gen:check && npm run typecheck && npm run typecheck:demo"
   },
   "exports": {
     ".": {
@@ -20,6 +21,10 @@
     "./tokens": {
       "types": "./src/tokens/index.ts",
       "import": "./src/tokens/index.ts"
+    },
+    "./email": {
+      "types": "./src/email/index.ts",
+      "import": "./src/email/index.ts"
     },
     "./theme-boot": {
       "types": "./src/lib/theme-boot.ts",

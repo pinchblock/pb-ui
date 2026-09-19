@@ -3,6 +3,48 @@
 Autonomous calls made while Jaak is away, newest first. Read this
 after a gap; challenge anything, everything here is reversible.
 
+## 2026-09-09 (the landing plan lives here)
+
+- docs/LANDING.md is the canonical plan and status for the landing
+  revamp. It moved here from the design folder because pb-ui is where
+  the landing's token set, theme and display face are built, and
+  because pb-ui is public: the copy here is public-safe (no local
+  paths, links or account handles), while a private appendix with
+  those details stays beside the design source. Change LANDING.md
+  first; the appendix mirrors it.
+
+## 2026-09-08 (v0.4.0: marquee, the landing's token set)
+
+- New fixed surface set `marquee` (src/tokens/marquee.ts), sibling of
+  stage: always-dark, theme-invariant, but brand-carrying. Ground
+  #0A0C0E, ink #F2F1EC, primary = the app icon's cyan. Built for the
+  landing revamp planned in apps.parik.ee/pinchblock/SITE-PLAN.md.
+- The brand accent is a single constant (`BRAND`) that the whole
+  primary family derives from, because the icon colour is still open
+  (cyan now, yellow candidates later). No `brand` token was added:
+  primary is already the semantic slot, and a second name for it is
+  what GUARDRAILS forbids. The swap point is the constant.
+- Display face: marquee overrides --font-display through a consumer
+  hook (--font-marquee-display) instead of changing the shared token,
+  so Archivo reaches only the landing and Inter stays the app face.
+- Generator: stage and marquee are emitted from one `surfaces` loop.
+  Found while doing this: origin/main's committed tokens.css carried
+  the .stage block but the committed generator did not emit it, so
+  `npm test` was red on a clean checkout and any regeneration would
+  have dropped stage. The loop fixes both. The same fix exists in
+  uncommitted work on the shared checkout; expect a small conflict in
+  generate-css.ts when that lands, resolve by keeping the loop.
+- New theme `turquoise` (src/tokens/themes/turquoise.ts): the fold's
+  palette as a selectable app theme. Its dark mode is the marquee
+  object itself rather than a copy, so the brand swap and any marquee
+  tuning reach the theme automatically. Light mode derives from the
+  same three constants (exported as `marqueePalette`), with the brand
+  hue darkened to a teal that passes for text on paper. Contrast rows
+  match ocean light exactly (same status and feel values), so no new
+  debt; the faint text row is better (4.0 vs 3.4 on card).
+- Version 0.4.0: a new public token set, a new theme and new exports
+  is a minor.
+
 ## 2026-08-05 (late: merged to beta, pb-ui made public, CI lesson)
 
 - design-system merged into beta and PUSHED. Rebased onto the 12
@@ -252,3 +294,28 @@ after a gap; challenge anything, everything here is reversible.
   reversible" clause) and web/AGENTS.md (reference visual language).
   Everything up to and including v0.2.0 happens in pb-ui only.
 
+## 2026-09-09: brand colour only on primary buttons and links
+
+The turquoise cyan is the site default and it is loud. Decision (Jaak):
+it appears only on the primary Button and on links. Every other use in
+the components (checked checkbox, radio and switch, pressed chip, active
+tab and segment, selected calendar day, stepper, progress, slider,
+counters, nav-rail and tab-bar active states, dropzone drag state, chat
+bubble, empty-state and stat-tile icon bubbles, item indicators) moved
+to foreground on secondary or border-strong. Focus rings keep the ring
+token. Badge tone "primary" solid keeps the brand because choosing that
+tone is explicit; its soft appearance is now foreground on secondary.
+
+## 2026-09-09: turquoise dark gets its own surfaces
+
+Until now turquoise dark was the marquee object token for token. The
+app needed a calmer ground than the landing's pure near-black under
+video, so turquoise dark now spreads marquee and overrides the surface
+and border slots: ground #0f181d, panels #131e24, popover #172329,
+hairline #243741, strong border #33474f, input border #2b3f48, neutral
+selected fill #1f2d35 and hover fill #243740, inset-highlight shadows.
+Ink, the brand family, status, AI, chart and feel tokens stay marquee's,
+so the brand swap still reaches the app. Inspiration: a desktop chat
+client whose panels are separated by hairlines rather than glow. The
+active tab underline is back on the brand colour by decision; pressed
+chips and segments stay neutral.

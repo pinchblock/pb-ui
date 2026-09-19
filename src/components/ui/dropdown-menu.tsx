@@ -159,7 +159,7 @@ export function DropdownMenuRadioItem({
       <BaseMenu.RadioItemIndicator className="absolute left-2 flex size-4 items-center justify-center">
         {/* weight="fill": the radio dot is control anatomy, it must stay
             a solid dot at any global icon weight (AGENTS.md rule 6). */}
-        <Circle aria-hidden weight="fill" className="size-2 text-primary" />
+        <Circle aria-hidden weight="fill" className="size-2 text-foreground" />
       </BaseMenu.RadioItemIndicator>
       {children}
     </BaseMenu.RadioItem>

@@ -13,7 +13,7 @@ import { cn } from "../../lib/cn.ts"
  */
 export const iconButtonVariants = cva(
   cn(
-    "relative inline-flex shrink-0 items-center justify-center rounded-md select-none",
+    "relative inline-flex shrink-0 items-center justify-center rounded-full select-none",
     "transition-[background-color,border-color,color,box-shadow,transform] duration-(--duration-fast) ease-(--ease-out)",
     "active:scale-[0.98]",
     /* Both disabled paths: native :disabled, and Base UI's data-disabled
@@ -27,14 +27,14 @@ export const iconButtonVariants = cva(
     variants: {
       variant: {
         ghost: "text-muted-foreground hover:bg-muted hover:text-foreground",
-        soft: "bg-primary-soft text-primary hover:bg-accent",
+        soft: "bg-secondary text-foreground hover:bg-accent",
         secondary:
           "border border-border bg-transparent text-muted-foreground hover:border-border-strong hover:bg-muted hover:text-foreground",
       },
       size: {
-        md: "size-9 [&_svg:not([class*='size-'])]:size-4",
-        sm: "size-8 [&_svg:not([class*='size-'])]:size-4",
-        xs: "size-6 [&_svg:not([class*='size-'])]:size-3.5",
+        md: "size-9 max-sm:size-10 [&_svg:not([class*='size-'])]:size-4",
+        sm: "size-8 max-sm:size-10 [&_svg:not([class*='size-'])]:size-4",
+        xs: "size-6 max-sm:size-10 [&_svg:not([class*='size-'])]:size-3.5",
       },
       /** Circular shape (floating actions, avatar-adjacent controls). */
       pill: {

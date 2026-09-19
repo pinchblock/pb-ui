@@ -13,7 +13,7 @@ ships or is consciously dropped.
 | pb-ui public vs private | pb-ui | Made public 2026-08-05 to unblock CI without a Vercel secret. Reversible. If you want it private again, Erik adds a GitHub token to the pb-app-web Vercel project and we repin. |
 | Move internal docs to pb-app | pb-ui docs/ | DECISIONS, BACKLOG and the two ADOPTION plans describe pb-app internals and are now publicly readable. Moving them leaves pb-ui as a clean public design system. History already exposed either way. |
 | iOS device verification | pb-app | Build installed on Jaak's iPhone. Priority: confirm() fired from inside feed modals (fixed for the iOS double-presentation rule, unit-tested but never seen on a device). |
-| Display font | pb-ui shared.ts | Inter stays for now; changing it later is one token. |
+| Display font | pb-ui shared.ts | Inter stays as the app-wide default; changing it later is one token. Since v0.4.0 the marquee set overrides it to Archivo for the landing only, through --font-marquee-display. |
 
 Closed 2026-08-05: both mobile WCAG corrections adopted (dark
 primaryForeground now 5.45:1, light accent 5.60:1 and 4.55:1 as text);
@@ -106,7 +106,9 @@ below Android's 48dp guidance.
 
 Wave C (docs/ROADMAP-V02.md): NotificationPanel, OnboardingCarousel,
 CelebrationOverlay, MarkdownRenderer, ReactionPicker,
-SyncStatusIndicator, format utilities. Two are design-blocked upstream
+SyncStatusIndicator, format utilities. ReactionPicker shrank in v0.4.7:
+EmojiPicker covers the picking, so what remains is a six-reaction preset
+and the React Native sheet. Two are design-blocked upstream
 (notifications and onboarding both await product design passes), so the
 wave is optional until then. The format utilities are the highest-value
 piece: they retire pb-app's three competing EUR formatters and three

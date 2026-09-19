@@ -40,7 +40,7 @@ export const badgeVariants = cva(
     compoundVariants: [
       { tone: "neutral", appearance: "soft", className: "bg-muted text-muted-foreground" },
       { tone: "neutral", appearance: "solid", className: "bg-foreground text-background" },
-      { tone: "primary", appearance: "soft", className: "bg-primary-soft text-primary" },
+      { tone: "primary", appearance: "soft", className: "bg-secondary text-foreground" },
       { tone: "primary", appearance: "solid", className: "bg-primary text-primary-foreground" },
       { tone: "success", appearance: "soft", className: "bg-success-soft text-success" },
       { tone: "success", appearance: "solid", className: "bg-success text-success-foreground" },

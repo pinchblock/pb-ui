@@ -19,11 +19,13 @@ interface Exercise {
   value: string
   label: string
   disabled?: boolean
+  /** Trailing meta on the item row: here, how many plans use the exercise. */
+  count?: number
 }
 
 const EXERCISES: Exercise[] = [
   { value: "max-hangs", label: "Max hangs" },
-  { value: "repeaters", label: "Repeaters" },
+  { value: "repeaters", label: "Repeaters", count: 12 },
   { value: "campus-ladders", label: "Campus ladders" },
   { value: "4x4s", label: "Boulder 4x4s" },
   { value: "arc", label: "ARC traverse" },
@@ -36,14 +38,14 @@ const EXERCISE_GROUPS: { label: string; items: Exercise[] }[] = [
     items: [
       { value: "max-hangs", label: "Max hangs" },
       { value: "repeaters", label: "Repeaters" },
-      { value: "min-edge", label: "Minimum edge" },
+      { value: "min-edge", label: "Minimum edge", count: 4 },
       { value: "one-arm-hangs", label: "One-arm hangs", disabled: true },
     ],
   },
   {
     label: "Campus",
     items: [
-      { value: "campus-ladders", label: "Ladders" },
+      { value: "campus-ladders", label: "Ladders", count: 7 },
       { value: "campus-touches", label: "Touches" },
       { value: "campus-doubles", label: "Doubles" },
     ],
@@ -98,7 +100,9 @@ function ExercisePicker({ label }: { label: string }) {
                 <ComboboxGroupLabel>{group.label}</ComboboxGroupLabel>
                 <ComboboxCollection>
                   {(item: Exercise) => (
-                    <ComboboxItem key={item.value} value={item} disabled={item.disabled}>
+                    <ComboboxItem key={item.value} value={item} disabled={item.disabled}
+                      trailing={item.count}
+                    >
                       {item.label}
                     </ComboboxItem>
                   )}

@@ -35,8 +35,8 @@ const monthButtonClassName = cn(
   "hover:bg-muted",
   "disabled:pointer-events-none disabled:opacity-50",
   // Current month: quiet inset ring, same treatment as Calendar's today.
-  "data-current:font-medium data-current:ring-1 data-current:ring-primary-border data-current:ring-inset",
-  "data-selected:bg-primary data-selected:text-primary-foreground data-selected:hover:bg-primary",
+  "data-current:font-medium data-current:ring-1 data-current:ring-border-strong data-current:ring-inset",
+  "data-selected:bg-foreground data-selected:text-background data-selected:hover:bg-foreground",
 )
 
 /** Months as comparable indices (year * 12 + month). */

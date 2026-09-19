@@ -19,8 +19,8 @@ export const uploadDropzoneVariants = cva(
     "flex w-full flex-col items-center justify-center gap-2 p-8 text-center",
     "rounded-xl border-2 border-dashed border-border-strong",
     "transition-[border-color,background-color] duration-(--duration-fast) ease-(--ease-out)",
-    "hover:border-primary-border hover:bg-muted",
-    "data-[drag-over]:border-primary data-[drag-over]:bg-primary-soft",
+    "hover:border-border-strong hover:bg-muted",
+    "data-[drag-over]:border-foreground data-[drag-over]:bg-secondary",
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   ),
 )
@@ -82,7 +82,7 @@ export function UploadDropzone({
           className={cn(
             "flex size-10 items-center justify-center rounded-full bg-muted text-muted-foreground",
             "transition-colors duration-(--duration-fast) ease-(--ease-out)",
-            isDragOver && "bg-primary text-primary-foreground",
+            isDragOver && "bg-foreground text-background",
           )}
         >
           <CloudArrowUp aria-hidden className="size-5" />
@@ -154,7 +154,7 @@ export function UploadFileChip({
             className="mt-1 h-1 w-full overflow-hidden rounded-full bg-muted"
           >
             <div
-              className="h-full rounded-full bg-primary transition-[width] duration-(--duration-base) ease-(--ease-out)"
+              className="h-full rounded-full bg-foreground transition-[width] duration-(--duration-base) ease-(--ease-out)"
               style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
             />
           </div>

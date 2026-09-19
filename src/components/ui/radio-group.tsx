@@ -24,7 +24,7 @@ export const radioVariants = cva(
     "flex size-4 shrink-0 items-center justify-center rounded-full border border-input bg-input-background",
     "transition-[border-color,background-color] duration-(--duration-fast) ease-(--ease-out)",
     "hover:border-border-strong",
-    "data-checked:border-primary",
+    "data-checked:border-foreground",
     "data-disabled:pointer-events-none data-disabled:opacity-50",
     "data-invalid:border-destructive",
   ),
@@ -37,7 +37,7 @@ export interface RadioProps extends Omit<BaseRadio.Root.Props, "className"> {
 export function Radio({ className, ...props }: RadioProps) {
   return (
     <BaseRadio.Root className={cn(radioVariants(), className)} {...props}>
-      <BaseRadio.Indicator className="size-2 rounded-full bg-primary" />
+      <BaseRadio.Indicator className="size-2 rounded-full bg-foreground" />
     </BaseRadio.Root>
   )
 }

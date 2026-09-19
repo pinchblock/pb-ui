@@ -13,11 +13,11 @@ import { cn } from "../../lib/cn.ts"
  */
 export const checkboxVariants = cva(
   cn(
-    "group flex size-4 shrink-0 items-center justify-center rounded-sm border border-input bg-input-background",
+    "group flex size-4 shrink-0 items-center justify-center rounded-xs border border-input bg-input-background",
     "transition-[background-color,border-color] duration-(--duration-fast) ease-(--ease-out)",
     "hover:border-border-strong",
-    "data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground",
-    "data-indeterminate:border-primary data-indeterminate:bg-primary data-indeterminate:text-primary-foreground",
+    "data-checked:border-foreground data-checked:bg-foreground data-checked:text-background",
+    "data-indeterminate:border-foreground data-indeterminate:bg-foreground data-indeterminate:text-background",
     "data-disabled:pointer-events-none data-disabled:opacity-50",
     "data-invalid:border-destructive",
   ),

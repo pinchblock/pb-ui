@@ -19,7 +19,7 @@ export const counterBadgeVariants = cva(
   {
     variants: {
       tone: {
-        primary: "bg-primary text-primary-foreground",
+        primary: "bg-foreground text-background",
         destructive: "bg-destructive text-destructive-foreground",
         neutral: "bg-muted text-muted-foreground",
       },
@@ -66,7 +66,7 @@ export function CounterBadge({
 export const notificationDotVariants = cva("inline-flex size-2 shrink-0 rounded-full", {
   variants: {
     tone: {
-      primary: "bg-primary",
+      primary: "bg-foreground",
       success: "bg-success",
       warning: "bg-warning",
       destructive: "bg-destructive",

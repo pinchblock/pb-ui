@@ -24,7 +24,7 @@ export const mobileTabBarItemVariants = cva(
     "relative flex h-full min-w-0 flex-col items-center justify-center gap-0.5",
     "text-muted-foreground hover:text-foreground",
     "transition-colors duration-(--duration-fast) ease-(--ease-out)",
-    "data-active:text-primary",
+    "data-active:text-foreground",
     "[&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0",
   ),
 )
@@ -56,7 +56,7 @@ function MobileTabBarItem({ item }: { item: NavItem }) {
           <span className="relative">
             <Icon aria-hidden />
             {badge != null ? (
-              <span className="absolute -top-1 -right-2 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-xs leading-none font-semibold text-primary-foreground">
+              <span className="absolute -top-1 -right-2 grid h-4 min-w-4 place-items-center rounded-full bg-foreground px-1 text-xs leading-none font-semibold text-background">
                 {badge}
               </span>
             ) : null}

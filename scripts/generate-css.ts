@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 
-import { themes, shared, textScale, displayScale } from "../src/tokens/index.ts"
+import { themes, shared, stage, marquee, marqueeDisplayFont, textScale, displayScale } from "../src/tokens/index.ts"
 import type { ModeTokens } from "../src/tokens/types.ts"
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "styles", "tokens.css")
@@ -96,6 +96,40 @@ function build(): string {
     lines.push(`}`)
   }
 
+  /* Fixed surface sets: always-dark and theme-invariant. Emitted after
+     every theme block, but source order is not what makes them win: the
+     variables are set on the element ITSELF, and custom properties
+     inherit from the nearest ancestor that defines them, so a wrapped
+     subtree overrides any .theme-x / .dark combination on <html> with
+     no specificity fight and no !important. */
+  const surfaces: { cls: string; comment: string; tokens: ModeTokens; extra: string[] }[] = [
+    {
+      cls: "stage",
+      comment: "Stage: always-dark, theme-invariant immersive surface (timers, calls).",
+      tokens: stage,
+      extra: [],
+    },
+    {
+      cls: "marquee",
+      comment: "Marquee: always-dark, theme-invariant public marketing surface (the landing).",
+      tokens: marquee,
+      extra: [`--font-display: ${marqueeDisplayFont};`],
+    },
+  ]
+  for (const s of surfaces) {
+    lines.push(``)
+    lines.push(`/* ${s.comment} */`)
+    lines.push(`/* Vars live on the .${s.cls} element itself; inheritance from the nearest`)
+    lines.push(`   defining ancestor beats any .theme-x.dark set on <html>. */`)
+    lines.push(`.${s.cls} {`)
+    lines.push(`  color-scheme: dark;`)
+    lines.push(``)
+    for (const e of s.extra) lines.push(`  ${e}`)
+    if (s.extra.length) lines.push(``)
+    lines.push(modeBlock(s.tokens))
+    lines.push(`}`)
+  }
+
   /* Tailwind v4 mapping: utilities resolve through var(--x) at runtime,
      so theme/mode/knob changes restyle everything with zero JS. */
   lines.push(``)
@@ -104,14 +138,18 @@ function build(): string {
   lines.push(`  --font-display: var(--font-display);`)
   lines.push(`  --font-mono: var(--font-mono);`)
   lines.push(``)
-  lines.push(`  /* Corner scale derived from the single --radius knob. */`)
-  lines.push(`  --radius-xs: max(2px, calc(var(--radius) - 6px));`)
-  lines.push(`  --radius-sm: max(2px, calc(var(--radius) - 4px));`)
-  lines.push(`  --radius-md: max(3px, calc(var(--radius) - 2px));`)
+  lines.push(`  /* Corners: one general radius for every surface and control`)
+  lines.push(`     (rounded-sm through rounded-3xl all resolve to --radius), a fixed`)
+  lines.push(`     2px xs step for control anatomy only (checkbox, kbd), and`)
+  lines.push(`     rounded-full for buttons, chips and avatars. By decision`)
+  lines.push(`     (docs/GUARDRAILS.md): no size hierarchy in corners. */`)
+  lines.push(`  --radius-xs: 2px;`)
+  lines.push(`  --radius-sm: var(--radius);`)
+  lines.push(`  --radius-md: var(--radius);`)
   lines.push(`  --radius-lg: var(--radius);`)
-  lines.push(`  --radius-xl: calc(var(--radius) + 4px);`)
-  lines.push(`  --radius-2xl: calc(var(--radius) + 8px);`)
-  lines.push(`  --radius-3xl: calc(var(--radius) + 16px);`)
+  lines.push(`  --radius-xl: var(--radius);`)
+  lines.push(`  --radius-2xl: var(--radius);`)
+  lines.push(`  --radius-3xl: var(--radius);`)
   lines.push(``)
   lines.push(`  /* Motion: ease-out / ease-in-out / ease-spring utilities. */`)
   for (const k of Object.keys(shared.motion.ease)) {
