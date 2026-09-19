@@ -1,7 +1,7 @@
 {
   "name": "@pinchblock/ui",
   "private": true,
-  "version": "0.4.8",
+  "version": "0.4.9",
   "type": "module",
   "description": "Pinchblock design system and component library. Owned source (shadcn-style), Base UI + Tailwind v4, TS-authored tokens generated to CSS, no build step.",
   "scripts": {
@@ -21,6 +21,10 @@
     "./tokens": {
       "types": "./src/tokens/index.ts",
       "import": "./src/tokens/index.ts"
+    },
+    "./email": {
+      "types": "./src/email/index.ts",
+      "import": "./src/email/index.ts"
     },
     "./theme-boot": {
       "types": "./src/lib/theme-boot.ts",

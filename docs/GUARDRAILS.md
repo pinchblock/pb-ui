@@ -35,6 +35,16 @@ ignores the designer.
 - No cursor-pointer in components (the base layer handles it); drag
   handles set cursor-grab explicitly.
 - No !important. No inline styles for anything a token can express.
+- Email is the one exception to both. `@pinchblock/ui/email` renders a
+  self-contained HTML document with tables, inline styles and one
+  `!important` block for client overrides, because email clients have no
+  bundler, no external CSS and no custom properties. It is still bound
+  by the system: every colour, size, font and corner is read from the
+  tokens, the action is a fully rounded button sized to its label, and
+  the brand colour appears only on that action and on links. Send no
+  transactional mail that does not go through `renderEmail`, and add a
+  new kind of message by passing different input, never by writing
+  another template.
 
 ## Visual rules (product decisions, not preferences)
 
