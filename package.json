@@ -8,9 +8,10 @@
     "gen": "node scripts/generate-css.ts && node scripts/generate-icon-manifest.ts",
     "gen:check": "node scripts/generate-css.ts --check && node scripts/generate-icon-manifest.ts --check",
     "typecheck": "tsc --noEmit",
+    "typecheck:demo": "npm --prefix demo run typecheck",
     "dev": "npm --prefix demo run dev",
     "demo:install": "npm --prefix demo install",
-    "test": "npm run gen:check && npm run typecheck"
+    "test": "npm run gen:check && npm run typecheck && npm run typecheck:demo"
   },
   "exports": {
     ".": {
