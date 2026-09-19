@@ -106,7 +106,9 @@ below Android's 48dp guidance.
 
 Wave C (docs/ROADMAP-V02.md): NotificationPanel, OnboardingCarousel,
 CelebrationOverlay, MarkdownRenderer, ReactionPicker,
-SyncStatusIndicator, format utilities. Two are design-blocked upstream
+SyncStatusIndicator, format utilities. ReactionPicker shrank in v0.4.7:
+EmojiPicker covers the picking, so what remains is a six-reaction preset
+and the React Native sheet. Two are design-blocked upstream
 (notifications and onboarding both await product design passes), so the
 wave is optional until then. The format utilities are the highest-value
 piece: they retire pb-app's three competing EUR formatters and three
