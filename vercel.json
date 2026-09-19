@@ -1,8 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm install && npm run demo:install && npm --prefix demo run build",
+  "installCommand": "npm ci && npm ci --prefix demo",
+  "buildCommand": "npm --prefix demo run build",
   "outputDirectory": "demo/dist",
   "framework": null,
+  "git": { "deploymentEnabled": false },
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "headers": [
     {
